@@ -268,3 +268,45 @@ def generate_seasonal_headlines(listing, theme):
         if isinstance(heads, list) and len(heads) >= 3 and all(isinstance(h, str) and 8 <= len(h) <= 80 for h in heads):
             return heads
     raise RuntimeError(f"Claude returned malformed headlines twice for '{listing['title'][:50]}'")
+
+
+RELEVANCE_TOOL = {
+    "name": "submit_relevance",
+    "description": "Say how well one Etsy listing fits a seasonal occasion.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "relevance": {
+                "type": "string",
+                "enum": ["priority", "related", "unrelated"],
+                "description": (
+                    "'priority': made for the occasion itself (party decor, banners, cards, or "
+                    "items named for it). 'related': specifically about the occasion's subject. "
+                    "For Reformation Day that means the Protestant Reformation itself: its "
+                    "people (Luther, Calvin, Zwingli, Hus, Knox), events (the 95 Theses, Diet of "
+                    "Worms), places (Wittenberg, Geneva, Zurich) or slogans (the five solas, "
+                    "Post Tenebras Lux, Here I Stand). 'unrelated': everything else, including "
+                    "general Christian or scripture art, creeds, classic literature such as "
+                    "Pilgrim's Progress or Narnia, and Reformed-flavored items with no "
+                    "specific Reformation connection."
+                ),
+            },
+            "reason": {"type": "string", "description": "One short phrase."},
+        },
+        "required": ["relevance", "reason"],
+    },
+}
+
+
+def classify_occasion_relevance(listing, theme):
+    prompt = (
+        f"Occasion: {theme}\nEtsy listing title: {listing['title']}\n"
+        f"Etsy SEO tags: {', '.join(listing.get('tags', []))}\n\n"
+        "How well does this listing fit the occasion?"
+    )
+    message = _get_client().messages.create(
+        model=MODEL, max_tokens=150, tools=[RELEVANCE_TOOL],
+        tool_choice={"type": "tool", "name": "submit_relevance"},
+        messages=[{"role": "user", "content": prompt}],
+    )
+    return _tool_input(message)

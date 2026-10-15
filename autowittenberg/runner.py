@@ -115,6 +115,7 @@ def _run(count, mode, force_sync):
     cfg = seasonal.active_config(now.astimezone(ZoneInfo("America/New_York")).date())
     if cfg:
         try:
+            seasonal.ensure_relevance(pool, cfg, log)
             boost = (cfg, seasonal.ensure_headlines(pool, cfg, log))
             n_boosted = len(seasonal.boosted_listings(pool, cfg))
             log(f"Seasonal boost active: {cfg['name']} (through {cfg['end']}); {n_boosted} listings in the boost.")

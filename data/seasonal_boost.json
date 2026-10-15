@@ -1,8 +1,8 @@
 {
-  "name": "Reformation Day 2026",
+  "name": "Reformation Day",
   "theme": "Reformation Day (October 31)",
-  "start": "2026-10-15",
-  "end": "2026-10-31",
+  "start": "09-01",
+  "end": "10-31",
   "priority_keyword": "reformation day",
   "priority_weight": 3,
   "include_keywords": [

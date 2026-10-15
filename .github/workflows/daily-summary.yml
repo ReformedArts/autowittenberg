@@ -1,0 +1,39 @@
+name: Daily summary email
+
+# Sent in the 11 PM Eastern hour. Fires at both possible UTC times; slot_gate.py keeps the right one.
+on:
+  schedule:
+    - cron: "30 3,4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  summary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Is it time?
+        id: gate
+        run: python3 slot_gate.py summary
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Send the summary
+        if: steps.gate.outputs.run == 'true'
+        env:
+          GMAIL_SENDER: ${{ secrets.GMAIL_SENDER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          SUMMARY_RECIPIENT: ${{ secrets.SUMMARY_RECIPIENT }}
+        run: python send_summary.py

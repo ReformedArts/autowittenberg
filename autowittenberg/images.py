@@ -174,3 +174,13 @@ def render_pin(photo_url, headline, palette_key, crop_style, out_path, logo_corn
     out_path.parent.mkdir(parents=True, exist_ok=True)
     canvas.convert("RGB").save(out_path, "JPEG", quality=90)
     return out_path
+
+
+def make_thumbnail(src_path, dst_path, max_size=(300, 450)):
+    """Small JPEG copy of a finished pin, used by the daily summary email."""
+    im = Image.open(src_path).convert("RGB")
+    im.thumbnail(max_size, Image.LANCZOS)
+    dst_path = Path(dst_path)
+    dst_path.parent.mkdir(parents=True, exist_ok=True)
+    im.save(dst_path, "JPEG", quality=78)
+    return dst_path

@@ -14,15 +14,17 @@ import shutil
 from pathlib import Path
 
 from . import state
-from .images import render_pin
+from .images import make_thumbnail, render_pin
 from .pinterest import PinterestClient
 from .rotation import choose_next
 from .sync import sync_pool
+from .tokens import ensure_fresh_tokens
 
 ROOT = Path(__file__).parent.parent
 PINS_DIR = ROOT / "data" / "generated_pins"
 LOG_PATH = ROOT / "data" / "run_log.jsonl"
 HISTORY_PATH = ROOT / "data" / "run_history.jsonl"
+THUMBS_DIR = ROOT / "data" / "thumbs"
 PAUSE_FILE = ROOT / "PAUSED"
 KEEP_DAYS = 2
 
@@ -36,20 +38,23 @@ def log(message):
 
 
 def cleanup_old_pins(today):
-    """Rolling window: keep only today's and yesterday's generated pin folders."""
-    if not PINS_DIR.exists():
-        return
+    """Rolling window: keep only today's and yesterday's generated pin images and thumbnails."""
     keep = {(today - dt.timedelta(days=i)).isoformat() for i in range(KEEP_DAYS)}
-    for folder in PINS_DIR.iterdir():
-        if folder.is_dir() and folder.name not in keep:
-            shutil.rmtree(folder)
-            log(f"Deleted old pin images: {folder.name}")
+    for base in (PINS_DIR, THUMBS_DIR):
+        if not base.exists():
+            continue
+        for folder in base.iterdir():
+            if folder.is_dir() and folder.name not in keep:
+                shutil.rmtree(folder)
+                log(f"Deleted old pin images: {folder.name}")
 
 
-def run(count=1, mode="dry-run", force_sync=False):
-    """Runs once and records the outcome for the daily summary email (real posts only)."""
+def run(count=1, mode="dry-run", force_sync=False, slot=None, slot_date=None):
+    """Runs once and records the outcome for the daily summary email (real posts only).
+    slot/slot_date say which scheduled posting time this run belongs to."""
     summary = _run(count, mode, force_sync)
     if mode != "dry-run":
+        summary["slot"], summary["slot_date"] = slot, slot_date
         summary["time"] = dt.datetime.now(dt.timezone.utc).isoformat()
         with HISTORY_PATH.open("a") as f:
             f.write(json.dumps(summary, ensure_ascii=False) + "\n")
@@ -96,9 +101,11 @@ def _run(count, mode, force_sync):
     client = None
     if mode in ("sandbox", "live"):
         try:
+            if mode == "live":
+                ensure_fresh_tokens(log)
             client = PinterestClient(sandbox=(mode == "sandbox"))
-        except SystemExit as e:
-            log(str(e))
+        except (SystemExit, Exception) as e:
+            log(f"Could not sign in to Pinterest: {e}")
             summary["failed"].append({"title": "(whole run)", "error": str(e)})
             return summary
 
@@ -149,7 +156,16 @@ def _run(count, mode, force_sync):
             "posted_at": now.isoformat(),
         }
         posts.append(record)
-        summary["posted"].append({**record, "title": title, "url": listing["url"], "image_path": str(image_path.relative_to(ROOT))})
+        thumb_path = None
+        try:  # a thumbnail problem must never undo or hide a pin that was already posted
+            thumb_path = make_thumbnail(image_path, THUMBS_DIR / today.isoformat() / image_path.name)
+        except Exception as e:
+            log(f"Warning: could not make a thumbnail: {e}")
+        summary["posted"].append({
+            **record, "title": title, "url": listing["url"],
+            "image_path": str(image_path.relative_to(ROOT)),
+            "thumb_path": str(thumb_path.relative_to(ROOT)) if thumb_path else None,
+        })
         verb = {"dry-run": "Rendered (not posted)", "sandbox": "Posted to sandbox", "live": "Posted"}[mode]
         log(f"{verb}: '{title[:60]}' -> {board_name} | {variant['palette']}, {variant['crop_style']} | \"{variant['headline'] or '(no headline box)'}\"")
 

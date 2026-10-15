@@ -1,0 +1,86 @@
+name: Post pins
+
+# Fires at every UTC hour that could be one of the five posting times (8 AM, 12 PM, 4 PM,
+# 8 PM, 9 PM Eastern) in either summer or winter time. slot_gate.py then decides which
+# runs are real posting times, so pins go out on Eastern time all year.
+on:
+  schedule:
+    - cron: "0 0,1,2,12,13,16,17,20,21 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run (nothing posted), sandbox (practice area) or live"
+        type: choice
+        default: dry-run
+        options: [dry-run, sandbox, live]
+
+permissions:
+  contents: write
+
+# One run at a time, so two runs never fight over the saved data.
+concurrency:
+  group: autowittenberg-data
+  cancel-in-progress: false
+
+jobs:
+  post:
+    # PAUSE SWITCH: set the repository variable AUTOWITTENBERG_PAUSED to true to stop everything.
+    if: vars.AUTOWITTENBERG_PAUSED != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Is this a posting time?
+        id: gate
+        run: python3 slot_gate.py
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Post one pin
+        if: steps.gate.outputs.run == 'true'
+        env:
+          ETSY_API_KEY: ${{ secrets.ETSY_API_KEY }}
+          ETSY_SHARED_SECRET: ${{ secrets.ETSY_SHARED_SECRET }}
+          ETSY_SHOP_NAME: ${{ secrets.ETSY_SHOP_NAME }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PINTEREST_APP_ID: ${{ secrets.PINTEREST_APP_ID }}
+          PINTEREST_APP_SECRET: ${{ secrets.PINTEREST_APP_SECRET }}
+          PINTEREST_REFRESH_TOKEN: ${{ secrets.PINTEREST_REFRESH_TOKEN }}
+          PINTEREST_SANDBOX_ACCESS_TOKEN: ${{ secrets.PINTEREST_SANDBOX_ACCESS_TOKEN }}
+          TOKEN_VAULT_KEY: ${{ secrets.TOKEN_VAULT_KEY }}
+          MODE: ${{ inputs.mode || vars.AUTOWITTENBERG_MODE || 'dry-run' }}
+        run: |
+          python run_pins.py --mode "$MODE" --count 1 \
+            --slot "${{ steps.gate.outputs.slot }}" --slot-date "${{ steps.gate.outputs.slot_date }}"
+
+      - name: Save run data
+        if: always() && steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "AutoWittenberg bot"
+          git config user.email "autowittenberg-bot@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then echo "Nothing new to save."; exit 0; fi
+          git commit -m "Run data: ${{ steps.gate.outputs.slot }} $(date -u +%F)"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin main && exit 0
+            sleep 5
+          done
+          echo "Could not save run data" && exit 1
+
+      - name: Keep the pin images for 2 days
+        if: always() && steps.gate.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pins-${{ github.run_id }}
+          path: data/generated_pins
+          retention-days: 2
+          if-no-files-found: ignore

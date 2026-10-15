@@ -18,8 +18,10 @@ def main():
     parser.add_argument("--count", type=int, default=1, help="how many pins to make this run")
     parser.add_argument("--mode", choices=["dry-run", "sandbox", "live"], default="dry-run")
     parser.add_argument("--sync", action="store_true", help="force a fresh Etsy check")
+    parser.add_argument("--slot", default=None, help="scheduled posting time label, e.g. 20:00 (set by the cloud schedule)")
+    parser.add_argument("--slot-date", default=None, help="local date of that posting time")
     args = parser.parse_args()
-    summary = run(count=args.count, mode=args.mode, force_sync=args.sync)
+    summary = run(count=args.count, mode=args.mode, force_sync=args.sync, slot=args.slot, slot_date=args.slot_date)
     print(f"\nFinished: {len(summary['posted'])} pin(s) made, {len(summary['failed'])} failed.")
 
 

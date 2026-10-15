@@ -91,7 +91,7 @@ def build_summary(runs, local_date):
 
     images = {}
     for i, p in enumerate(posted):
-        thumb = _thumbnail(p["image_path"]) if p.get("image_path") else None
+        thumb = _thumbnail(p.get("thumb_path") or p.get("image_path") or "") if (p.get("thumb_path") or p.get("image_path")) else None
         if thumb:
             p["thumb_cid"] = f"pin{i}"
             images[p["thumb_cid"]] = thumb

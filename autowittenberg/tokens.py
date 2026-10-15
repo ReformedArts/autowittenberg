@@ -44,3 +44,15 @@ def ensure_fresh_tokens(log=print):
     VAULT_PATH.write_bytes(vault.encrypt(json.dumps(data).encode()))
     os.environ["PINTEREST_ACCESS_TOKEN"] = data["access_token"]
     log("Pinterest sign-in refreshed and saved (encrypted).")
+
+
+def load_access_token():
+    """Current access token without refreshing or saving anything (used by the summary job).
+    Returns None when there is no vault or it cannot be read."""
+    key = config.optional("TOKEN_VAULT_KEY")
+    if not key or not VAULT_PATH.exists():
+        return None
+    try:
+        return json.loads(Fernet(key.encode()).decrypt(VAULT_PATH.read_bytes()))["access_token"]
+    except Exception:
+        return None

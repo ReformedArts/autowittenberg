@@ -47,7 +47,7 @@ def _thumbnail(image_path):
     return buf.getvalue()
 
 
-def build_summary(runs, local_date):
+def build_summary(runs, local_date, analytics=None):
     """Returns (subject, plain_text, html, images); images maps content-id -> JPEG bytes."""
     posted = [p for r in runs for p in r["posted"]]
     failed = [f for r in runs for f in r["failed"]]
@@ -87,6 +87,7 @@ def build_summary(runs, local_date):
                            ("Listings skipped: no usable photos", no_photos), ("Warnings", warnings)):
         if items:
             text += ["", f"{heading}:"] + [f"  {i[:100]}" for i in items]
+    text += _analytics_text(analytics)
     plain = "\n".join(text)
 
     images = {}
@@ -96,10 +97,54 @@ def build_summary(runs, local_date):
             p["thumb_cid"] = f"pin{i}"
             images[p["thumb_cid"]] = thumb
 
-    return subject, plain, _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, bool(failed or paused or not runs)), images
+    return subject, plain, _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, bool(failed or paused or not runs), analytics), images
 
 
-def _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, is_problem):
+_ROWS = (("Impressions (times shown)", "IMPRESSION"), ("Pin clicks (opened)", "PIN_CLICK"),
+         ("Clicks to Etsy", "OUTBOUND_CLICK"), ("Saves", "SAVE"))
+
+
+def _analytics_text(a):
+    if not a:
+        return []
+    t = a["totals"]
+    lines = ["", "PINTEREST PERFORMANCE (reported by Pinterest; recent days can read low):",
+             f"  {'':28s}{'Yesterday':>10s}{'7 days':>9s}{'All time':>10s}"]
+    for label, key in _ROWS:
+        lines.append(f"  {label:28s}{t['yesterday'][key]:>10,}{t['week'][key]:>9,}{t['all'][key]:>10,}")
+    for pin in a["top"]:
+        lines.append(f"  Top pin (7 days): {pin['title'][:60]} - {pin['week']['OUTBOUND_CLICK']} click(s) to Etsy")
+    return lines
+
+
+def _analytics_html(a):
+    if not a:
+        return ""
+    e = html.escape
+    t = a["totals"]
+    cell = "padding:5px 0;text-align:right;font-variant-numeric:tabular-nums"
+    def row(label, key):
+        bold = "font-weight:700;font-size:16px;" if key == "OUTBOUND_CLICK" else ""
+        return (f"<tr><td style='padding:5px 12px 5px 0;{bold}'>{e(label)}</td>"
+                f"<td style='{cell};{bold}'>{t['yesterday'][key]:,}</td><td style='{cell};padding-left:18px;{bold}'>{t['week'][key]:,}</td>"
+                f"<td style='{cell};padding-left:18px;{bold}'>{t['all'][key]:,}</td></tr>")
+    rows = "".join(row(label, key) for label, key in _ROWS)
+    top = "".join(
+        f"<div style='font-size:13px;margin-top:6px'><a href='{e(p['url'])}' style='color:#1a5fb4'>{e(p['title'][:70])}</a>"
+        f" <span style='color:#666'>&middot; {p['week']['OUTBOUND_CLICK']} click(s) to Etsy, {p['week']['IMPRESSION']:,} impressions</span></div>"
+        for p in a["top"])
+    top = f"<div style='margin-top:10px;font-size:13px;color:#666'>Top pins, last 7 days (by clicks to Etsy)</div>{top}" if top else ""
+    note = (f"Pinterest reports these with a delay of up to a day or two, so recent numbers can read low. "
+            f"Covers the {a['pins_measured']} pin(s) AutoWittenberg has posted.")
+    if a.get("pins_failed"):
+        note += f" {a['pins_failed']} pin(s) could not be measured."
+    return f"""<div style='margin:30px 0 8px;font-size:22px;font-weight:700'>Pinterest Performance</div>
+<table style="border-collapse:collapse;font-size:14px;width:100%">
+<tr style='color:#666;font-size:12px'><td></td><td style='text-align:right'>Yesterday</td><td style='text-align:right;padding-left:18px'>7 days</td><td style='text-align:right;padding-left:18px'>All time</td></tr>{rows}</table>
+{top}<div style='margin-top:10px;font-size:12px;color:#777'>{e(note)}</div>"""
+
+
+def _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, is_problem, analytics=None):
     e = html.escape
     color = "#b42318" if is_problem else "#1a7f37"
     rows = ""
@@ -128,6 +173,7 @@ def _html(day, label, status, posted, failed, new_listings, removed, no_photos, 
 <div style="font-size:13px;color:#666">AutoWittenberg daily summary{e(label)} &middot; {e(day)}</div>
 <div style="font-size:22px;font-weight:700;margin:6px 0 16px;color:{color}">{e(status)}</div>
 <table style="border-collapse:collapse;font-size:14px;width:100%">{rows}</table>
+{_analytics_html(analytics)}
 {section("Failures", fail_items, "#b42318")}{section("New listings found", new_listings)}{section("Listings removed (sold out or deactivated)", removed)}{section("Listings skipped: no usable photos", no_photos, "#b54708")}{section("Warnings", warnings, "#b54708")}
 </div>"""
 

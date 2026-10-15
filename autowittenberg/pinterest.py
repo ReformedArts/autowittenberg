@@ -110,3 +110,13 @@ class PinterestClient:
             "link": link,
         }
         return self._request("POST", "/pins", json=payload)
+
+    def pin_analytics(self, pin_id, start_date, end_date):
+        """Daily impressions / pin clicks / outbound (to Etsy) clicks / saves for one pin."""
+        data = self._request("GET", f"/pins/{pin_id}/analytics", params={
+            "start_date": start_date.isoformat(),
+            "end_date": end_date.isoformat(),
+            "metric_types": "IMPRESSION,PIN_CLICK,OUTBOUND_CLICK,SAVE",
+            "app_types": "ALL",
+        })
+        return data.get("all", {}).get("daily_metrics", [])

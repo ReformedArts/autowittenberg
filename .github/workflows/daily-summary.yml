@@ -36,4 +36,5 @@ jobs:
           GMAIL_SENDER: ${{ secrets.GMAIL_SENDER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           SUMMARY_RECIPIENT: ${{ secrets.SUMMARY_RECIPIENT }}
+          TOKEN_VAULT_KEY: ${{ secrets.TOKEN_VAULT_KEY }}
         run: python send_summary.py

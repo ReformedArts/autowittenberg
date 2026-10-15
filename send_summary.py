@@ -8,7 +8,16 @@ import argparse
 import datetime as dt
 from pathlib import Path
 
+from autowittenberg.analytics import collect as collect_analytics
 from autowittenberg.notify import LOCAL_TZ, build_summary, runs_for_date, send_email
+
+
+def _safe_analytics():
+    try:
+        return collect_analytics()
+    except Exception as e:  # missing stats must never stop the daily email
+        print(f"Pinterest analytics unavailable: {e}")
+        return None
 
 
 def main():
@@ -22,7 +31,7 @@ def main():
         summary = run(count=5, mode="dry-run")
         now = dt.datetime.now(dt.timezone.utc).isoformat()
         summary["time"] = now
-        subject, plain, body, images = build_summary([summary], today)
+        subject, plain, body, images = build_summary([summary], today, _safe_analytics())
         out = Path(__file__).parent / "data" / "summary_preview.html"
         import base64
         from autowittenberg.notify import LOGO_PATH
@@ -34,7 +43,7 @@ def main():
         print(subject, "\n\n" + plain, f"\n\nSaved preview to {out}")
         return
 
-    subject, plain, body, images = build_summary(runs_for_date(today), today)
+    subject, plain, body, images = build_summary(runs_for_date(today), today, _safe_analytics())
     try:
         send_email(subject, plain, body, images)
     except Exception as e:  # an email problem must never break the run

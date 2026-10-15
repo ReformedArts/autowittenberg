@@ -1,0 +1,176 @@
+"""Turns one Etsy listing photo into a finished, Pinterest-ready pin image.
+
+Canvas is a portrait 1000x1500 (2:3), since portrait pins outperform square/horizontal
+ones. The Etsy photo is the hero and fills the frame; a small color-treated text box
+carries a short, benefit-driven line, and the shop logo sits small in a bottom corner
+(never the top, since Pinterest's preview crop tends to cut off the top of the image).
+"""
+from io import BytesIO
+from pathlib import Path
+
+import requests
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
+CANVAS_W, CANVAS_H = 1000, 1500
+
+ASSETS = Path(__file__).parent.parent / "assets"
+FONTS = ASSETS / "fonts"
+LOGO_PATH = ASSETS / "Logo - Reformed Arts.png"
+
+HEADLINE_FONT_FILE = FONTS / "PlayfairDisplay-Variable.ttf"
+BODY_FONT_FILE = FONTS / "Lato-Bold.ttf"
+
+# Warm, saturated palettes for the text box. Each pin variation picks one of these
+# so repeated postings of the same listing don't look identical.
+PALETTES = {
+    "terracotta": {"bg": (193, 80, 46, 235), "text": (255, 248, 236, 255)},
+    "gold": {"bg": (201, 138, 30, 235), "text": (43, 27, 14, 255)},
+    "oxblood": {"bg": (122, 31, 43, 235), "text": (244, 227, 193, 255)},
+    "amber": {"bg": (217, 113, 60, 235), "text": (36, 16, 9, 255)},
+}
+
+# Different ways to crop the same source photo into the portrait canvas, so the same
+# image can produce a few visually distinct pins.
+CROP_STYLES = ("cover_center", "cover_top", "zoom_detail")
+
+
+def _headline_font(size):
+    font = ImageFont.truetype(str(HEADLINE_FONT_FILE), size)
+    font.set_variation_by_name("Bold")
+    return font
+
+
+def download_image(url):
+    resp = requests.get(url, timeout=20)
+    resp.raise_for_status()
+    return Image.open(BytesIO(resp.content)).convert("RGB")
+
+
+def cover_crop(im, target_w, target_h, style="cover_center"):
+    """Scale the image to fill target_w x target_h, cropping the overflow."""
+    src_w, src_h = im.size
+    zoom = 1.15 if style == "zoom_detail" else 1.0
+    scale = max(target_w / src_w, target_h / src_h) * zoom
+    new_w, new_h = round(src_w * scale), round(src_h * scale)
+    im = im.resize((new_w, new_h), Image.LANCZOS)
+
+    x = (new_w - target_w) // 2
+    if style == "cover_top":
+        y = 0
+    else:
+        y = (new_h - target_h) // 2
+    y = max(0, min(y, new_h - target_h))
+    x = max(0, min(x, new_w - target_w))
+    return im.crop((x, y, x + target_w, y + target_h))
+
+
+def _wrap_text(draw, text, font, max_width):
+    words = text.split()
+    lines, current = [], ""
+    for word in words:
+        trial = f"{current} {word}".strip()
+        if draw.textlength(trial, font=font) <= max_width:
+            current = trial
+        else:
+            if current:
+                lines.append(current)
+            current = word
+    if current:
+        lines.append(current)
+    return lines
+
+
+def _draw_text_box(canvas, headline, palette):
+    """Rounded, warm-colored box carrying the short benefit-driven headline.
+
+    Placed in the lower half of the canvas, well clear of the top (which Pinterest's
+    preview crop tends to cut off) and clear of the bottom-corner logo.
+    """
+    draw = ImageDraw.Draw(canvas, "RGBA")
+    box_margin = 60
+    box_w = CANVAS_W - 2 * box_margin
+    font_size = 58
+    font = _headline_font(font_size)
+
+    lines = _wrap_text(draw, headline, font, box_w - 80)
+    while len(lines) > 3 and font_size > 36:
+        font_size -= 4
+        font = _headline_font(font_size)
+        lines = _wrap_text(draw, headline, font, box_w - 80)
+
+    line_height = int(font_size * 1.25)
+    text_block_h = line_height * len(lines)
+    pad_v = 44
+    box_h = text_block_h + pad_v * 2
+
+    box_bottom = CANVAS_H - 170  # leave clear room below for the logo
+    box_top = box_bottom - box_h
+    box = (box_margin, box_top, CANVAS_W - box_margin, box_bottom)
+
+    draw.rounded_rectangle(box, radius=28, fill=palette["bg"])
+
+    y = box_top + pad_v
+    for line in lines:
+        w = draw.textlength(line, font=font)
+        x = (CANVAS_W - w) / 2
+        draw.text((x, y), line, font=font, fill=palette["text"])
+        y += line_height
+
+
+def _paste_logo(canvas, corner="bottom_right"):
+    logo = Image.open(LOGO_PATH).convert("RGBA")
+    target_w = int(CANVAS_W * 0.16)
+    ratio = target_w / logo.width
+    logo = logo.resize((target_w, int(logo.height * ratio)), Image.LANCZOS)
+
+    padding = 40
+    if corner == "bottom_right":
+        pos = (CANVAS_W - logo.width - padding, CANVAS_H - logo.height - padding)
+    else:
+        pos = (padding, CANVAS_H - logo.height - padding)
+
+    # Soft translucent backing so the logo stays legible over busy photos.
+    draw = ImageDraw.Draw(canvas, "RGBA")
+    backing_pad = 16
+    backing = (
+        pos[0] - backing_pad, pos[1] - backing_pad,
+        pos[0] + logo.width + backing_pad, pos[1] + logo.height + backing_pad,
+    )
+    draw.rounded_rectangle(backing, radius=18, fill=(255, 255, 255, 200))
+    canvas.alpha_composite(logo, pos)
+
+
+def fit_on_color(im, palette):
+    """For photos that already carry their own text: show the whole photo, uncropped,
+    on a warm color background, leaving clear space below for the logo."""
+    bg = palette["bg"][:3] + (255,)
+    canvas = Image.new("RGBA", (CANVAS_W, CANVAS_H), bg)
+    max_h = 1280
+    scale = min(CANVAS_W / im.width, max_h / im.height)
+    new_size = (round(im.width * scale), round(im.height * scale))
+    im = im.resize(new_size, Image.LANCZOS).convert("RGBA")
+    x = (CANVAS_W - new_size[0]) // 2
+    y = (1380 - new_size[1]) // 2
+    canvas.alpha_composite(im, (x, y))
+    return canvas
+
+
+def render_pin(photo_url, headline, palette_key, crop_style, out_path, logo_corner="bottom_right"):
+    """Builds one finished pin image and saves it as a JPEG to out_path.
+
+    With headline=None the photo is shown whole on a color background and no headline
+    box is added (used for photos that already have text baked in).
+    """
+    palette = PALETTES[palette_key]
+    source = download_image(photo_url)
+    if headline is None:
+        canvas = fit_on_color(source, palette)
+    else:
+        canvas = cover_crop(source, CANVAS_W, CANVAS_H, crop_style).convert("RGBA")
+        _draw_text_box(canvas, headline, palette)
+    _paste_logo(canvas, logo_corner)
+
+    out_path = Path(out_path)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    canvas.convert("RGB").save(out_path, "JPEG", quality=90)
+    return out_path

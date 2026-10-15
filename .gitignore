@@ -1,0 +1,12 @@
+# Secrets — never commit these
+.env
+# Local Python environment
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Not needed in the cloud
+Terminal Saved Output.txt
+data/pin_previews/
+data/summary_preview.html

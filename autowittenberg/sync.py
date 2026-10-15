@@ -73,6 +73,7 @@ def sync_pool(log=print):
         pool.append({
             "listing_id": listing["listing_id"],
             "title": listing["title"],
+            "tags": listing.get("tags", []),
             "url": listing["url"],
             "board_theme": copy["board_theme"],
             "board_name": BOARD_THEMES[copy["board_theme"]],

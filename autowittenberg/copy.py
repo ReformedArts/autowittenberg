@@ -224,3 +224,47 @@ def get_photo_classification(image, listing_title, cache):
     if key not in cache:
         cache[key] = classify_photo(image["url"], listing_title)
     return cache[key]
+
+
+HEADLINES_TOOL = {
+    "name": "submit_headlines",
+    "description": "Submit short seasonal overlay headlines for one Etsy listing.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "headlines": {
+                "type": "array",
+                "items": {"type": "string"},
+                "minItems": 4,
+                "maxItems": 4,
+                "description": (
+                    "4 distinct overlay lines for pin images, each under 9 words, no ending "
+                    "punctuation, tying the product to the given occasion through a benefit or "
+                    "use (party, gift, home or church display, wearing it). Be accurate to the "
+                    "product type (digital download vs physical item). No prices."
+                ),
+            },
+        },
+        "required": ["headlines"],
+    },
+}
+
+
+def generate_seasonal_headlines(listing, theme):
+    """4 occasion-specific overlay headlines for one listing (one small Claude call)."""
+    prompt = (
+        f"Occasion: {theme}\n"
+        f"Etsy listing title: {listing['title']}\n"
+        f"Etsy SEO tags: {', '.join(listing.get('tags', []))}\n\n"
+        "Write 4 short pin overlay headlines connecting this product to the occasion."
+    )
+    for _ in range(2):
+        message = _get_client().messages.create(
+            model=MODEL, max_tokens=300, tools=[HEADLINES_TOOL],
+            tool_choice={"type": "tool", "name": "submit_headlines"},
+            messages=[{"role": "user", "content": prompt}],
+        )
+        heads = _tool_input(message).get("headlines")
+        if isinstance(heads, list) and len(heads) >= 3 and all(isinstance(h, str) and 8 <= len(h) <= 80 for h in heads):
+            return heads
+    raise RuntimeError(f"Claude returned malformed headlines twice for '{listing['title'][:50]}'")

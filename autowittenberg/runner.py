@@ -13,7 +13,9 @@ import json
 import shutil
 from pathlib import Path
 
-from . import state
+from zoneinfo import ZoneInfo
+
+from . import seasonal, state
 from .images import make_thumbnail, render_pin
 from .pinterest import PinterestClient
 from .rotation import choose_next
@@ -109,11 +111,21 @@ def _run(count, mode, force_sync):
             summary["failed"].append({"title": "(whole run)", "error": str(e)})
             return summary
 
+    boost = None
+    cfg = seasonal.active_config(now.astimezone(ZoneInfo("America/New_York")).date())
+    if cfg:
+        try:
+            boost = (cfg, seasonal.ensure_headlines(pool, cfg, log))
+            n_boosted = len(seasonal.boosted_listings(pool, cfg))
+            log(f"Seasonal boost active: {cfg['name']} (through {cfg['end']}); {n_boosted} listings in the boost.")
+        except Exception as e:
+            log(f"Warning: seasonal boost skipped: {e}")
+
     out_dir = PINS_DIR / today.isoformat()
     cleanup_old_pins(today)
 
     for _ in range(count):
-        choice = choose_next(pool, posts)
+        choice = choose_next(pool, posts, boost)
         if choice is None:
             log("Nothing eligible to post.")
             break
@@ -185,4 +197,4 @@ def _pool_from_last_sync():
     if not path.exists():
         return None
     data = json.loads(path.read_text())
-    return data if data and "photos" in data[0] else None
+    return data if data and "photos" in data[0] and "tags" in data[0] else None

@@ -8,6 +8,7 @@ import ssl
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from email.utils import formataddr
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -18,6 +19,7 @@ LOCAL_TZ = ZoneInfo("America/New_York")
 ROOT = Path(__file__).parent.parent
 LOGO_PATH = ROOT / "assets" / "email-logo.png"
 THUMB_WIDTH = 150
+SENDER_NAME = "AutoWittenberg Report"  # the name shown in the From field
 
 
 def runs_for_date(local_date, history_path=HISTORY_PATH):
@@ -183,7 +185,7 @@ def send_email(subject, plain, html_body, images=None):
     password = config.require("GMAIL_APP_PASSWORD").replace(" ", "")
     recipient = config.require("SUMMARY_RECIPIENT")
     msg = MIMEMultipart("related")
-    msg["Subject"], msg["From"], msg["To"] = subject, sender, recipient
+    msg["Subject"], msg["From"], msg["To"] = subject, formataddr((SENDER_NAME, sender)), recipient
     body = MIMEMultipart("alternative")
     body.attach(MIMEText(plain, "plain"))
     body.attach(MIMEText(html_body, "html"))

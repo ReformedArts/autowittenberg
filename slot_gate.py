@@ -16,6 +16,9 @@ ET = ZoneInfo("America/New_York")
 SLOTS = ["08:00", "12:00", "16:00", "20:00", "21:00"]
 WINDOW = dt.timedelta(hours=2)  # GitHub can start scheduled runs late; accept up to 2 hours
 HISTORY = Path(__file__).parent / "data" / "run_history.jsonl"
+SUMMARY_SENT = Path(__file__).parent / "data" / "summary_sent.json"
+SUMMARY_FROM = dt.time(22, 30)   # a day's summary is due from 10:30 PM...
+SUMMARY_UNTIL = dt.time(2, 0)    # ...until 2 AM the next morning, so a late GitHub start still sends it
 
 
 def slot_start(day, label):
@@ -47,6 +50,20 @@ def already_done(label, day):
     return False
 
 
+def summary_due(now):
+    """The Eastern date whose summary email is due right now, or None."""
+    for day in (now.date(), now.date() - dt.timedelta(days=1)):
+        start = dt.datetime.combine(day, SUMMARY_FROM, tzinfo=ET)
+        end = dt.datetime.combine(day + dt.timedelta(days=1), SUMMARY_UNTIL, tzinfo=ET)
+        if start <= now < end:
+            return day
+    return None
+
+
+def summary_already_sent(day):
+    return SUMMARY_SENT.exists() and day.isoformat() in json.loads(SUMMARY_SENT.read_text())
+
+
 def write_output(**values):
     path = os.environ.get("GITHUB_OUTPUT")
     lines = "".join(f"{k}={v}\n" for k, v in values.items())
@@ -59,10 +76,18 @@ def write_output(**values):
 def main():
     now = dt.datetime.now(ET)
     if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
-        write_output(run="true", slot="manual", slot_date=now.date().isoformat())
+        write_output(run="true", slot="manual", slot_date=now.date().isoformat(), summary_date="")
         return
-    if "summary" in sys.argv:  # the daily summary email goes out in the 11 PM Eastern hour
-        write_output(run="true" if now.hour == 23 else "false", slot="", slot_date="")
+    if "summary" in sys.argv:
+        day = summary_due(now)
+        if day is None:
+            print(f"{now:%a %H:%M} Eastern is outside the summary window. Skipping.")
+            write_output(run="false", summary_date="")
+        elif summary_already_sent(day):
+            print(f"The summary for {day} was already sent. Skipping.")
+            write_output(run="false", summary_date=day.isoformat())
+        else:
+            write_output(run="true", summary_date=day.isoformat())
         return
     found = current_slot(now)
     if found is None:

@@ -23,8 +23,10 @@ def _safe_analytics():
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--preview", action="store_true")
+    parser.add_argument("--date", default="", help="Eastern date to summarize, YYYY-MM-DD (default: today)")
+    parser.add_argument("--record-sent", action="store_true", help="remember that this day's summary went out")
     args = parser.parse_args()
-    today = dt.datetime.now(LOCAL_TZ).date()
+    today = dt.date.fromisoformat(args.date) if args.date else dt.datetime.now(LOCAL_TZ).date()
 
     if args.preview:
         from autowittenberg.runner import run
@@ -49,6 +51,11 @@ def main():
     except Exception as e:  # an email problem must never break the run
         raise SystemExit(f"Summary email could not be sent: {e}")
     print("Summary email sent:", subject)
+    if args.record_sent:
+        import json
+        path = Path(__file__).parent / "data" / "summary_sent.json"
+        sent = json.loads(path.read_text()) if path.exists() else []
+        path.write_text(json.dumps(sorted(set(sent + [today.isoformat()]))[-60:]) + "\n")
 
 
 if __name__ == "__main__":

@@ -37,22 +37,26 @@ def _live_pins(today):
     return pins
 
 
-def _our_pin_counts():
-    """Pins AutoWittenberg posted live, by Eastern day: (yesterday, last 7 days, all time)."""
-    et_today = dt.datetime.now(ET).date()
-    yesterday, week_start = et_today - dt.timedelta(days=1), et_today - dt.timedelta(days=7)
-    y = w = total = 0
+def _pin_days():
+    """Eastern date of every live pin AutoWittenberg has posted."""
+    days = []
     if HISTORY_PATH.exists():
         for line in HISTORY_PATH.read_text().splitlines():
             run = json.loads(line)
             if run.get("mode") != "live":
                 continue
             for p in run["posted"]:
-                day = dt.datetime.fromisoformat(p["posted_at"]).astimezone(ET).date()
-                total += 1
-                y += day == yesterday
-                w += week_start <= day <= yesterday
-    return y, w, total
+                days.append(dt.datetime.fromisoformat(p["posted_at"]).astimezone(ET).date())
+    return days
+
+
+def _posted_recent(days):
+    """Pins posted: yesterday, the last 7 complete days, and all time (Eastern days)."""
+    et_today = dt.datetime.now(ET).date()
+    yesterday = et_today - dt.timedelta(days=1)
+    week_start = et_today - dt.timedelta(days=7)
+    return {"yesterday": sum(d == yesterday for d in days),
+            "week": sum(week_start <= d <= yesterday for d in days), "all": len(days)}
 
 
 def fill_image_urls(runs, log=print):
@@ -83,9 +87,7 @@ def collect(today=None, log=print):
     week_start = today - dt.timedelta(days=7)
 
     zero = lambda: {m: 0 for m in METRICS}
-    total = {"yesterday": zero(), "week": zero(), "all": zero()}
-    pending = {"yesterday": False, "week": False, "all": False}  # Pinterest still counting some of these days
-    per_pin, failures = [], 0
+    per_pin_days, failures = [], 0
     for pin_id, info in pins.items():
         try:
             days = client.pin_analytics(pin_id, info["created"], today)
@@ -93,28 +95,40 @@ def collect(today=None, log=print):
             failures += 1
             log(f"Warning: analytics unavailable for pin {pin_id}: {str(e)[:120]}")
             continue
+        per_pin_days.append((info, days))
+        time.sleep(0.2)  # be gentle with Pinterest's rate limits
+
+    # Pinterest finishes counting a day about 3 days late. Only finished (READY) days are reported,
+    # so every number shown is final; the columns end on the latest finished day.
+    ready = {dt.date.fromisoformat(d["date"]) for _, days in per_pin_days for d in days if d.get("data_status") == "READY"}
+    latest = max(ready) if ready else None
+    week_start = latest - dt.timedelta(days=6) if latest else None
+
+    total = {"latest": zero(), "week": zero(), "all": zero()}
+    per_pin = []
+    for info, days in per_pin_days:
         week = zero()
         for d in days:
             date = dt.date.fromisoformat(d["date"])
-            if d.get("data_status") == "PROCESSING":
-                pending["all"] = True
-                pending["yesterday"] |= date == yesterday
-                pending["week"] |= week_start <= date <= yesterday
+            if d.get("data_status") != "READY":
+                continue
             for m in METRICS:
                 v = int(d["metrics"].get(m) or 0)
                 total["all"][m] += v
-                if date == yesterday:
-                    total["yesterday"][m] += v
-                if week_start <= date <= yesterday:
+                if date == latest:
+                    total["latest"][m] += v
+                if week_start <= date <= latest:
                     total["week"][m] += v
                     week[m] += v
         per_pin.append({"title": info["title"], "url": info["url"], "week": week})
-        time.sleep(0.2)  # be gentle with Pinterest's rate limits
 
-    for key, value in zip(("yesterday", "week", "all"), _our_pin_counts()):
-        total[key]["PINS"] = value
+    our_days = _pin_days()
+    if latest:
+        total["latest"]["PINS"] = sum(d == latest for d in our_days)
+        total["week"]["PINS"] = sum(week_start <= d <= latest for d in our_days)
+        total["all"]["PINS"] = sum(d <= latest for d in our_days)
 
     top = sorted(per_pin, key=lambda p: (p["week"]["OUTBOUND_CLICK"], p["week"]["IMPRESSION"]), reverse=True)[:5]
     top = [p for p in top if p["week"]["IMPRESSION"] > 0]
-    return {"totals": total, "pending": pending, "top": top, "pins_measured": len(per_pin), "pins_failed": failures,
-            "yesterday": yesterday.isoformat()}
+    return {"totals": total, "latest": latest.isoformat() if latest else None, "top": top,
+            "posted": _posted_recent(our_days), "pins_measured": len(per_pin), "pins_failed": failures}

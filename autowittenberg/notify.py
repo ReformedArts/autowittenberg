@@ -106,25 +106,41 @@ _ROWS = (("Impressions (times shown)", "IMPRESSION"), ("Pin clicks (opened)", "P
          ("Clicks to Etsy", "OUTBOUND_CLICK"), ("Saves", "SAVE"), ("Pins by AutoWittenberg", "PINS"))
 
 
+def _headers(a):
+    latest = dt.date.fromisoformat(a["latest"]) if a.get("latest") else None
+    return (f"{latest:%b} {latest.day}" if latest else "Yesterday"), "7 days", "All time"
+
+
 def _fmt(a, period, key):
-    """A number for the stats table; 'pending' / trailing * when Pinterest hasn't finished counting."""
-    value = a["totals"][period][key]
-    waiting = key != "PINS" and a.get("pending", {}).get(period)
-    if waiting and value == 0:
-        return "pending"
-    return f"{value:,}" + ("*" if waiting else "")
+    if not a.get("latest"):
+        if key == "PINS":  # our own count is always known; with no finished day yet, show the plain counts
+            return f"{a['posted'][{'latest': 'yesterday'}.get(period, period)]:,}"
+        return "pending"  # Pinterest hasn't finished counting any day yet
+    return f"{a['totals'][period][key]:,}"
+
+
+def _footnote(a):
+    posted = a["posted"]
+    if a.get("latest"):
+        latest = dt.date.fromisoformat(a["latest"])
+        span = (f"Pinterest finishes counting about 3 days late, so these columns cover days through "
+                f"{latest:%b} {latest.day}; every number shown is final. ")
+    else:
+        span = "Pinterest finishes counting about 3 days late and hasn't finished any day yet. "
+    return (span + f"Pins posted by AutoWittenberg: {posted['yesterday']} yesterday, {posted['week']} in the last 7 days, "
+            f"{posted['all']} in total. Pinterest figures cover the {a['pins_measured']} pin(s) AutoWittenberg has posted.")
 
 
 def _analytics_text(a):
     if not a:
         return []
-    t = a["totals"]
-    lines = ["", "PINTEREST PERFORMANCE (reported by Pinterest; recent days can read low):",
-             f"  {'':28s}{'Yesterday':>10s}{'7 days':>9s}{'All time':>10s}"]
+    h1, h2, h3 = _headers(a)
+    lines = ["", "PINTEREST PERFORMANCE", f"  {'':28s}{h1:>10s}{h2:>9s}{h3:>10s}"]
     for label, key in _ROWS:
-        lines.append(f"  {label:28s}{_fmt(a, 'yesterday', key):>10s}{_fmt(a, 'week', key):>9s}{_fmt(a, 'all', key):>10s}")
+        lines.append(f"  {label:28s}{_fmt(a, 'latest', key):>10s}{_fmt(a, 'week', key):>9s}{_fmt(a, 'all', key):>10s}")
     for pin in a["top"]:
         lines.append(f"  Top pin (7 days): {pin['title'][:60]} - {pin['week']['OUTBOUND_CLICK']} click(s) to Etsy")
+    lines.append("  " + _footnote(a))
     return lines
 
 
@@ -132,28 +148,28 @@ def _analytics_html(a):
     if not a:
         return ""
     e = html.escape
-    t = a["totals"]
+    h1, h2, h3 = _headers(a)
     cell = "padding:5px 0;text-align:right;font-variant-numeric:tabular-nums"
+
     def row(label, key):
         bold = "font-weight:700;font-size:16px;" if key == "OUTBOUND_CLICK" else ""
         rule = "border-top:1px solid #ddd;" if key == "PINS" else ""  # our own count, set apart from Pinterest's
         return (f"<tr><td style='padding:5px 12px 5px 0;{bold}{rule}'>{e(label)}</td>"
-                f"<td style='{cell};{bold}{rule}'>{_fmt(a, 'yesterday', key)}</td><td style='{cell};padding-left:18px;{bold}{rule}'>{_fmt(a, 'week', key)}</td>"
+                f"<td style='{cell};{bold}{rule}'>{_fmt(a, 'latest', key)}</td><td style='{cell};padding-left:18px;{bold}{rule}'>{_fmt(a, 'week', key)}</td>"
                 f"<td style='{cell};padding-left:18px;{bold}{rule}'>{_fmt(a, 'all', key)}</td></tr>")
+
     rows = "".join(row(label, key) for label, key in _ROWS)
     top = "".join(
         f"<div style='font-size:13px;margin-top:6px'><a href='{e(p['url'])}' style='color:#1a5fb4'>{e(p['title'][:70])}</a>"
         f" <span style='color:#666'>&middot; {p['week']['OUTBOUND_CLICK']} click(s) to Etsy, {p['week']['IMPRESSION']:,} impressions</span></div>"
         for p in a["top"])
-    top = f"<div style='margin-top:10px;font-size:13px;color:#666'>Top pins, last 7 days (by clicks to Etsy)</div>{top}" if top else ""
-    note = ("\"pending\" means Pinterest hasn't finished counting those days yet, and * means a total includes days it is "
-            "still counting, so numbers can rise. Pinterest typically needs a few days. "
-            f"Pinterest figures cover the {a['pins_measured']} pin(s) AutoWittenberg has posted.")
+    top = f"<div style='margin-top:10px;font-size:13px;color:#666'>Top pins, last 7 finished days (by clicks to Etsy)</div>{top}" if top else ""
+    note = _footnote(a)
     if a.get("pins_failed"):
         note += f" {a['pins_failed']} pin(s) could not be measured."
     return f"""<div style='margin:30px 0 8px;font-size:22px;font-weight:700'>Pinterest Performance</div>
 <table style="border-collapse:collapse;font-size:14px;width:100%">
-<tr style='color:#666;font-size:12px'><td></td><td style='text-align:right'>Yesterday</td><td style='text-align:right;padding-left:18px'>7 days</td><td style='text-align:right;padding-left:18px'>All time</td></tr>{rows}</table>
+<tr style='color:#666;font-size:12px'><td></td><td style='text-align:right'>{e(h1)}</td><td style='text-align:right;padding-left:18px'>{e(h2)}</td><td style='text-align:right;padding-left:18px'>{e(h3)}</td></tr>{rows}</table>
 {top}<div style='margin-top:10px;font-size:12px;color:#777'>{e(note)}</div>"""
 
 

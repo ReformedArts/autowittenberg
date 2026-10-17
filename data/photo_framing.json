@@ -226,5 +226,135 @@
       0.9,
       0.85
     ]
+  },
+  "8728054103": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.15,
+      0.03,
+      0.85,
+      0.98
+    ]
+  },
+  "8680243364": {
+    "mode": "crop",
+    "window": [
+      125,
+      0,
+      1129,
+      1254
+    ],
+    "why": "Reformed and Always Reforming coffee mug with text and product",
+    "box": [
+      0.2,
+      0.15,
+      0.8,
+      0.95
+    ]
+  },
+  "8680234018": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.03,
+      0.02,
+      0.97,
+      0.95
+    ]
+  },
+  "8728054095": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.03,
+      0.02,
+      0.97,
+      0.95
+    ]
+  },
+  "8680233598": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8680234022": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.03,
+      0.02,
+      0.97,
+      0.98
+    ]
+  },
+  "8728034529": {
+    "mode": "crop",
+    "window": [
+      205,
+      0,
+      1843,
+      2048
+    ],
+    "why": "Coffee mug with engraved text \"Reformed and Always Reforming\"",
+    "box": [
+      0.15,
+      0.05,
+      0.85,
+      0.95
+    ]
+  },
+  "8728035945": {
+    "mode": "crop",
+    "window": [
+      205,
+      0,
+      1843,
+      2048
+    ],
+    "why": "Coffee mug with engraved text and product details",
+    "box": [
+      0.15,
+      0.05,
+      0.85,
+      0.95
+    ]
+  },
+  "8728035127": {
+    "mode": "crop",
+    "window": [
+      205,
+      0,
+      1843,
+      2048
+    ],
+    "why": "Coffee mug product with engraved text",
+    "box": [
+      0.15,
+      0.05,
+      0.85,
+      0.95
+    ]
+  },
+  "8728033759": {
+    "mode": "crop",
+    "window": [
+      205,
+      0,
+      1843,
+      2048
+    ],
+    "why": "Coffee mug with \"Reformed and Always Reforming\" text",
+    "box": [
+      0.15,
+      0.05,
+      0.85,
+      0.95
+    ]
   }
 }

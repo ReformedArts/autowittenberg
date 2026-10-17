@@ -1,0 +1,81 @@
+name: Post Instagram carousel
+
+# One carousel a day at 7:30 PM Eastern (a new listing first, otherwise the gradual backfill).
+# Fires at every UTC time that could be 7:30-9:30 PM Eastern in summer or winter; slot_gate.py
+# sends exactly one. GitHub often starts scheduled runs late, which the 3-hour window absorbs.
+on:
+  schedule:
+    - cron: "30 23,0,1 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run (build only), prepare (upload + have Instagram process it, no publish) or live"
+        type: choice
+        default: dry-run
+        options: [dry-run, prepare, live]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: autowittenberg-data
+  cancel-in-progress: false
+
+jobs:
+  instagram:
+    # PAUSE SWITCH: the same AUTOWITTENBERG_PAUSED variable that pauses Pinterest pauses this too.
+    if: vars.AUTOWITTENBERG_PAUSED != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Is it time?
+        id: gate
+        run: python3 slot_gate.py instagram
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Build and post the carousel
+        if: steps.gate.outputs.run == 'true'
+        env:
+          ETSY_API_KEY: ${{ secrets.ETSY_API_KEY }}
+          ETSY_SHARED_SECRET: ${{ secrets.ETSY_SHARED_SECRET }}
+          ETSY_SHOP_NAME: ${{ secrets.ETSY_SHOP_NAME }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          TOKEN_VAULT_KEY: ${{ secrets.TOKEN_VAULT_KEY }}
+          MODE: ${{ inputs.mode || vars.AUTOWITTENBERG_IG_MODE || 'dry-run' }}
+        run: |
+          python run_instagram.py --mode "$MODE" --slot instagram --slot-date "${{ steps.gate.outputs.slot_date || '' }}"
+
+      - name: Save run data
+        if: always() && steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "AutoWittenberg bot"
+          git config user.email "autowittenberg-bot@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then echo "Nothing new to save."; exit 0; fi
+          git commit -m "Instagram run data: ${{ steps.gate.outputs.slot_date }}"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push origin main && exit 0
+            sleep 5
+          done
+          echo "Could not save run data" && exit 1
+
+      - name: Keep the slides for 2 days
+        if: always() && steps.gate.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-slides-${{ github.run_id }}
+          path: data/ig_slides
+          retention-days: 2
+          if-no-files-found: ignore

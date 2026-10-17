@@ -17,6 +17,9 @@ SLOTS = ["08:00", "12:00", "16:00", "20:00", "21:00"]
 WINDOW = dt.timedelta(hours=2)  # GitHub can start scheduled runs late; accept up to 2 hours
 HISTORY = Path(__file__).parent / "data" / "run_history.jsonl"
 SUMMARY_SENT = Path(__file__).parent / "data" / "summary_sent.json"
+IG_FROM = dt.time(19, 30)       # the Instagram carousel goes out at 7:30 PM Eastern...
+IG_UNTIL = dt.time(22, 30)      # ...or any time up to 10:30 PM if GitHub starts late
+IG_HISTORY = Path(__file__).parent / "data" / "instagram_history.jsonl"
 SUMMARY_FROM = dt.time(22, 30)   # a day's summary is due from 10:30 PM...
 SUMMARY_UNTIL = dt.time(2, 0)    # ...until 2 AM the next morning, so a late GitHub start still sends it
 
@@ -60,6 +63,20 @@ def summary_due(now):
     return None
 
 
+def instagram_due(now):
+    """Today's date if it is currently 7:30-10:30 PM Eastern, else None."""
+    start = dt.datetime.combine(now.date(), IG_FROM, tzinfo=ET)
+    end = dt.datetime.combine(now.date(), IG_UNTIL, tzinfo=ET)
+    return now.date() if start <= now < end else None
+
+
+def instagram_already_done(day):
+    """Any live attempt (success or failure) for this date counts, so a failure is never retried in a loop."""
+    if not IG_HISTORY.exists():
+        return False
+    return any(json.loads(line).get("slot_date") == day.isoformat() for line in IG_HISTORY.read_text().splitlines())
+
+
 def summary_already_sent(day):
     return SUMMARY_SENT.exists() and day.isoformat() in json.loads(SUMMARY_SENT.read_text())
 
@@ -77,6 +94,17 @@ def main():
     now = dt.datetime.now(ET)
     if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
         write_output(run="true", slot="manual", slot_date=now.date().isoformat(), summary_date="")
+        return
+    if "instagram" in sys.argv:
+        day = instagram_due(now)
+        if day is None:
+            print(f"{now:%a %H:%M} Eastern is outside the Instagram window. Skipping.")
+            write_output(run="false", slot_date="")
+        elif instagram_already_done(day):
+            print(f"Instagram already ran for {day}. Skipping.")
+            write_output(run="false", slot_date=day.isoformat())
+        else:
+            write_output(run="true", slot_date=day.isoformat())
         return
     if "summary" in sys.argv:
         day = summary_due(now)

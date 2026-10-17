@@ -60,6 +60,12 @@ def main():
     except Exception as e:  # a missing enlarge-link must never stop the email
         print(f"Full-size image links unavailable: {e}")
     subject, plain, body, images = build_summary(runs, today, _safe_analytics(), _safe_instagram())
+    if not args.record_sent:  # a hand-triggered run (a test or a resend), not the scheduled nightly digest
+        subject = f"[Manual run, day so far] {subject}"
+        body = ("<div style='font-family:Helvetica,Arial,sans-serif;background:#fff4d6;padding:10px;border-radius:6px;"
+                "max-width:640px;margin:10px auto;font-size:13px'><b>Manual run.</b> This was triggered by hand and covers "
+                "the day so far. Your regular digest arrives each night.</div>") + body
+        plain = "MANUAL RUN: covers the day so far. Your regular digest arrives each night.\n\n" + plain
     try:
         send_email(subject, plain, body, images)
     except Exception as e:  # an email problem must never break the run

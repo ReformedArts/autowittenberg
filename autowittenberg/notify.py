@@ -103,7 +103,16 @@ def build_summary(runs, local_date, analytics=None):
 
 
 _ROWS = (("Impressions (times shown)", "IMPRESSION"), ("Pin clicks (opened)", "PIN_CLICK"),
-         ("Clicks to Etsy", "OUTBOUND_CLICK"), ("Saves", "SAVE"))
+         ("Clicks to Etsy", "OUTBOUND_CLICK"), ("Saves", "SAVE"), ("Pins by AutoWittenberg", "PINS"))
+
+
+def _fmt(a, period, key):
+    """A number for the stats table; 'pending' / trailing * when Pinterest hasn't finished counting."""
+    value = a["totals"][period][key]
+    waiting = key != "PINS" and a.get("pending", {}).get(period)
+    if waiting and value == 0:
+        return "pending"
+    return f"{value:,}" + ("*" if waiting else "")
 
 
 def _analytics_text(a):
@@ -113,7 +122,7 @@ def _analytics_text(a):
     lines = ["", "PINTEREST PERFORMANCE (reported by Pinterest; recent days can read low):",
              f"  {'':28s}{'Yesterday':>10s}{'7 days':>9s}{'All time':>10s}"]
     for label, key in _ROWS:
-        lines.append(f"  {label:28s}{t['yesterday'][key]:>10,}{t['week'][key]:>9,}{t['all'][key]:>10,}")
+        lines.append(f"  {label:28s}{_fmt(a, 'yesterday', key):>10s}{_fmt(a, 'week', key):>9s}{_fmt(a, 'all', key):>10s}")
     for pin in a["top"]:
         lines.append(f"  Top pin (7 days): {pin['title'][:60]} - {pin['week']['OUTBOUND_CLICK']} click(s) to Etsy")
     return lines
@@ -127,17 +136,19 @@ def _analytics_html(a):
     cell = "padding:5px 0;text-align:right;font-variant-numeric:tabular-nums"
     def row(label, key):
         bold = "font-weight:700;font-size:16px;" if key == "OUTBOUND_CLICK" else ""
-        return (f"<tr><td style='padding:5px 12px 5px 0;{bold}'>{e(label)}</td>"
-                f"<td style='{cell};{bold}'>{t['yesterday'][key]:,}</td><td style='{cell};padding-left:18px;{bold}'>{t['week'][key]:,}</td>"
-                f"<td style='{cell};padding-left:18px;{bold}'>{t['all'][key]:,}</td></tr>")
+        rule = "border-top:1px solid #ddd;" if key == "PINS" else ""  # our own count, set apart from Pinterest's
+        return (f"<tr><td style='padding:5px 12px 5px 0;{bold}{rule}'>{e(label)}</td>"
+                f"<td style='{cell};{bold}{rule}'>{_fmt(a, 'yesterday', key)}</td><td style='{cell};padding-left:18px;{bold}{rule}'>{_fmt(a, 'week', key)}</td>"
+                f"<td style='{cell};padding-left:18px;{bold}{rule}'>{_fmt(a, 'all', key)}</td></tr>")
     rows = "".join(row(label, key) for label, key in _ROWS)
     top = "".join(
         f"<div style='font-size:13px;margin-top:6px'><a href='{e(p['url'])}' style='color:#1a5fb4'>{e(p['title'][:70])}</a>"
         f" <span style='color:#666'>&middot; {p['week']['OUTBOUND_CLICK']} click(s) to Etsy, {p['week']['IMPRESSION']:,} impressions</span></div>"
         for p in a["top"])
     top = f"<div style='margin-top:10px;font-size:13px;color:#666'>Top pins, last 7 days (by clicks to Etsy)</div>{top}" if top else ""
-    note = (f"Pinterest reports these with a delay of up to a day or two, so recent numbers can read low. "
-            f"Covers the {a['pins_measured']} pin(s) AutoWittenberg has posted.")
+    note = ("\"pending\" means Pinterest hasn't finished counting those days yet, and * means a total includes days it is "
+            "still counting, so numbers can rise. Pinterest typically needs a few days. "
+            f"Pinterest figures cover the {a['pins_measured']} pin(s) AutoWittenberg has posted.")
     if a.get("pins_failed"):
         note += f" {a['pins_failed']} pin(s) could not be measured."
     return f"""<div style='margin:30px 0 8px;font-size:22px;font-weight:700'>Pinterest Performance</div>
@@ -155,13 +166,16 @@ def _html(day, label, status, posted, failed, new_listings, removed, no_photos, 
         pin_url = f"https://www.pinterest.com/pin/{p['pin_id']}/" if p.get("pin_id") else None
         thumb = (f"<img src='cid:{p['thumb_cid']}' width='{THUMB_WIDTH // 2 + 15}' alt='' style='display:block;border:0;border-radius:4px'>"
                  if p.get("thumb_cid") else "")
-        if thumb and pin_url:
-            thumb = f"<a href='{e(pin_url)}'>{thumb}</a>"  # tapping the image opens the Pinterest pin
+        if thumb and p.get("image_url"):
+            # tapping the thumbnail opens the full-size pin image
+            thumb = f"<a href='{e(p['image_url'])}' target='_blank'>{thumb}</a>"
         rows += (f"<tr><td style='padding:8px 12px 8px 0;vertical-align:top;width:{THUMB_WIDTH // 2 + 15}px'>{thumb}</td>"
                  f"<td style='padding:8px 0;vertical-align:top'>"
                  f"<div style='font-size:12px;color:#666'>{when} &middot; {e(p['board'])}</div>"
                  f"<span style='font-weight:600'>{e(p['title'][:80])}</span> "
-                 f"<a href='{e(p['url'])}' style='color:#1a5fb4;white-space:nowrap'>(Etsy Link)</a></td></tr>")
+                 f"<a href='{e(p['url'])}' style='color:#1a5fb4;white-space:nowrap'>(Etsy Link)</a> "
+                 + (f"<a href='{e(pin_url)}' style='color:#1a5fb4;white-space:nowrap'>(Pin Link)</a>" if pin_url else "")
+                 + "</td></tr>")
 
     def section(title, items, tone="#444"):
         if not items:

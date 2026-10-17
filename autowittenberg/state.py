@@ -31,6 +31,7 @@ def save_copy_cache(cache):
 SNAPSHOT_PATH = DATA_DIR / "listings.json"
 KNOWN_IDS_PATH = DATA_DIR / "known_listing_ids.json"
 ROTATION_PATH = DATA_DIR / "rotation_state.json"
+FIRST_SEEN_PATH = DATA_DIR / "listing_first_seen.json"
 
 
 def load_snapshot():
@@ -48,6 +49,15 @@ def load_known_listing_ids():
 
 def save_known_listing_ids(ids):
     _save(KNOWN_IDS_PATH, ids)
+
+
+def load_first_seen():
+    """{listing_id: 'YYYY-MM-DD'} -- the day AutoWittenberg first noticed each listing."""
+    return _load(FIRST_SEEN_PATH)
+
+
+def save_first_seen(data):
+    _save(FIRST_SEEN_PATH, data)
 
 
 def load_rotation():

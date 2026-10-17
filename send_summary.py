@@ -8,7 +8,7 @@ import argparse
 import datetime as dt
 from pathlib import Path
 
-from autowittenberg.analytics import collect as collect_analytics
+from autowittenberg.analytics import collect as collect_analytics, fill_image_urls
 from autowittenberg.notify import LOCAL_TZ, build_summary, runs_for_date, send_email
 
 
@@ -45,7 +45,12 @@ def main():
         print(subject, "\n\n" + plain, f"\n\nSaved preview to {out}")
         return
 
-    subject, plain, body, images = build_summary(runs_for_date(today), today, _safe_analytics())
+    runs = runs_for_date(today)
+    try:
+        fill_image_urls(runs)
+    except Exception as e:  # a missing enlarge-link must never stop the email
+        print(f"Full-size image links unavailable: {e}")
+    subject, plain, body, images = build_summary(runs, today, _safe_analytics())
     try:
         send_email(subject, plain, body, images)
     except Exception as e:  # an email problem must never break the run

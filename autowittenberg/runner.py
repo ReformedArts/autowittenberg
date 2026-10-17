@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 
 from . import seasonal, state
 from .images import make_thumbnail, render_pin
-from .pinterest import PinterestClient
+from .pinterest import PinterestClient, pin_image_url
 from .rotation import choose_next
 from .sync import sync_pool
 from .tokens import ensure_fresh_tokens
@@ -126,7 +126,7 @@ def _run(count, mode, force_sync):
     cleanup_old_pins(today)
 
     for _ in range(count):
-        choice = choose_next(pool, posts, boost)
+        choice = choose_next(pool, posts, boost, now)
         if choice is None:
             log("Nothing eligible to post.")
             break
@@ -142,7 +142,7 @@ def _run(count, mode, force_sync):
                 crop_style=variant["crop_style"],
                 out_path=image_path,
             )
-            pin_id = None
+            pin_id = image_url = None
             board_name = listing["board_name"]
             if client is not None:
                 if mode == "sandbox":
@@ -150,6 +150,7 @@ def _run(count, mode, force_sync):
                 board = client.get_or_create_board(board_name)
                 pin = client.create_pin(board["id"], image_path, listing["pin_title"], listing["pin_description"], listing["url"])
                 pin_id = pin.get("id")
+                image_url = pin_image_url(pin)
         except Exception as e:
             image_path.unlink(missing_ok=True)  # never leave a broken/partial pin behind
             log(f"FAILED '{title[:60]}': {e}")
@@ -166,6 +167,8 @@ def _run(count, mode, force_sync):
             "headline": variant["headline"],
             "board": board_name,
             "pin_id": pin_id,
+            "image_url": image_url,
+            "launch": bool(variant.get("launch")),
             "posted_at": now.isoformat(),
         }
         posts.append(record)
@@ -180,7 +183,7 @@ def _run(count, mode, force_sync):
             "thumb_path": str(thumb_path.relative_to(ROOT)) if thumb_path else None,
         })
         verb = {"dry-run": "Rendered (not posted)", "sandbox": "Posted to sandbox", "live": "Posted"}[mode]
-        log(f"{verb}: '{title[:60]}' -> {board_name} | {variant['palette']}, {variant['crop_style']} | \"{variant['headline'] or '(no headline box)'}\"")
+        log(f"{verb}{' [new-listing launch]' if variant.get('launch') else ''}: '{title[:60]}' -> {board_name} | {variant['palette']}, {variant['crop_style']} | \"{variant['headline'] or '(no headline box)'}\"")
 
     if mode != "dry-run":
         rotation["posts"] = posts

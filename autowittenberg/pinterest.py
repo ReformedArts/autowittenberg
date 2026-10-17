@@ -58,6 +58,15 @@ def refresh_access_token(refresh_token=None):
     return resp.json()
 
 
+def pin_image_url(pin):
+    """Public URL of the pin's image at a large size (None if the response doesn't include one)."""
+    images = (pin.get("media") or {}).get("images") or {}
+    for size in ("1200x", "600x", "400x300"):
+        if images.get(size, {}).get("url"):
+            return images[size]["url"]
+    return None
+
+
 class PinterestClient:
     def __init__(self, access_token=None, sandbox=False):
         self.base_url = SANDBOX_BASE_URL if sandbox else BASE_URL

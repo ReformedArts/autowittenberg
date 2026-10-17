@@ -1,11 +1,11 @@
 name: Daily summary email
 
-# Due from 10:30 PM to 2 AM Eastern. Fires at both possible UTC times (summer/winter) and
+# Due from 10:45 PM to 2 AM Eastern. Fires at both possible UTC times (summer/winter) and
 # slot_gate.py sends it once; GitHub often starts scheduled runs 30+ minutes late, which the
 # wide window absorbs.
 on:
   schedule:
-    - cron: "30 3,4 * * *"
+    - cron: "45 2,3,4 * * *"
   workflow_dispatch:
     inputs:
       date:

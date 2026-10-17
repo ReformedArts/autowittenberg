@@ -34,6 +34,30 @@ def runs_for_date(local_date, history_path=HISTORY_PATH):
     return runs
 
 
+EMAIL_IMAGE_WIDTH = 700  # big enough to look sharp when enlarged full-screen on a phone
+
+
+def _email_image(pin):
+    """JPEG bytes for a pin's picture in the email: Pinterest's hosted copy if reachable (sharper,
+    and nothing extra to store), else the saved thumbnail."""
+    import requests
+    from PIL import Image
+    url = pin.get("image_url")
+    if url:
+        try:
+            resp = requests.get(url, timeout=20)
+            resp.raise_for_status()
+            im = Image.open(io.BytesIO(resp.content)).convert("RGB")
+            im.thumbnail((EMAIL_IMAGE_WIDTH, EMAIL_IMAGE_WIDTH * 2))
+            buf = io.BytesIO()
+            im.save(buf, "JPEG", quality=82)
+            return buf.getvalue()
+        except Exception:
+            pass
+    path = pin.get("thumb_path") or pin.get("image_path")
+    return _thumbnail(path) if path else None
+
+
 def _thumbnail(image_path):
     """Small JPEG of a generated pin, or None if the image file isn't available."""
     from PIL import Image
@@ -95,7 +119,7 @@ def build_summary(runs, local_date, analytics=None, instagram=None):
 
     images = {}
     for i, p in enumerate(posted):
-        thumb = _thumbnail(p.get("thumb_path") or p.get("image_path") or "") if (p.get("thumb_path") or p.get("image_path")) else None
+        thumb = _email_image(p)
         if thumb:
             p["thumb_cid"] = f"pin{i}"
             images[p["thumb_cid"]] = thumb
@@ -241,9 +265,6 @@ def _html(day, label, status, posted, failed, new_listings, removed, no_photos, 
         pin_url = f"https://www.pinterest.com/pin/{p['pin_id']}/" if p.get("pin_id") else None
         thumb = (f"<img src='cid:{p['thumb_cid']}' width='{THUMB_WIDTH // 2 + 15}' alt='' style='display:block;border:0;border-radius:4px'>"
                  if p.get("thumb_cid") else "")
-        if thumb and p.get("image_url"):
-            # tapping the thumbnail opens the full-size pin image
-            thumb = f"<a href='{e(p['image_url'])}' target='_blank'>{thumb}</a>"
         rows += (f"<tr><td style='padding:8px 12px 8px 0;vertical-align:top;width:{THUMB_WIDTH // 2 + 15}px'>{thumb}</td>"
                  f"<td style='padding:8px 0;vertical-align:top'>"
                  f"<div style='font-size:12px;color:#666'>{when} &middot; {e(p['board'])}</div>"

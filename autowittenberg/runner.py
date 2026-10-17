@@ -111,6 +111,12 @@ def _run(count, mode, force_sync):
             summary["failed"].append({"title": "(whole run)", "error": str(e)})
             return summary
 
+    # first-seen dates live in their own file, so apply them to whichever pool we have (a pool saved
+    # earlier the same day may predate them)
+    first_seen = state.load_first_seen()
+    for listing in pool:
+        listing["first_seen"] = first_seen.get(str(listing["listing_id"]))
+
     et_today = now.astimezone(ZoneInfo("America/New_York")).date()
     excluded = set()
     try:

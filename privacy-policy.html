@@ -14,30 +14,33 @@
 </head>
 <body>
   <h1>Privacy Policy — AutoWittenberg</h1>
-  <p class="updated">Last updated: October 13, 2026</p>
+  <p class="updated">Last updated: October 17, 2026</p>
 
-  <p>AutoWittenberg is a personal automation tool built and operated by the owner of the <strong>Reformed Arts</strong> Etsy shop. It is used solely by its owner to publish the shop's own original artwork to the shop owner's own Pinterest business account. AutoWittenberg is not a public product, does not have other users, and does not offer any service to third parties.</p>
+  <p>AutoWittenberg is a personal automation tool built and operated by the owner of the <strong>Reformed Arts</strong> Etsy shop. It is used solely by its owner to publish the shop's own original artwork to the shop owner's own Pinterest business account and Instagram professional account. AutoWittenberg is not a public product, does not have other users, and does not offer any service to third parties.</p>
 
   <h2>What data this app accesses</h2>
   <p>AutoWittenberg reads public listing data (photos, titles, descriptions, tags, and links) from the Reformed Arts Etsy shop via the Etsy API. It then uses the Pinterest API to read and create boards and Pins on the Reformed Arts Pinterest business account. This access is granted by the account owner through Pinterest's standard OAuth authorization, using only the permissions needed for this purpose (reading and writing boards and Pins). The app does not access any other Etsy or Pinterest account, and does not collect data about site visitors, customers, followers, or any third party.</p>
 
+  <p>AutoWittenberg also uses the Instagram API (the "Instagram API with Instagram Login", provided by Meta) to publish carousel posts of the shop's own artwork to the Reformed Arts Instagram professional account, and to read aggregate statistics about that account and its own posts, such as reach, views, likes, comment counts, saves, shares, profile visits, taps on the profile link, and the number of followers. This access is granted by the account owner through Instagram's standard authorization, using only the permissions needed for this purpose (basic profile information, content publishing, and insights). The app does not read or store the content of comments or messages, and does not collect personal information about followers or any other Instagram user.</p>
+
   <h2>Use of an AI service</h2>
-  <p>To write Pin titles and descriptions, and to decide which listing photos are suitable for Pins, the app sends Etsy listing text and listing photos to an AI service (Anthropic's Claude API). This content is the shop's own public product information. No Pinterest account data, personal information, or data about any other person is sent to the AI service.</p>
+  <p>To write Pin titles and descriptions, and to write Instagram captions, to decide which listing photos are suitable for Pins and Instagram posts, and to decide how a photo can be cropped without cutting off the product, the app sends Etsy listing text and listing photos to an AI service (Anthropic's Claude API). This content is the shop's own public product information. No Pinterest or Instagram account data, personal information, or data about any other person is sent to the AI service.</p>
 
   <h2>What this app does not do</h2>
   <ul>
     <li>It does not collect or store personal information about any individual.</li>
-    <li>It does not collect or store Pinterest or Etsy passwords.</li>
+    <li>It does not collect or store Pinterest, Instagram, or Etsy passwords.</li>
     <li>It does not share, sell, or transfer any data to third parties, other than the AI service use described above.</li>
-    <li>It does not scrape content from other Etsy or Pinterest accounts.</li>
+    <li>It does not scrape content from other Etsy, Pinterest, or Instagram accounts.</li>
+    <li>It does not read, collect, or respond to Instagram comments, messages, or follower information.</li>
     <li>It does not serve ads or use tracking cookies.</li>
   </ul>
 
   <h2>Data storage and security</h2>
-  <p>API credentials and access tokens are stored as encrypted GitHub Actions secrets and on the owner's own computer, and are never committed to source code or published. Generated Pin images are stored temporarily and deleted automatically after about two days. A small record of which listings and photos have already been posted is kept so that Pins rotate evenly; it contains only the shop's own public listing information. The app also sends a short daily summary email to the shop owner reporting which Pins were posted and any errors.</p>
+  <p>API credentials and access tokens are stored as encrypted GitHub Actions secrets and on the owner's own computer, and are never committed to source code or published. Generated Pin images are stored temporarily and deleted automatically after about two days. A small record of which listings and photos have already been posted is kept so that Pins rotate evenly; it contains only the shop's own public listing information. To publish to Instagram, which downloads images from a public web address, the app briefly places the images of a post on a temporary public address (a branch of this project's public GitHub repository that is replaced with every new post); these are the shop's own product photos. A record of which listings have been posted to Instagram is also kept. The app sends a short daily summary email to the shop owner reporting which Pins and Instagram posts were published, performance statistics for the owner's own accounts, and any errors.</p>
 
   <h2>Revoking access</h2>
-  <p>The account owner can revoke AutoWittenberg's access to Pinterest at any time from Pinterest account settings (under "Apps"), and can regenerate or remove the Etsy API credentials at any time from the Etsy developer dashboard.</p>
+  <p>The account owner can revoke AutoWittenberg's access to Pinterest at any time from Pinterest account settings (under "Apps"), can revoke its access to Instagram at any time from Instagram settings (under "Apps and websites") or the Meta for Developers app dashboard, and can regenerate or remove the Etsy API credentials at any time from the Etsy developer dashboard.</p>
 
   <h2>Changes to this policy</h2>
   <p>If this policy changes, the updated version will be posted on this page with a new "Last updated" date.</p>
@@ -45,6 +48,6 @@
   <h2>Contact</h2>
   <p>Questions about this policy can be sent to <strong>ReformedArts@gmail.com</strong>.</p>
 
-  <footer>AutoWittenberg — a personal Etsy-to-Pinterest automation tool for the Reformed Arts shop. <a href="index.html">Home</a></footer>
+  <footer>AutoWittenberg — a personal Etsy-to-Pinterest-and-Instagram automation tool for the Reformed Arts shop. <a href="index.html">Home</a></footer>
 </body>
 </html>

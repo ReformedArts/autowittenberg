@@ -12,6 +12,7 @@ import requests
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 
 CANVAS_W, CANVAS_H = 1000, 1500
+PIN_RATIO = CANVAS_W / CANVAS_H
 
 ASSETS = Path(__file__).parent.parent / "assets"
 FONTS = ASSETS / "fonts"
@@ -159,19 +160,43 @@ def fit_on_color(im, palette, size=(CANVAS_W, CANVAS_H)):
     return canvas
 
 
-def render_pin(photo_url, headline, palette_key, crop_style, out_path, logo_corner="bottom_right"):
+def blur_fit(im, size, reserve_bottom=0):
+    """The whole photo, never cropped, over a soft blurred copy of itself. `reserve_bottom` keeps that
+    many pixels clear below the photo (room for the headline box) when the photo is short enough."""
+    cw, ch = size
+    canvas = cover_crop(im, cw, ch, "cover_center").filter(ImageFilter.GaussianBlur(36))
+    canvas = ImageEnhance.Brightness(canvas).enhance(0.85)
+    scale = min(cw / im.width, ch / im.height)
+    fitted = im.resize((round(im.width * scale), round(im.height * scale)), Image.LANCZOS)
+    room = ch - reserve_bottom
+    y = (room - fitted.height) // 2 if fitted.height <= room - 40 else (ch - fitted.height) // 2
+    canvas.paste(fitted, ((cw - fitted.width) // 2, max(0, y)))
+    return canvas.convert("RGBA")
+
+
+def render_pin(photo_url, headline, palette_key, crop_style, out_path, logo_corner="bottom_right", framing=None, kind="artwork"):
     """Builds one finished pin image and saves it as a JPEG to out_path.
 
-    With headline=None the photo is shown whole on a color background and no headline
-    box is added (used for photos that already have text baked in).
+    With `framing` (from framing.frame_pin) a photo is cropped to the pin's shape only when it was
+    proven safe; otherwise (or when the variation calls for it, or the photo carries its own text)
+    it is shown whole over a blurred copy. Without `framing` the original behavior is kept.
     """
     palette = PALETTES[palette_key]
     source = download_image(photo_url)
-    if headline is None:
-        canvas = fit_on_color(source, palette)
+    if framing is None:
+        if headline is None:
+            canvas = fit_on_color(source, palette)
+        else:
+            canvas = cover_crop(source, CANVAS_W, CANVAS_H, crop_style).convert("RGBA")
+            _draw_text_box(canvas, headline, palette)
     else:
-        canvas = cover_crop(source, CANVAS_W, CANVAS_H, crop_style).convert("RGBA")
-        _draw_text_box(canvas, headline, palette)
+        crop_ok = framing["can_crop"] and kind != "text_heavy" and crop_style != "cover_top"
+        if crop_ok:
+            canvas = source.crop(tuple(framing["window"])).resize((CANVAS_W, CANVAS_H), Image.LANCZOS).convert("RGBA")
+        else:
+            canvas = blur_fit(source, (CANVAS_W, CANVAS_H), reserve_bottom=420 if headline else 0)
+        if headline is not None:
+            _draw_text_box(canvas, headline, palette)
     _paste_logo(canvas, logo_corner)
 
     out_path = Path(out_path)

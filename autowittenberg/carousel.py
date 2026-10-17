@@ -1,7 +1,8 @@
 """Builds one Instagram carousel per listing: slides (4:5 JPEGs) and the caption."""
 from pathlib import Path
 
-from .copy import locate_content, verify_crop
+from .copy import verify_crop
+from .framing import get_box
 from .images import IG_SIZE, PALETTES, crop_window, download_image, render_slide
 
 MAX_SLIDES = 10  # Instagram's carousel limit
@@ -51,17 +52,17 @@ def frame_photo(photo, title, cache):
     if abs(image.width / image.height - target) / target < 0.08:
         framing = {"mode": "crop", "window": [0, 0, image.width, image.height], "why": "already the right shape"}
     else:
-        info = locate_content(photo["url"], title)
-        x0, y0, x1, y1 = info["box"]
+        box = get_box(photo, title)
+        x0, y0, x1, y1 = box
         grown = [max(0, x0 - BOX_GROWTH), max(0, y0 - BOX_GROWTH), min(1, x1 + BOX_GROWTH), min(1, y1 + BOX_GROWTH)]
         window = crop_window(image.width, image.height, grown, target, margin=0.0)
         if window:
             check = verify_crop(image.crop(window).resize((540, 675)))
             if check["cut_off"]:
-                framing = {"mode": "fit", "why": f"crop vetoed: {check['what'][:80]}", "box": [round(v, 2) for v in info["box"]]}
+                framing = {"mode": "fit", "why": f"crop vetoed: {check['what'][:80]}", "box": [round(v, 2) for v in box]}
             else:
-                framing = {"mode": "crop", "window": list(window), "why": info["reason"][:80], "box": [round(v, 2) for v in info["box"]]}
+                framing = {"mode": "crop", "window": list(window), "why": "content fits", "box": [round(v, 2) for v in box]}
         else:
-            framing = {"mode": "fit", "why": "content too large to crop safely", "box": [round(v, 2) for v in info["box"]]}
+            framing = {"mode": "fit", "why": "content too large to crop safely", "box": [round(v, 2) for v in box]}
     cache[key] = framing
     return framing

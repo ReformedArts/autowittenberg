@@ -16,6 +16,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from . import seasonal, state
+from .framing import frame_pin
 from .images import make_thumbnail, render_pin
 from .pinterest import PinterestClient, pin_image_url
 from .rotation import choose_next
@@ -150,12 +151,19 @@ def _run(count, mode, force_sync):
         stamp = now.strftime("%H%M%S")
         image_path = out_dir / f"{listing['listing_id']}_{stamp}_{len(posts)}.jpg"
         try:
+            try:
+                framing = frame_pin(variant["photo"], title)
+            except Exception as e:  # never crop blindly: if the check can't run, show the whole photo
+                log(f"Warning: photo framing check unavailable ({str(e)[:80]}); showing the whole photo.")
+                framing = {"can_crop": False, "window": None, "why": "framing unavailable"}
             render_pin(
                 photo_url=variant["photo"]["url"],
                 headline=variant["headline"],
                 palette_key=variant["palette"],
                 crop_style=variant["crop_style"],
                 out_path=image_path,
+                framing=framing,
+                kind=variant["photo"].get("kind", "artwork"),
             )
             pin_id = image_url = None
             board_name = listing["board_name"]

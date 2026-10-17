@@ -1,0 +1,147 @@
+{
+  "8497077358": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8694901177": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8497077366": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8647100446": {
+    "can_crop": true,
+    "window": [
+      650,
+      0,
+      1900,
+      1875
+    ],
+    "why": "content fits"
+  },
+  "8544963617": {
+    "can_crop": true,
+    "window": [
+      750,
+      0,
+      2250,
+      2250
+    ],
+    "why": "content fits"
+  },
+  "8544974117": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8497077256": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8694885243": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8647056544": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8554112948": {
+    "can_crop": true,
+    "window": [
+      855,
+      0,
+      2355,
+      2250
+    ],
+    "why": "content fits"
+  },
+  "8601957699": {
+    "can_crop": true,
+    "window": [
+      0,
+      0,
+      1600,
+      2400
+    ],
+    "why": "already the right shape"
+  },
+  "8547630262": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8593418211": {
+    "can_crop": true,
+    "window": [
+      750,
+      0,
+      2250,
+      2250
+    ],
+    "why": "content fits"
+  },
+  "8593357413": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8601957697": {
+    "can_crop": true,
+    "window": [
+      0,
+      0,
+      1600,
+      2400
+    ],
+    "why": "already the right shape"
+  },
+  "7538014156": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "7538015166": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "7538014394": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8680234022": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8580217162": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8627713037": {
+    "can_crop": true,
+    "window": [
+      167,
+      0,
+      1833,
+      2500
+    ],
+    "why": "content fits"
+  },
+  "8628043287": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  }
+}

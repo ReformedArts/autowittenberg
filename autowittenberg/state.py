@@ -35,6 +35,8 @@ FIRST_SEEN_PATH = DATA_DIR / "listing_first_seen.json"
 INSTAGRAM_COPY_PATH = DATA_DIR / "instagram_copy.json"
 FRAMING_PATH = DATA_DIR / "photo_framing.json"
 INSTAGRAM_STATE_PATH = DATA_DIR / "instagram_state.json"
+BOXES_PATH = DATA_DIR / "photo_boxes.json"
+PIN_FRAMING_PATH = DATA_DIR / "pin_framing.json"
 
 
 def load_snapshot():
@@ -71,6 +73,22 @@ def load_instagram_state():
 
 def save_instagram_state(data):
     _save(INSTAGRAM_STATE_PATH, data)
+
+
+def load_boxes():
+    return _load(BOXES_PATH)
+
+
+def save_boxes(data):
+    _save(BOXES_PATH, data)
+
+
+def load_pin_framing():
+    return _load(PIN_FRAMING_PATH)
+
+
+def save_pin_framing(data):
+    _save(PIN_FRAMING_PATH, data)
 
 
 def load_framing():

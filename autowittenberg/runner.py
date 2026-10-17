@@ -111,6 +111,15 @@ def _run(count, mode, force_sync):
             summary["failed"].append({"title": "(whole run)", "error": str(e)})
             return summary
 
+    et_today = now.astimezone(ZoneInfo("America/New_York")).date()
+    excluded = set()
+    try:
+        excluded = seasonal.excluded_ids(pool, et_today, log)
+        if excluded:
+            log(f"Seasonal exclusion active: {len(excluded)} listing(s) sit out today.")
+    except Exception as e:
+        log(f"Warning: seasonal exclusion skipped: {e}")
+
     boost = None
     cfg = seasonal.active_config(now.astimezone(ZoneInfo("America/New_York")).date())
     if cfg:
@@ -126,7 +135,7 @@ def _run(count, mode, force_sync):
     cleanup_old_pins(today)
 
     for _ in range(count):
-        choice = choose_next(pool, posts, boost, now)
+        choice = choose_next(pool, posts, boost, now, excluded)
         if choice is None:
             log("Nothing eligible to post.")
             break

@@ -12,12 +12,14 @@ import datetime as dt
 import json
 from pathlib import Path
 
-from .copy import classify_occasion_relevance, generate_seasonal_headlines
+from .copy import classify_exclusion, classify_occasion_relevance, generate_seasonal_headlines
 
 DATA = Path(__file__).parent.parent / "data"
 CONFIG_PATH = DATA / "seasonal_boost.json"
 HEADLINES_PATH = DATA / "seasonal_headlines.json"
 RELEVANCE_PATH = DATA / "seasonal_relevance.json"
+EXCLUSIONS_PATH = DATA / "seasonal_exclusions.json"
+EXCLUSION_CHECKS_PATH = DATA / "seasonal_exclusion_checks.json"
 
 _relevance_cache = None
 
@@ -104,3 +106,67 @@ def ensure_headlines(pool, cfg, log=print):
         except Exception as e:  # fall back to the listing's normal headlines
             log(f"Warning: no seasonal headlines for '{listing['title'][:50]}': {e}")
     return cache
+
+
+# ---- seasonal exclusions: listings that sit out of ALL posting (Pinterest and Instagram) for a window
+_exclusion_cache = None
+
+
+def _exclusion_checks():
+    global _exclusion_cache
+    if _exclusion_cache is None:
+        _exclusion_cache = json.loads(EXCLUSION_CHECKS_PATH.read_text()) if EXCLUSION_CHECKS_PATH.exists() else {}
+    return _exclusion_cache
+
+
+def all_exclusion_rules():
+    return json.loads(EXCLUSIONS_PATH.read_text())["rules"] if EXCLUSIONS_PATH.exists() else []
+
+
+def active_exclusions(today):
+    """Exclusion rules whose MM-DD window (repeating yearly) contains `today`."""
+    return [r for r in all_exclusion_rules()
+            if _full_date(r["start"], today.year) <= today <= _full_date(r["end"], today.year)]
+
+
+def _keyword_excluded(listing, rule):
+    title = listing["title"].lower()
+    return any(k in title for k in rule["keywords"])
+
+
+def is_excluded(listing, rules):
+    for rule in rules:
+        if _keyword_excluded(listing, rule):
+            return True
+        if _exclusion_checks().get(f"{rule['name']}|{listing['listing_id']}", {}).get("matches"):
+            return True
+    return False
+
+
+def ensure_exclusion_checks(pool, rules, log=print):
+    """Asks Claude, once per listing and rule, about listings the keywords did not catch."""
+    cache = _exclusion_checks()
+    changed = False
+    for rule in rules:
+        for listing in pool:
+            key = f"{rule['name']}|{listing['listing_id']}"
+            if key in cache or _keyword_excluded(listing, rule):
+                continue
+            try:
+                cache[key] = classify_exclusion(listing, rule["description"])
+                changed = True
+                if cache[key]["matches"]:
+                    log(f"Seasonal exclusion check: '{listing['title'][:50]}' -> excluded")
+            except Exception as e:  # not excluded this run; retried next run
+                log(f"Warning: exclusion check failed for '{listing['title'][:50]}': {e}")
+    if changed:
+        EXCLUSION_CHECKS_PATH.write_text(json.dumps(cache, indent=2, ensure_ascii=False))
+
+
+def excluded_ids(pool, today, log=print):
+    """IDs of listings that must sit out today (empty outside every exclusion window)."""
+    rules = active_exclusions(today)
+    if not rules:
+        return set()
+    ensure_exclusion_checks(pool, rules, log)
+    return {l["listing_id"] for l in pool if is_excluded(l, rules)}

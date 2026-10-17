@@ -5,6 +5,7 @@ Three layers, in order:
      LAUNCH_QUOTA pins (max 2 per day, 3 hours apart), and no more than LAUNCH_SLOTS_PER_DAY of the
      day's slots go to launches, so older listings always keep most of the day. During a seasonal
      boost, only new listings that fit the boost qualify.
+  0. SEASONAL EXCLUSIONS: listings in `excluded` (e.g. Reformation party decor, Nov 1 - Dec 31) never post.
   2. SEASONAL BOOST (when active): weighted turns for listings that fit the occasion.
   3. FAIR ROTATION: the listing with the fewest posts goes next (ties: posted longest ago).
 Within a listing, each repeat uses a different combination of photo, crop, color, and headline.
@@ -62,13 +63,13 @@ def _launch_pick(eligible, posts, now, boost):
     return min(candidates, key=lambda c: c[:3])[3] if candidates else None
 
 
-def choose_next(pool, posts, boost=None, now=None):
+def choose_next(pool, posts, boost=None, now=None, excluded=frozenset()):
     """Returns (listing, variant) or None if nothing is eligible.
 
     boost = (config, headlines_by_listing_id) while a seasonal boost is active, else None.
     """
     now = now or dt.datetime.now(dt.timezone.utc)
-    eligible = [l for l in pool if l["photos"]]
+    eligible = [l for l in pool if l["photos"] and l["listing_id"] not in excluded]
     if not eligible:
         return None
 

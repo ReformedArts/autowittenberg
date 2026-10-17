@@ -1,0 +1,230 @@
+{
+  "8497077358": {
+    "mode": "crop",
+    "window": [
+      600,
+      0,
+      2400,
+      2250
+    ],
+    "why": "The 95 Theses framed poster artwork and surrounding desk items",
+    "box": [
+      0.25,
+      0.05,
+      0.75,
+      0.95
+    ]
+  },
+  "8694901177": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.2,
+      0.05,
+      0.95,
+      0.75
+    ]
+  },
+  "8497077366": {
+    "mode": "crop",
+    "window": [
+      675,
+      0,
+      2475,
+      2250
+    ],
+    "why": "95 Theses poster in frame and surrounding product display",
+    "box": [
+      0.25,
+      0.08,
+      0.8,
+      0.95
+    ]
+  },
+  "8647100446": {
+    "mode": "crop",
+    "window": [
+      525,
+      0,
+      2025,
+      1875
+    ],
+    "why": "The 95 Theses printable poster framed on wall",
+    "box": [
+      0.34,
+      0.12,
+      0.68,
+      0.65
+    ]
+  },
+  "8544963617": {
+    "mode": "crop",
+    "window": [
+      600,
+      0,
+      2400,
+      2250
+    ],
+    "why": "95 Theses printable poster with title and full text content",
+    "box": [
+      0.32,
+      0.06,
+      0.68,
+      0.64
+    ]
+  },
+  "8544974117": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8497077256": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.3,
+      0.08,
+      0.9,
+      0.95
+    ]
+  },
+  "8694885243": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.08,
+      0.08,
+      0.92,
+      0.92
+    ]
+  },
+  "8647056544": {
+    "mode": "fit",
+    "why": "crop vetoed: The burgundy/maroon header banner at the top that says \"INSTANT DOWNLOAD · PRINT",
+    "box": [
+      0.2,
+      0.05,
+      0.95,
+      0.95
+    ]
+  },
+  "8554112948": {
+    "mode": "crop",
+    "window": [
+      705,
+      0,
+      2505,
+      2250
+    ],
+    "why": "Five Solas Poster with text (Sola Scriptura, Sola Gratia, Sola Fide, Solus Chris",
+    "box": [
+      0.32,
+      0.08,
+      0.75,
+      0.95
+    ]
+  },
+  "8601957699": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8547630262": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8593418211": {
+    "mode": "crop",
+    "window": [
+      600,
+      0,
+      2400,
+      2250
+    ],
+    "why": "Five Solas Poster with text",
+    "box": [
+      0.34,
+      0.11,
+      0.66,
+      0.56
+    ]
+  },
+  "8593357413": {
+    "mode": "fit",
+    "why": "crop vetoed: Text on the left and right spine of the books are partially cut off at the edges",
+    "box": [
+      0.15,
+      0.08,
+      0.85,
+      0.95
+    ]
+  },
+  "8601957697": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "7538014156": {
+    "mode": "crop",
+    "window": [
+      100,
+      0,
+      900,
+      1000
+    ],
+    "why": "Both mugs with \"Post Tenebras Lux\" text and sunburst design",
+    "box": [
+      0.15,
+      0.05,
+      0.85,
+      0.95
+    ]
+  },
+  "7538015166": {
+    "mode": "crop",
+    "window": [
+      125,
+      0,
+      925,
+      1000
+    ],
+    "why": "Coffee mug with Post Tenebras Lux design and text",
+    "box": [
+      0.2,
+      0.15,
+      0.85,
+      0.9
+    ]
+  },
+  "7538014394": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.25,
+      0.9,
+      0.85
+    ]
+  }
+}

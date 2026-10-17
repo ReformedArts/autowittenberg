@@ -32,6 +32,8 @@ SNAPSHOT_PATH = DATA_DIR / "listings.json"
 KNOWN_IDS_PATH = DATA_DIR / "known_listing_ids.json"
 ROTATION_PATH = DATA_DIR / "rotation_state.json"
 FIRST_SEEN_PATH = DATA_DIR / "listing_first_seen.json"
+INSTAGRAM_COPY_PATH = DATA_DIR / "instagram_copy.json"
+FRAMING_PATH = DATA_DIR / "photo_framing.json"
 
 
 def load_snapshot():
@@ -58,6 +60,22 @@ def load_first_seen():
 
 def save_first_seen(data):
     _save(FIRST_SEEN_PATH, data)
+
+
+def load_framing():
+    return _load(FRAMING_PATH)
+
+
+def save_framing(data):
+    _save(FRAMING_PATH, data)
+
+
+def load_instagram_copy():
+    return _load(INSTAGRAM_COPY_PATH)
+
+
+def save_instagram_copy(data):
+    _save(INSTAGRAM_COPY_PATH, data)
 
 
 def load_rotation():

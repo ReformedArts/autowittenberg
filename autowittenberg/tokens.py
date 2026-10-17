@@ -80,3 +80,15 @@ def ensure_fresh_instagram_token(log=print):
         IG_VAULT_PATH.write_bytes(vault.encrypt(json.dumps(data).encode()))
         log("Instagram sign-in renewed and saved (encrypted).")
     os.environ["INSTAGRAM_ACCESS_TOKEN"] = data["access_token"]
+
+
+def load_instagram_token():
+    """Current Instagram token without renewing or saving anything (used by the summary job);
+    falls back to the INSTAGRAM_ACCESS_TOKEN setting."""
+    key = config.optional("TOKEN_VAULT_KEY")
+    if key and IG_VAULT_PATH.exists():
+        try:
+            return json.loads(Fernet(key.encode()).decrypt(IG_VAULT_PATH.read_bytes()))["access_token"]
+        except Exception:
+            pass
+    return config.optional("INSTAGRAM_ACCESS_TOKEN") or None

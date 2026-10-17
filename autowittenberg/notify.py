@@ -49,7 +49,7 @@ def _thumbnail(image_path):
     return buf.getvalue()
 
 
-def build_summary(runs, local_date, analytics=None):
+def build_summary(runs, local_date, analytics=None, instagram=None):
     """Returns (subject, plain_text, html, images); images maps content-id -> JPEG bytes."""
     posted = [p for r in runs for p in r["posted"]]
     failed = [f for r in runs for f in r["failed"]]
@@ -90,6 +90,7 @@ def build_summary(runs, local_date, analytics=None):
         if items:
             text += ["", f"{heading}:"] + [f"  {i[:100]}" for i in items]
     text += _analytics_text(analytics)
+    text += _instagram_text(instagram)
     plain = "\n".join(text)
 
     images = {}
@@ -99,7 +100,7 @@ def build_summary(runs, local_date, analytics=None):
             p["thumb_cid"] = f"pin{i}"
             images[p["thumb_cid"]] = thumb
 
-    return subject, plain, _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, bool(failed or paused or not runs), analytics), images
+    return subject, plain, _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, bool(failed or paused or not runs), analytics, instagram), images
 
 
 _ROWS = (("Impressions (times shown)", "IMPRESSION"), ("Pin clicks (opened)", "PIN_CLICK"),
@@ -173,7 +174,65 @@ def _analytics_html(a):
 {top}<div style='margin-top:10px;font-size:12px;color:#777'>{e(note)}</div>"""
 
 
-def _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, is_problem, analytics=None):
+_IG_COLS = ("Today", "7 days", "30 days")
+_IG_KEYS = ("today", "week", "month")
+
+
+def _ig_rows(ig):
+    """[(label, bold, [yesterday, 7 days, 30 days] as text)] -- 'n/a' when Instagram has no data."""
+    def cells(source):
+        return [("n/a" if source[k] is None else f"{source[k]:,}") for k in _IG_KEYS]
+    rows = [("Carousels posted", False, cells(ig["activity"]["posted"])),
+            ("New Etsy listings found", False, cells(ig["activity"]["listings"]))]
+    for label, metric in _IG_METRICS:
+        rows.append((label, metric == "profile_links_taps", cells({k: ig["numbers"][k].get(metric) for k in _IG_KEYS})))
+    return rows
+
+
+_IG_METRICS = (("Accounts reached", "reach"), ("Views", "views"), ("Profile visits", "profile_views"),
+               ("Taps on your link", "profile_links_taps"), ("Likes", "likes"), ("Comments", "comments"),
+               ("Saves", "saves"), ("Shares", "shares"))
+
+
+def _ig_footnote(ig):
+    return (f"Followers: {ig['followers']:,}. Carousels posted in total: {ig['posts_total']}. All columns run through the time this email was built; Instagram counts days on its "
+            "own clock, can update its numbers with a delay, and hides some statistics until an account has 100 followers.")
+
+
+def _instagram_text(ig):
+    if not ig:
+        return []
+    lines = ["", f"INSTAGRAM (@{ig['username']})", f"  {'':28s}{_IG_COLS[0]:>10s}{_IG_COLS[1]:>9s}{_IG_COLS[2]:>9s}"]
+    for label, _, vals in _ig_rows(ig):
+        lines.append(f"  {label:28s}{vals[0]:>10s}{vals[1]:>9s}{vals[2]:>9s}")
+    for p in ig["top"]:
+        lines.append(f"  Top carousel (30 days): {p['title'][:55]} - reach {p['reach']}, interactions {p['total_interactions']}")
+    lines.append("  " + _ig_footnote(ig))
+    return lines
+
+
+def _instagram_html(ig):
+    if not ig:
+        return ""
+    e = html.escape
+    cell = "padding:5px 0;text-align:right;font-variant-numeric:tabular-nums"
+    rows = ""
+    for i, (label, bold, vals) in enumerate(_ig_rows(ig)):
+        style = ("font-weight:700;font-size:16px;" if bold else "") + ("border-top:1px solid #ddd;" if i == 2 else "")
+        rows += (f"<tr><td style='padding:5px 12px 5px 0;{style}'>{e(label)}</td>"
+                 + "".join(f"<td style='{cell};padding-left:{0 if j == 0 else 18}px;{style}'>{v}</td>" for j, v in enumerate(vals)) + "</tr>")
+    top = "".join(
+        f"<div style='font-size:13px;margin-top:6px'><a href='{e(p['url'])}' style='color:#1a5fb4'>{e(p['title'][:70])}</a>"
+        f" <span style='color:#666'>&middot; reached {p['reach']:,}, {p['total_interactions']:,} interactions</span></div>"
+        for p in ig["top"])
+    top = f"<div style='margin-top:10px;font-size:13px;color:#666'>Top carousels, last 30 days (by reach)</div>{top}" if top else ""
+    return f"""<div style='margin:30px 0 8px;font-size:22px;font-weight:700'>Instagram</div>
+<table style="border-collapse:collapse;font-size:14px;width:100%">
+<tr style='color:#666;font-size:12px'><td></td><td style='text-align:right'>{_IG_COLS[0]}</td><td style='text-align:right;padding-left:18px'>{_IG_COLS[1]}</td><td style='text-align:right;padding-left:18px'>{_IG_COLS[2]}</td></tr>{rows}</table>
+{top}<div style='margin-top:10px;font-size:12px;color:#777'>{e(_ig_footnote(ig))}</div>"""
+
+
+def _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, is_problem, analytics=None, instagram=None):
     e = html.escape
     color = "#b42318" if is_problem else "#1a7f37"
     rows = ""
@@ -206,6 +265,7 @@ def _html(day, label, status, posted, failed, new_listings, removed, no_photos, 
 <div style="font-size:22px;font-weight:700;margin:6px 0 16px;color:{color}">{e(status)}</div>
 <table style="border-collapse:collapse;font-size:14px;width:100%">{rows}</table>
 {_analytics_html(analytics)}
+{_instagram_html(instagram)}
 {section("Failures", fail_items, "#b42318")}{section("New listings found", new_listings)}{section("Listings removed (sold out or deactivated)", removed)}{section("Listings skipped: no usable photos", no_photos, "#b54708")}{section("Warnings", warnings, "#b54708")}
 </div>"""
 

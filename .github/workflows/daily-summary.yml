@@ -48,6 +48,7 @@ jobs:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           SUMMARY_RECIPIENT: ${{ secrets.SUMMARY_RECIPIENT }}
           TOKEN_VAULT_KEY: ${{ secrets.TOKEN_VAULT_KEY }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           SUMMARY_DATE: ${{ steps.gate.outputs.summary_date }}
           MANUAL_DATE: ${{ inputs.date }}
         run: |

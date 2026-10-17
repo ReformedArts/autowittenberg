@@ -9,6 +9,7 @@ import datetime as dt
 from pathlib import Path
 
 from autowittenberg.analytics import collect as collect_analytics, fill_image_urls
+from autowittenberg.instagram_stats import collect as collect_instagram
 from autowittenberg.notify import LOCAL_TZ, build_summary, runs_for_date, send_email
 
 
@@ -17,6 +18,14 @@ def _safe_analytics():
         return collect_analytics()
     except Exception as e:  # missing stats must never stop the daily email
         print(f"Pinterest analytics unavailable: {e}")
+        return None
+
+
+def _safe_instagram():
+    try:
+        return collect_instagram()
+    except Exception as e:  # missing Instagram stats must never stop the daily email
+        print(f"Instagram stats unavailable: {e}")
         return None
 
 
@@ -33,7 +42,7 @@ def main():
         summary = run(count=5, mode="dry-run")
         now = dt.datetime.now(dt.timezone.utc).isoformat()
         summary["time"] = now
-        subject, plain, body, images = build_summary([summary], today, _safe_analytics())
+        subject, plain, body, images = build_summary([summary], today, _safe_analytics(), _safe_instagram())
         out = Path(__file__).parent / "data" / "summary_preview.html"
         import base64
         from autowittenberg.notify import LOGO_PATH
@@ -50,7 +59,7 @@ def main():
         fill_image_urls(runs)
     except Exception as e:  # a missing enlarge-link must never stop the email
         print(f"Full-size image links unavailable: {e}")
-    subject, plain, body, images = build_summary(runs, today, _safe_analytics())
+    subject, plain, body, images = build_summary(runs, today, _safe_analytics(), _safe_instagram())
     try:
         send_email(subject, plain, body, images)
     except Exception as e:  # an email problem must never break the run

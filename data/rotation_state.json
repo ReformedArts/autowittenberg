@@ -153,7 +153,19 @@
       "image_url": "https://i.pinimg.com/1200x/42/2f/d3/422fd3363ad807460a2e7ea49f0c283b.jpg",
       "launch": false,
       "posted_at": "2026-10-17T20:07:17.454879+00:00"
+    },
+    {
+      "listing_id": 4595749006,
+      "image_id": 8680234022,
+      "palette": "oxblood",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Gifts",
+      "pin_id": "1099933909044373456",
+      "image_url": "https://i.pinimg.com/1200x/44/b7/8b/44b78be18e97842413609e36e91654d1.jpg",
+      "launch": true,
+      "posted_at": "2026-10-18T00:07:44.332137+00:00"
     }
   ],
-  "last_sync_date": "2026-10-17"
+  "last_sync_date": "2026-10-18"
 }

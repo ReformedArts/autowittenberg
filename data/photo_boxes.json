@@ -196,5 +196,41 @@
       0.95
     ],
     "reason": "from Instagram framing"
+  },
+  "8641830434": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete product image with all circle flags, cupcake toppers, text, and branding"
+  },
+  "8689649991": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Product graphic and all text elements fill the entire frame"
+  },
+  "8641830448": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete product listing with all reformers, solas, crosses, text and logo"
+  },
+  "8689650027": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All product artwork, circle flags, cupcake toppers, text, logos, and branding fill the entire image frame"
   }
 }

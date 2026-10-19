@@ -232,5 +232,14 @@
       1.0
     ],
     "reason": "All product artwork, circle flags, cupcake toppers, text, logos, and branding fill the entire image frame"
+  },
+  "8588212252": {
+    "box": [
+      0.1,
+      0.05,
+      0.9,
+      0.95
+    ],
+    "reason": "Five Solas Bunting product with title and descriptive text"
   }
 }

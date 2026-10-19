@@ -268,5 +268,59 @@
       1.0
     ],
     "reason": "Complete party scene with all reformer portrait banners, food items, beverages, balloons, and decorations"
+  },
+  "8624884086": {
+    "box": [
+      0.0,
+      0.1,
+      1.0,
+      0.55
+    ],
+    "reason": "Five Solas Banner pennants with Latin text"
+  },
+  "8624921532": {
+    "box": [
+      0.15,
+      0.28,
+      0.85,
+      0.68
+    ],
+    "reason": "Five Solas Banner pennant with text"
+  },
+  "8624810326": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Full product image with all text and banner design"
+  },
+  "8672632447": {
+    "box": [
+      0.0,
+      0.15,
+      1.0,
+      1.0
+    ],
+    "reason": "Five banner pennants with Latin text and all party items displayed"
+  },
+  "8672633021": {
+    "box": [
+      0.0,
+      0.08,
+      1.0,
+      1.0
+    ],
+    "reason": "Five Solas banners, party snacks, and decorative setup"
+  },
+  "8624868258": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire product listing graphic with color selection, product images, text, and branding"
   }
 }

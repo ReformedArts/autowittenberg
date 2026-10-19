@@ -261,6 +261,11 @@
       "image_url": "https://i.pinimg.com/1200x/9f/41/96/9f41966c269b0a17e05f76803a8220cd.jpg",
       "launch": true,
       "posted_at": "2026-10-19T16:19:35.335069+00:00"
+    },
+    {
+      "listing_id": 4584694737,
+      "posted_at": "2026-10-19T20:18:31.111974+00:00",
+      "failed": true
     }
   ],
   "last_sync_date": "2026-10-19"

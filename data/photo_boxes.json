@@ -322,5 +322,14 @@
       1.0
     ],
     "reason": "Entire product listing graphic with color selection, product images, text, and branding"
+  },
+  "8599310918": {
+    "box": [
+      0.25,
+      0.1,
+      0.95,
+      0.95
+    ],
+    "reason": "Framed 95 Theses print with wood frame containing all text and artwork"
   }
 }

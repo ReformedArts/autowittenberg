@@ -331,5 +331,14 @@
       0.95
     ],
     "reason": "Framed 95 Theses print with wood frame containing all text and artwork"
+  },
+  "8663620013": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All product cards and text fill the entire image"
   }
 }

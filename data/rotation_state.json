@@ -271,6 +271,11 @@
       "listing_id": 4585379930,
       "posted_at": "2026-10-20T00:13:23.025265+00:00",
       "failed": true
+    },
+    {
+      "listing_id": 4587542597,
+      "posted_at": "2026-10-20T01:25:11.219272+00:00",
+      "failed": true
     }
   ],
   "last_sync_date": "2026-10-20"

@@ -193,5 +193,10 @@
     "can_crop": false,
     "window": null,
     "why": "content too large to crop safely"
+  },
+  "8709042552": {
+    "can_crop": false,
+    "window": null,
+    "why": "crop vetoed: Right side of the mug and handle are cut off"
   }
 }

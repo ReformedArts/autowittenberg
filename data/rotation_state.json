@@ -297,7 +297,19 @@
       "image_url": "https://i.pinimg.com/1200x/aa/81/22/aa8122e17bd5243497d6bd8ac5bc1162.jpg",
       "launch": false,
       "posted_at": "2026-10-20T20:15:08.772543+00:00"
+    },
+    {
+      "listing_id": 4585379930,
+      "image_id": 8599310918,
+      "palette": "gold",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "95 Theses Art",
+      "pin_id": "1099933909044646588",
+      "image_url": "https://i.pinimg.com/1200x/84/2b/e6/842be627fb8a1bf1aaf3af438a7497a7.jpg",
+      "launch": false,
+      "posted_at": "2026-10-21T00:11:47.225516+00:00"
     }
   ],
-  "last_sync_date": "2026-10-20"
+  "last_sync_date": "2026-10-21"
 }

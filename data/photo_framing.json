@@ -612,5 +612,15 @@
       1.0,
       1.0
     ]
+  },
+  "8663620013": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
   }
 }

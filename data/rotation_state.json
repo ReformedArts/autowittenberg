@@ -357,7 +357,19 @@
       "image_url": "https://i.pinimg.com/1200x/22/03/d4/2203d4efd42352479b47f600e3af0378.jpg",
       "launch": false,
       "posted_at": "2026-10-21T20:15:31.547093+00:00"
+    },
+    {
+      "listing_id": 4588465987,
+      "image_id": 8624868258,
+      "palette": "terracotta",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Art",
+      "pin_id": "1099933909044738417",
+      "image_url": "https://i.pinimg.com/1200x/86/56/00/865600cbc15f0109ae615b7fd63029b5.jpg",
+      "launch": false,
+      "posted_at": "2026-10-22T00:10:53.578612+00:00"
     }
   ],
-  "last_sync_date": "2026-10-21"
+  "last_sync_date": "2026-10-22"
 }

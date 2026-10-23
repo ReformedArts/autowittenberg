@@ -511,5 +511,41 @@
       1.0
     ],
     "reason": "Entire flat graphic design product showcase"
+  },
+  "8594108828": {
+    "box": [
+      0.1,
+      0.15,
+      0.9,
+      0.9
+    ],
+    "reason": "Three reformer portrait flags with text labels (Calvin, Luther, Hus)"
+  },
+  "8594035892": {
+    "box": [
+      0.0,
+      0.08,
+      1.0,
+      1.0
+    ],
+    "reason": "All product portrait bunting flags and text elements"
+  },
+  "8641899749": {
+    "box": [
+      0.15,
+      0.08,
+      0.85,
+      0.95
+    ],
+    "reason": "Luther reformer portrait flag with all text and branding"
+  },
+  "8641899751": {
+    "box": [
+      0.15,
+      0.04,
+      0.85,
+      0.96
+    ],
+    "reason": "All reformer portrait flags, titles, header text, and product information"
   }
 }

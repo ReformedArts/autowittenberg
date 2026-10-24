@@ -2811,5 +2811,9 @@
   "8756863785": {
     "category": "artwork",
     "reason": "Clean, well-styled product mockup with minimal text - just the quote and attribution on the mug itself"
+  },
+  "8784504759": {
+    "category": "text_heavy",
+    "reason": "Styled product photo with significant baked-in promotional text (the quote) and illustration, no watermark"
   }
 }

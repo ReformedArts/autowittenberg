@@ -565,5 +565,14 @@
       1.0
     ],
     "reason": "This is a flat graphic design that fills the entire frame, containing all product imagery and text"
+  },
+  "8756860627": {
+    "box": [
+      0.15,
+      0.08,
+      0.85,
+      0.95
+    ],
+    "reason": "Coffee mug with text and wooden character illustrations"
   }
 }

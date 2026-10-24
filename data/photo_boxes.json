@@ -556,5 +556,14 @@
       0.65
     ],
     "reason": "Three framed prints with \"Here I Stand\" text and Reformed Arts watermark"
+  },
+  "8588480798": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "This is a flat graphic design that fills the entire frame, containing all product imagery and text"
   }
 }

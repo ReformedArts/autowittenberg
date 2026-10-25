@@ -628,5 +628,41 @@
       0.95
     ],
     "reason": "from Instagram framing"
+  },
+  "8623020073": {
+    "box": [
+      0.15,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All three framed prints and the Reformed Arts watermark"
+  },
+  "8623184951": {
+    "box": [
+      0.35,
+      0.1,
+      0.65,
+      0.55
+    ],
+    "reason": "Martin Luther \"Here I Stand\" print with text"
+  },
+  "8623184643": {
+    "box": [
+      0.25,
+      0.12,
+      0.75,
+      0.88
+    ],
+    "reason": "Framed print display with \"HERE I STAND\" text"
+  },
+  "8623020077": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire image contains product mockups and all essential listing information"
   }
 }

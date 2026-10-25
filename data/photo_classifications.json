@@ -2815,5 +2815,33 @@
   "8784504759": {
     "category": "text_heavy",
     "reason": "Styled product photo with significant baked-in promotional text (the quote) and illustration, no watermark"
+  },
+  "8740556102": {
+    "category": "text_heavy",
+    "reason": "Styled product mockup of mugs with significant promotional text baked in including \"GREAT GAG GIFT\" banner and the quote overlaid on the product, plus branding text"
+  },
+  "8740618828": {
+    "category": "text_heavy",
+    "reason": "Styled product mockup with significant promotional and instructional text overlaid (title, quote, details labels, size guide, and product features)"
+  },
+  "8788469255": {
+    "category": "infographic",
+    "reason": "Product catalog showing size and color options with specifications"
+  },
+  "8788473569": {
+    "category": "text_heavy",
+    "reason": "Styled mockup of product with significant promotional/quote text baked into the design"
+  },
+  "8788473571": {
+    "category": "text_heavy",
+    "reason": "Clean styled product mockup of a mug with significant promotional text and quote baked into the design"
+  },
+  "8740645134": {
+    "category": "artwork",
+    "reason": "Clean product mockup of the mug with minimal text, suitable as a Pinterest pin hero image"
+  },
+  "8740645144": {
+    "category": "artwork",
+    "reason": "Clean product mockup of the mug design with the illustration as the hero image"
   }
 }

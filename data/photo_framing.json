@@ -810,5 +810,153 @@
       1.0,
       1.0
     ]
+  },
+  "8789956913": {
+    "mode": "crop",
+    "window": [
+      307,
+      0,
+      1946,
+      2048
+    ],
+    "why": "content fits",
+    "box": [
+      0.2,
+      0.15,
+      0.9,
+      0.95
+    ]
+  },
+  "8742130886": {
+    "mode": "crop",
+    "window": [
+      205,
+      0,
+      1843,
+      2048
+    ],
+    "why": "content fits",
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ]
+  },
+  "8742129932": {
+    "mode": "crop",
+    "window": [
+      205,
+      0,
+      1843,
+      2048
+    ],
+    "why": "content fits",
+    "box": [
+      0.12,
+      0.15,
+      0.88,
+      0.95
+    ]
+  },
+  "8742133182": {
+    "mode": "crop",
+    "window": [
+      205,
+      0,
+      1843,
+      2048
+    ],
+    "why": "content fits",
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ]
+  },
+  "8742133622": {
+    "mode": "crop",
+    "window": [
+      205,
+      0,
+      1843,
+      2048
+    ],
+    "why": "content fits",
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ]
+  },
+  "8742132126": {
+    "mode": "fit",
+    "why": "crop vetoed: The speech bubble text is partially cut off on the right edge - the quote appear",
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ]
+  },
+  "8789958043": {
+    "mode": "crop",
+    "window": [
+      358,
+      0,
+      1997,
+      2048
+    ],
+    "why": "content fits",
+    "box": [
+      0.2,
+      0.15,
+      0.95,
+      0.95
+    ]
+  },
+  "8742134794": {
+    "mode": "crop",
+    "window": [
+      410,
+      0,
+      2048,
+      2048
+    ],
+    "why": "content fits",
+    "box": [
+      0.25,
+      0.08,
+      0.95,
+      0.95
+    ]
+  },
+  "8789961465": {
+    "mode": "fit",
+    "why": "crop vetoed: The mug handle on the left side is partially cut off at the edge of the image",
+    "box": [
+      0.25,
+      0.1,
+      0.9,
+      0.95
+    ]
+  },
+  "8742135516": {
+    "mode": "crop",
+    "window": [
+      256,
+      0,
+      1894,
+      2048
+    ],
+    "why": "content fits",
+    "box": [
+      0.2,
+      0.1,
+      0.85,
+      0.95
+    ]
   }
 }

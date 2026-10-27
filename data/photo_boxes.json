@@ -664,5 +664,95 @@
       1.0
     ],
     "reason": "Entire image contains product mockups and all essential listing information"
+  },
+  "8789956913": {
+    "box": [
+      0.2,
+      0.15,
+      0.9,
+      0.95
+    ],
+    "reason": "Martin Luther coffee mug with character illustration and decorative elements"
+  },
+  "8742130886": {
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ],
+    "reason": "Entire coffee mug product with all visible artwork and design elements"
+  },
+  "8742129932": {
+    "box": [
+      0.12,
+      0.15,
+      0.88,
+      0.95
+    ],
+    "reason": "Martin Luther coffee mug with quote and woodland illustrations"
+  },
+  "8742133182": {
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ],
+    "reason": "The ceramic mug with Martin Luther illustration and decorative bottom scene"
+  },
+  "8742133622": {
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ],
+    "reason": "Coffee mug with decorative artwork"
+  },
+  "8742132126": {
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ],
+    "reason": "Mug with Martin Luther design, quote text, and decorative elements"
+  },
+  "8789958043": {
+    "box": [
+      0.2,
+      0.15,
+      0.95,
+      0.95
+    ],
+    "reason": "Martin Luther coffee mug with cartoon illustration, feather, book, and decorative bottom elements"
+  },
+  "8742134794": {
+    "box": [
+      0.25,
+      0.08,
+      0.95,
+      0.95
+    ],
+    "reason": "Martin Luther coffee mug with character illustration and decorative elements"
+  },
+  "8789961465": {
+    "box": [
+      0.25,
+      0.1,
+      0.9,
+      0.95
+    ],
+    "reason": "Martin Luther mug with character, quill, book, and decorative base elements"
+  },
+  "8742135516": {
+    "box": [
+      0.2,
+      0.1,
+      0.85,
+      0.95
+    ],
+    "reason": "Martin Luther coffee mug with decorative base"
   }
 }

@@ -328,5 +328,10 @@
     "can_crop": false,
     "window": null,
     "why": "content too large to crop safely"
+  },
+  "8742134254": {
+    "can_crop": false,
+    "window": null,
+    "why": "crop vetoed: The speech bubble text is cut off on the right edge - the complete quote is not "
   }
 }

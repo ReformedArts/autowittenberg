@@ -633,7 +633,19 @@
       "image_url": "https://i.pinimg.com/1200x/88/0e/19/880e1972595aaf0ea65d406200485f4c.jpg",
       "launch": false,
       "posted_at": "2026-10-26T20:47:51.254734+00:00"
+    },
+    {
+      "listing_id": 4603195558,
+      "image_id": 8789956913,
+      "palette": "amber",
+      "crop_style": "cover_center",
+      "headline": "Gift theology nerds this Reformation Day",
+      "board": "Reformed Gifts",
+      "pin_id": "1099933909045258092",
+      "image_url": "https://i.pinimg.com/1200x/4a/69/ac/4a69ac8a18902d34612bd301272833d8.jpg",
+      "launch": true,
+      "posted_at": "2026-10-27T00:07:23.860635+00:00"
     }
   ],
-  "last_sync_date": "2026-10-26"
+  "last_sync_date": "2026-10-27"
 }

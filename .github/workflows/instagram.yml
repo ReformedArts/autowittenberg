@@ -53,6 +53,9 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           TOKEN_VAULT_KEY: ${{ secrets.TOKEN_VAULT_KEY }}
+          GMAIL_SENDER: ${{ secrets.GMAIL_SENDER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          SUMMARY_RECIPIENT: ${{ secrets.SUMMARY_RECIPIENT }}
           MODE: ${{ inputs.mode || vars.AUTOWITTENBERG_IG_MODE || 'dry-run' }}
         run: |
           python run_instagram.py --mode "$MODE" --slot instagram --slot-date "${{ steps.gate.outputs.slot_date || '' }}"

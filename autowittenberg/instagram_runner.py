@@ -16,7 +16,7 @@ import shutil
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from . import seasonal, state
+from . import alerts, seasonal, state
 from .carousel import build_caption, choose_slides, frame_photo
 from .copy import get_instagram_copy
 from .hosting import publish_images
@@ -141,6 +141,8 @@ def run(mode="dry-run", listing_id=None, slot=None, slot_date=None, log=print):
     except Exception as e:  # skip this one, log it clearly, never crash the whole run
         result["error"] = str(e)
         log(f"INSTAGRAM FAILED: {e}")
+        if mode == "live" and alerts.is_auth_failure(e):
+            alerts.alert("Instagram", e, log)
         if result.get("listing_id") and mode == "live":
             ig_state = state.load_instagram_state()
             fails = ig_state.setdefault("failures", {})

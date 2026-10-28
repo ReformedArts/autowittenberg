@@ -15,7 +15,7 @@ from pathlib import Path
 
 from zoneinfo import ZoneInfo
 
-from . import seasonal, state
+from . import alerts, seasonal, state
 from .framing import frame_pin
 from .images import make_thumbnail, render_pin
 from .pinterest import PinterestClient, pin_image_url
@@ -110,6 +110,8 @@ def _run(count, mode, force_sync):
         except (SystemExit, Exception) as e:
             log(f"Could not sign in to Pinterest: {e}")
             summary["failed"].append({"title": "(whole run)", "error": str(e)})
+            if mode == "live":
+                alerts.alert("Pinterest", e, log)
             return summary
 
     # first-seen dates live in their own file, so apply them to whichever pool we have (a pool saved
@@ -178,6 +180,8 @@ def _run(count, mode, force_sync):
             image_path.unlink(missing_ok=True)  # never leave a broken/partial pin behind
             log(f"FAILED '{title[:60]}': {e}")
             summary["failed"].append({"title": title, "error": str(e)})
+            if mode == "live" and alerts.is_auth_failure(e):
+                alerts.alert("Pinterest", e, log)
             # Count the attempt so one bad listing can't block the whole rotation.
             posts.append({"listing_id": listing["listing_id"], "posted_at": now.isoformat(), "failed": True})
             continue

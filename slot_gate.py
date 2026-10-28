@@ -14,14 +14,14 @@ from zoneinfo import ZoneInfo
 
 ET = ZoneInfo("America/New_York")
 SLOTS = ["08:00", "12:00", "16:00", "20:00", "21:00"]
-WINDOW = dt.timedelta(hours=2)  # GitHub can start scheduled runs late; accept up to 2 hours
+WINDOW = dt.timedelta(hours=5)  # GitHub can start scheduled runs hours late (or drop them); a late run still fills a missed slot
 HISTORY = Path(__file__).parent / "data" / "run_history.jsonl"
 SUMMARY_SENT = Path(__file__).parent / "data" / "summary_sent.json"
 IG_FROM = dt.time(19, 30)       # the Instagram carousel goes out at 7:30 PM Eastern...
-IG_UNTIL = dt.time(22, 30)      # ...or any time up to 10:30 PM if GitHub starts late
+IG_UNTIL = dt.time(1, 30)       # ...or, if GitHub starts late or drops runs, any time until 1:30 AM that night
 IG_HISTORY = Path(__file__).parent / "data" / "instagram_history.jsonl"
 SUMMARY_FROM = dt.time(22, 45)   # a day's summary is due from 10:45 PM...
-SUMMARY_UNTIL = dt.time(2, 0)    # ...until 2 AM the next morning, so a late GitHub start still sends it
+SUMMARY_UNTIL = dt.time(10, 0)   # ...until 10 AM the next morning, so a late or dropped GitHub run still sends it
 
 
 def slot_start(day, label):
@@ -29,18 +29,16 @@ def slot_start(day, label):
     return dt.datetime.combine(day, dt.time(hour, minute), tzinfo=ET)
 
 
-def current_slot(now):
-    """Latest posting time that has started within the last WINDOW, as (label, date), or None."""
-    candidates = []
+def next_unfilled_slot(now):
+    """The earliest posting time that started within the last WINDOW and has not run yet, as
+    (label, date), or None. Catching up the oldest missed slot first means a flaky scheduler
+    still ends up filling the day, one pin per run."""
     for day in (now.date() - dt.timedelta(days=1), now.date()):
         for label in SLOTS:
             start = slot_start(day, label)
-            if start <= now < start + WINDOW:
-                candidates.append((start, label, day))
-    if not candidates:
-        return None
-    _, label, day = max(candidates)
-    return label, day
+            if start <= now < start + WINDOW and not already_done(label, day):
+                return label, day
+    return None
 
 
 def already_done(label, day):
@@ -64,10 +62,13 @@ def summary_due(now):
 
 
 def instagram_due(now):
-    """Today's date if it is currently 7:30-10:30 PM Eastern, else None."""
-    start = dt.datetime.combine(now.date(), IG_FROM, tzinfo=ET)
-    end = dt.datetime.combine(now.date(), IG_UNTIL, tzinfo=ET)
-    return now.date() if start <= now < end else None
+    """The date of the 7:30 PM slot that is currently open (until 1:30 AM that night), else None."""
+    for day in (now.date(), now.date() - dt.timedelta(days=1)):
+        start = dt.datetime.combine(day, IG_FROM, tzinfo=ET)
+        end = dt.datetime.combine(day + dt.timedelta(days=1), IG_UNTIL, tzinfo=ET)
+        if start <= now < end:
+            return day
+    return None
 
 
 def instagram_already_done(day):
@@ -117,16 +118,12 @@ def main():
         else:
             write_output(run="true", summary_date=day.isoformat())
         return
-    found = current_slot(now)
+    found = next_unfilled_slot(now)
     if found is None:
-        print(f"{now:%a %H:%M} Eastern is not a posting time. Skipping.")
+        print(f"{now:%a %H:%M} Eastern: no posting slot is open and unfilled. Skipping.")
         write_output(run="false", slot="", slot_date="")
         return
     label, day = found
-    if already_done(label, day):
-        print(f"The {label} slot for {day} already ran. Skipping.")
-        write_output(run="false", slot=label, slot_date=day.isoformat())
-        return
     write_output(run="true", slot=label, slot_date=day.isoformat())
 
 

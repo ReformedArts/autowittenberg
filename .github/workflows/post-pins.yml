@@ -1,11 +1,11 @@
 name: Post pins
 
-# Fires at every UTC hour that could be one of the five posting times (8 AM, 12 PM, 4 PM,
-# 8 PM, 9 PM Eastern) in either summer or winter time. slot_gate.py then decides which
-# runs are real posting times, so pins go out on Eastern time all year.
+# Fires every 30 minutes, off the top of the hour (GitHub drops and delays scheduled runs most
+# at :00). slot_gate.py decides which runs are real posting times (8 AM, 12 PM, 4 PM, 8 PM,
+# 9 PM Eastern, with up to 5 hours of catch-up) so a dropped or late trigger still gets filled.
 on:
   schedule:
-    - cron: "0 0,1,2,12,13,16,17,20,21 * * *"
+    - cron: "14,44 * * * *"
   workflow_dispatch:
     inputs:
       mode:

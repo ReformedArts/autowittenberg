@@ -73,7 +73,7 @@ def _thumbnail(image_path):
     return buf.getvalue()
 
 
-def build_summary(runs, local_date, analytics=None, instagram=None):
+def build_summary(runs, local_date, analytics=None, instagram=None, final=False):
     """Returns (subject, plain_text, html, images); images maps content-id -> JPEG bytes."""
     posted = [p for r in runs for p in r["posted"]]
     failed = [f for r in runs for f in r["failed"]]
@@ -92,6 +92,8 @@ def build_summary(runs, local_date, analytics=None, instagram=None):
         status = f"Problem: {len(failed)} failure(s), nothing posted."
     elif failed:
         status = f"{len(posted)} pin(s) posted, {len(failed)} failed."
+    elif final and modes == {"live"} and len(posted) < 5:
+        status = f"Only {len(posted)} of 5 pins went out today (some scheduled runs did not start)."
     elif not runs:
         status = "No runs were recorded today. Check that the schedule is running."
     else:
@@ -124,7 +126,7 @@ def build_summary(runs, local_date, analytics=None, instagram=None):
             p["thumb_cid"] = f"pin{i}"
             images[p["thumb_cid"]] = thumb
 
-    return subject, plain, _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, bool(failed or paused or not runs), analytics, instagram), images
+    return subject, plain, _html(day, label, status, posted, failed, new_listings, removed, no_photos, warnings, bool(failed or paused or not runs or (final and modes == {'live'} and len(posted) < 5)), analytics, instagram), images
 
 
 _ROWS = (("Impressions (times shown)", "IMPRESSION"), ("Pin clicks (opened)", "PIN_CLICK"),

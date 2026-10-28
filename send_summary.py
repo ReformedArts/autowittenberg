@@ -59,7 +59,10 @@ def main():
         fill_image_urls(runs)
     except Exception as e:  # a missing enlarge-link must never stop the email
         print(f"Full-size image links unavailable: {e}")
-    subject, plain, body, images = build_summary(runs, today, _safe_analytics(), _safe_instagram())
+    subject, plain, body, images = build_summary(runs, today, _safe_analytics(), _safe_instagram(), final=args.record_sent)
+    now_et = dt.datetime.now(LOCAL_TZ)
+    if args.record_sent and (now_et.date() > today and now_et.time() >= dt.time(2, 0)):
+        subject = f"[Sent late: GitHub started it after the usual time] {subject}"
     if not args.record_sent:  # a hand-triggered run (a test or a resend), not the scheduled nightly digest
         subject = f"[Manual run, day so far] {subject}"
         body = ("<div style='font-family:Helvetica,Arial,sans-serif;background:#fff4d6;padding:10px;border-radius:6px;"

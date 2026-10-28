@@ -5,7 +5,7 @@ name: Post Instagram carousel
 # sends exactly one. GitHub often starts scheduled runs late, which the 3-hour window absorbs.
 on:
   schedule:
-    - cron: "30 23,0,1 * * *"
+    - cron: "20,50 23,0,1,2,3,4,5,6 * * *"
   workflow_dispatch:
     inputs:
       mode:

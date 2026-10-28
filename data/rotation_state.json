@@ -669,7 +669,19 @@
       "image_url": "https://i.pinimg.com/1200x/96/49/57/964957fe41fd05b768d3db3ba7908a3d.jpg",
       "launch": true,
       "posted_at": "2026-10-27T21:04:54.095715+00:00"
+    },
+    {
+      "listing_id": 4587542597,
+      "image_id": 8663620013,
+      "palette": "amber",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Art",
+      "pin_id": "1099933909045355272",
+      "image_url": "https://i.pinimg.com/1200x/11/66/61/1166612a374be1fd60fb47e259aa675c.jpg",
+      "launch": false,
+      "posted_at": "2026-10-28T02:50:02.555024+00:00"
     }
   ],
-  "last_sync_date": "2026-10-27"
+  "last_sync_date": "2026-10-28"
 }

@@ -2,7 +2,7 @@ name: Post pins
 
 # Fires every 30 minutes, off the top of the hour (GitHub drops and delays scheduled runs most
 # at :00). slot_gate.py decides which runs are real posting times (8 AM, 12 PM, 4 PM, 8 PM,
-# 9 PM Eastern, with up to 5 hours of catch-up) so a dropped or late trigger still gets filled.
+# 9 PM Eastern, with up to 14 hours and 3 pins of catch-up per run) so dropped or late triggers still get filled.
 on:
   schedule:
     - cron: "14,44 * * * *"
@@ -62,8 +62,11 @@ jobs:
           SUMMARY_RECIPIENT: ${{ secrets.SUMMARY_RECIPIENT }}
           MODE: ${{ inputs.mode || vars.AUTOWITTENBERG_MODE || 'dry-run' }}
         run: |
-          python run_pins.py --mode "$MODE" --count 1 \
-            --slot "${{ steps.gate.outputs.slot }}" --slot-date "${{ steps.gate.outputs.slot_date }}"
+          # one pin per posting time that is due; GitHub may start only a few runs a day, so each run catches up
+          for item in ${{ steps.gate.outputs.slots }}; do
+            python run_pins.py --mode "$MODE" --count 1 --slot "${item%@*}" --slot-date "${item#*@}" || echo "Pin for $item failed"
+            sleep 20
+          done
 
       - name: Save run data
         if: always() && steps.gate.outputs.run == 'true'

@@ -14,7 +14,8 @@ from zoneinfo import ZoneInfo
 
 ET = ZoneInfo("America/New_York")
 SLOTS = ["08:00", "12:00", "16:00", "20:00", "21:00"]
-WINDOW = dt.timedelta(hours=5)  # GitHub can start scheduled runs hours late (or drop them); a late run still fills a missed slot
+WINDOW = dt.timedelta(hours=14)  # GitHub starts only a few scheduled runs a day; a late run still fills any slot missed in the last 14 hours
+MAX_PER_RUN = 3                  # catch up at most this many pins in one run, so a long gap is not posted as one big burst
 HISTORY = Path(__file__).parent / "data" / "run_history.jsonl"
 SUMMARY_SENT = Path(__file__).parent / "data" / "summary_sent.json"
 IG_FROM = dt.time(19, 30)       # the Instagram carousel goes out at 7:30 PM Eastern...
@@ -29,16 +30,17 @@ def slot_start(day, label):
     return dt.datetime.combine(day, dt.time(hour, minute), tzinfo=ET)
 
 
-def next_unfilled_slot(now):
-    """The earliest posting time that started within the last WINDOW and has not run yet, as
-    (label, date), or None. Catching up the oldest missed slot first means a flaky scheduler
-    still ends up filling the day, one pin per run."""
+def unfilled_slots(now):
+    """Every posting time that started within the last WINDOW and has not run yet, oldest first,
+    as [(label, date), ...], at most MAX_PER_RUN. A flaky scheduler may start only a few runs a day,
+    so each run posts everything that is due rather than a single pin."""
+    due = []
     for day in (now.date() - dt.timedelta(days=1), now.date()):
         for label in SLOTS:
             start = slot_start(day, label)
             if start <= now < start + WINDOW and not already_done(label, day):
-                return label, day
-    return None
+                due.append((label, day))
+    return due[:MAX_PER_RUN]
 
 
 def already_done(label, day):
@@ -94,7 +96,7 @@ def write_output(**values):
 def main():
     now = dt.datetime.now(ET)
     if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
-        write_output(run="true", slot="manual", slot_date=now.date().isoformat(), summary_date="")
+        write_output(run="true", slot="manual", slot_date=now.date().isoformat(), slots=f"manual@{now.date().isoformat()}", summary_date="")
         return
     if "instagram" in sys.argv:
         day = instagram_due(now)
@@ -118,13 +120,14 @@ def main():
         else:
             write_output(run="true", summary_date=day.isoformat())
         return
-    found = next_unfilled_slot(now)
-    if found is None:
+    due = unfilled_slots(now)
+    if not due:
         print(f"{now:%a %H:%M} Eastern: no posting slot is open and unfilled. Skipping.")
-        write_output(run="false", slot="", slot_date="")
+        write_output(run="false", slot="", slot_date="", slots="")
         return
-    label, day = found
-    write_output(run="true", slot=label, slot_date=day.isoformat())
+    print(f"{now:%a %H:%M} Eastern: {len(due)} pin(s) due.")
+    write_output(run="true", slot=due[0][0], slot_date=due[0][1].isoformat(),
+                 slots=" ".join(f"{label}@{day.isoformat()}" for label, day in due))
 
 
 if __name__ == "__main__":

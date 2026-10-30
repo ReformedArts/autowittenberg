@@ -2983,5 +2983,45 @@
   "8760539020": {
     "category": "artwork",
     "reason": "Clean styled mockup of the ceramic ornament as the hero product image with minimal text overlay"
+  },
+  "8808459295": {
+    "category": "text_heavy",
+    "reason": "Styled product photo of ceramic ornament with significant promotional/design text baked into the image (large \"SOLUS CHRISTUS\" and \"CHRIST ALONE\" text)"
+  },
+  "8760646786": {
+    "category": "artwork",
+    "reason": "Clean, styled product photo of the ornament as hero image with minimal text"
+  },
+  "8808459299": {
+    "category": "artwork",
+    "reason": "Clean, styled product photo of the ornament with minimal text, suitable for use as a pin's hero image."
+  },
+  "8808459305": {
+    "category": "artwork",
+    "reason": "Clean styled mockup of the ornament product held by hands, showcasing the actual piece with minimal text baked into the photo itself."
+  },
+  "8760646790": {
+    "category": "text_heavy",
+    "reason": "Styled product photo with significant promotional and instructional text overlaid (title, material specs, print details, shape, care instructions)"
+  },
+  "8760646796": {
+    "category": "artwork",
+    "reason": "Clean, styled product photo of the ornament with minimal text, suitable as a pin hero image"
+  },
+  "8808459307": {
+    "category": "artwork",
+    "reason": "Clean styled mockup of the ceramic ornament as hero product image with minimal text baked in"
+  },
+  "8760646800": {
+    "category": "text_heavy",
+    "reason": "Styled product photo with significant promotional text baked in (headline, descriptive text, and product information overlaid on the image)"
+  },
+  "8760646802": {
+    "category": "text_heavy",
+    "reason": "Clean infographic design with significant promotional and educational text overlaid on the entire image, but no tiled watermark."
+  },
+  "8808459317": {
+    "category": "text_heavy",
+    "reason": "Styled product mockup with significant promotional and instructional text baked into the image (shop name, thank you message, product description)."
   }
 }

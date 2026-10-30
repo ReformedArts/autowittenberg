@@ -853,5 +853,59 @@
       0.95
     ],
     "reason": "Ceramic ornament with \"SOLUS CHRISTUS\" text and evergreen branch"
+  },
+  "8710431037": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Full product listing image with clipart designs and product information"
+  },
+  "8662573640": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "entire product listing graphic with all designs, text, logos and branding"
+  },
+  "8710410123": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire listing image with all product designs, text, logos, and metadata"
+  },
+  "8710410131": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire listing image with product designs, text, and branding"
+  },
+  "8710410151": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "This is a flat graphic product display that fills the entire frame with title text, product images, badge, footer text, and feature indicators spanning the full width and height"
+  },
+  "8710410147": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Full listing graphic with title, product icons, logos, and text"
   }
 }

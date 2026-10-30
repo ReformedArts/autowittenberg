@@ -753,6 +753,30 @@
       "image_url": "https://i.pinimg.com/1200x/d2/e9/1e/d2e91e14dc4e52b08e6db698ead350b7.jpg",
       "launch": true,
       "posted_at": "2026-10-30T05:53:02.807236+00:00"
+    },
+    {
+      "listing_id": 4605353294,
+      "image_id": 8760646790,
+      "palette": "terracotta",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Art",
+      "pin_id": "1099933909045558707",
+      "image_url": "https://i.pinimg.com/1200x/fc/d5/ae/fcd5ae84ab00e221074bcbb714de2f37.jpg",
+      "launch": true,
+      "posted_at": "2026-10-30T12:59:22.433946+00:00"
+    },
+    {
+      "listing_id": 4588465987,
+      "image_id": 8624921532,
+      "palette": "oxblood",
+      "crop_style": "zoom_detail",
+      "headline": "Display Your Faith this Reformation Day",
+      "board": "Reformed Art",
+      "pin_id": "1099933909045558730",
+      "image_url": "https://i.pinimg.com/1200x/3b/8c/75/3b8c757388e12d9e6591d3550e4b6c05.jpg",
+      "launch": false,
+      "posted_at": "2026-10-30T12:59:44.796691+00:00"
     }
   ],
   "last_sync_date": "2026-10-30"

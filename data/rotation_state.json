@@ -801,7 +801,31 @@
       "image_url": "https://i.pinimg.com/1200x/be/35/7c/be357c2e3b2faa58a9cb93e891d9cdc2.jpg",
       "launch": false,
       "posted_at": "2026-10-30T22:40:12.338572+00:00"
+    },
+    {
+      "listing_id": 4430182421,
+      "image_id": 7538015166,
+      "palette": "gold",
+      "crop_style": "cover_top",
+      "headline": "Post Tenebras Lux - the perfect theology gift",
+      "board": "Reformed Gifts",
+      "pin_id": "1099933909045612946",
+      "image_url": "https://i.pinimg.com/1200x/77/c3/15/77c3153e78bcb88cc5e128d544eca609.jpg",
+      "launch": false,
+      "posted_at": "2026-10-31T01:51:58.479338+00:00"
+    },
+    {
+      "listing_id": 4432355050,
+      "image_id": 7548798560,
+      "palette": "gold",
+      "crop_style": "zoom_detail",
+      "headline": "Gold Sun Art for Reformation Celebrations",
+      "board": "Reformed Art",
+      "pin_id": "1099933909045613008",
+      "image_url": "https://i.pinimg.com/1200x/4e/b7/ec/4eb7eccdf2345ae4a2f7dd84350943e5.jpg",
+      "launch": false,
+      "posted_at": "2026-10-31T01:52:59.775152+00:00"
     }
   ],
-  "last_sync_date": "2026-10-30"
+  "last_sync_date": "2026-10-31"
 }

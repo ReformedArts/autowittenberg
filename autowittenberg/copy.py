@@ -6,23 +6,41 @@ using a cost-efficient model since this is low-volume, low-complexity work.
 """
 import base64
 import html
+import sys
 from io import BytesIO
 
 import anthropic
 import requests
 from PIL import Image
 
-from . import config
+from . import config, usage
 
 MODEL = "claude-haiku-4-5-20251001"
 
 _client = None
 
 
+class _LoggedMessages:
+    """Same as the client's messages, but writes each call's cost to data/claude_usage.jsonl."""
+
+    def __init__(self, messages):
+        self._messages = messages
+
+    def create(self, **kwargs):
+        message = self._messages.create(**kwargs)
+        usage.record(message, sys._getframe(1).f_code.co_name, kwargs.get("model", MODEL))
+        return message
+
+
+class _LoggedClient:
+    def __init__(self, client):
+        self.messages = _LoggedMessages(client.messages)
+
+
 def _get_client():
     global _client
     if _client is None:
-        _client = anthropic.Anthropic(api_key=config.require("ANTHROPIC_API_KEY"))
+        _client = _LoggedClient(anthropic.Anthropic(api_key=config.require("ANTHROPIC_API_KEY")))
     return _client
 
 

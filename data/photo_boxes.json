@@ -1042,5 +1042,14 @@
       0.85
     ],
     "reason": "Green ceramic ornament with text and white gift box"
+  },
+  "7563883852": {
+    "box": [
+      0.1,
+      0.05,
+      0.9,
+      0.95
+    ],
+    "reason": "Framed poster with sola text and \"REFORMED ARTS\" watermark"
   }
 }

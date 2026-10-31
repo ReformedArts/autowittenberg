@@ -68,8 +68,32 @@ class InstagramClient:
                 raise InstagramError(f"Container {container_id} still {status} after {timeout}s")
             time.sleep(5)
 
-    def publish(self, container_id):
-        return self._call("POST", f"{self.user_id}/media_publish", creation_id=container_id)["id"]
+    def publish(self, container_id, caption=None):
+        """Publish a prepared container. Instagram sometimes answers a publish with an error (for example
+        403 "action is blocked") even though the post went live, so after an error we look for our own post
+        before reporting a failure; otherwise the same listing would be posted again later."""
+        try:
+            return self._call("POST", f"{self.user_id}/media_publish", creation_id=container_id)["id"]
+        except InstagramError:
+            if not caption:
+                raise
+            time.sleep(20)
+            found = self.find_recent_post(caption)
+            if found:
+                print(f"Instagram reported an error, but the post is live (media {found}); treating it as posted.")
+                return found
+            raise
+
+    def find_recent_post(self, caption, max_age_minutes=20):
+        """The id of a post on the account made in the last few minutes with this caption, else None."""
+        import datetime as dt
+        now = dt.datetime.now(dt.timezone.utc)
+        posts = self._call("GET", f"{self.user_id}/media", fields="id,timestamp,caption", limit=5).get("data", [])
+        for post in posts:
+            made = dt.datetime.strptime(post["timestamp"], "%Y-%m-%dT%H:%M:%S%z")
+            if now - made <= dt.timedelta(minutes=max_age_minutes) and (post.get("caption") or "")[:100] == caption[:100]:
+                return post["id"]
+        return None
 
     def permalink(self, media_id):
         return self._call("GET", media_id, fields="permalink").get("permalink")

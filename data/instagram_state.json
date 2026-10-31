@@ -90,9 +90,14 @@
       "posted_at": "2026-10-30T02:42:00.667832+00:00",
       "slides": 7,
       "why": "backfill"
+    },
+    "4592881529": {
+      "media_id": "18157004968482551",
+      "permalink": "https://www.instagram.com/p/DfJF7WOlmtV/",
+      "posted_at": "2026-10-31T02:33:00+00:00",
+      "slides": 10,
+      "why": "backfill"
     }
   },
-  "failures": {
-    "4592881529": 1
-  }
+  "failures": {}
 }

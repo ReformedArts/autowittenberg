@@ -10,8 +10,8 @@ QUIET_HOURS = 12
 
 # signs that the sign-in itself is the problem (not a one-off hiccup with a single photo or listing)
 AUTH_PATTERN = re.compile(
-    r"returned 401|Token (refresh|exchange) failed|invalid_grant|OAuthException|\"code\": ?190|access token|"
-    r"could not sign in|session has (expired|been invalidated)", re.I)
+    r"returned 401|Token (refresh|exchange) failed|invalid_grant|\"code\": ?190|Invalid OAuth access token|"
+    r"Error validating access token|session has (expired|been invalidated)", re.I)
 
 FIXES = {
     "Pinterest": "Pinterest sign-in usually fails after a Pinterest password change or if the app's access was removed. "

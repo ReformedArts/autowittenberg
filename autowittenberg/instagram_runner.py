@@ -131,7 +131,7 @@ def run(mode="dry-run", listing_id=None, slot=None, slot_date=None, log=print):
             log(f"Prepared (not published): Instagram accepted all {len(paths)} slide(s); container {container}.")
             return result
 
-        media_id = client.publish(container)
+        media_id = client.publish(container, caption)
         permalink = client.permalink(media_id)
         result.update({"posted": True, "media_id": media_id, "permalink": permalink})
         ig_state["posted"][str(listing["listing_id"])] = {"media_id": media_id, "permalink": permalink,

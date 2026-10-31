@@ -943,5 +943,86 @@
       0.95
     ],
     "reason": "Post Tenebras Lux print in gold frame - the product artwork"
+  },
+  "8710550393": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Product photo with all text, design, and branding elements"
+  },
+  "8662713584": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire product listing image with t-shirt, text overlay, brand logo, and design elements"
+  },
+  "8710550401": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire product image and all text/branding elements"
+  },
+  "8662713586": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Full listing image containing product, text, and all branding elements"
+  },
+  "8710550409": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire product listing image including shirt, text labels, and all content"
+  },
+  "8662713596": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      0.95
+    ],
+    "reason": "All product images, text, logos, and design elements of the t-shirt listing"
+  },
+  "8662713594": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete product listing image with t-shirt, text overlay, label, and branding"
+  },
+  "8710550417": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire listing image with product shirt, text elements, logo and all content"
+  },
+  "8710550405": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete product listing image containing model, shirt, text, logo, and product details"
   }
 }

@@ -1,0 +1,106 @@
+{
+ "source": "Anthropic console export, claude_api_tokens_2026_10_02_to_2026_10_31.csv (daily totals by UTC date; no per-call detail). Covers Oct 2-31 up to the export time on Oct 31; live logging in claude_usage.jsonl starts after that. Usage before Oct 2 is not in this file.",
+ "price_usd_per_million_tokens": {
+  "in": 1.0,
+  "out": 5.0,
+  "model": "claude-haiku-4-5-20251001"
+ },
+ "days": [
+  {
+   "date": "2026-10-14",
+   "in": 2506173,
+   "out": 115677,
+   "usd": 3.084558
+  },
+  {
+   "date": "2026-10-15",
+   "in": 85574,
+   "out": 6138,
+   "usd": 0.116264
+  },
+  {
+   "date": "2026-10-17",
+   "in": 214988,
+   "out": 13853,
+   "usd": 0.284253
+  },
+  {
+   "date": "2026-10-18",
+   "in": 8829,
+   "out": 765,
+   "usd": 0.012654
+  },
+  {
+   "date": "2026-10-19",
+   "in": 17625,
+   "out": 1219,
+   "usd": 0.02372
+  },
+  {
+   "date": "2026-10-20",
+   "in": 79212,
+   "out": 3722,
+   "usd": 0.097822
+  },
+  {
+   "date": "2026-10-21",
+   "in": 7497,
+   "out": 626,
+   "usd": 0.010627
+  },
+  {
+   "date": "2026-10-22",
+   "in": 3252,
+   "out": 389,
+   "usd": 0.005197
+  },
+  {
+   "date": "2026-10-23",
+   "in": 21259,
+   "out": 1393,
+   "usd": 0.028224
+  },
+  {
+   "date": "2026-10-24",
+   "in": 20402,
+   "out": 1307,
+   "usd": 0.026937
+  },
+  {
+   "date": "2026-10-25",
+   "in": 26959,
+   "out": 1339,
+   "usd": 0.033654
+  },
+  {
+   "date": "2026-10-26",
+   "in": 72430,
+   "out": 3337,
+   "usd": 0.089115
+  },
+  {
+   "date": "2026-10-27",
+   "in": 4566,
+   "out": 263,
+   "usd": 0.005881
+  },
+  {
+   "date": "2026-10-29",
+   "in": 82852,
+   "out": 3875,
+   "usd": 0.102227
+  },
+  {
+   "date": "2026-10-30",
+   "in": 45049,
+   "out": 2272,
+   "usd": 0.056409
+  },
+  {
+   "date": "2026-10-31",
+   "in": 28390,
+   "out": 1966,
+   "usd": 0.03822
+  }
+ ]
+}

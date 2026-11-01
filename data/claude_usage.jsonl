@@ -13,3 +13,7 @@
 {"time": "2026-11-01T02:22:04+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2298, "out": 119, "usd": 0.002893}
 {"time": "2026-11-01T02:22:06+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2298, "out": 118, "usd": 0.002888}
 {"time": "2026-11-01T02:22:10+00:00", "purpose": "generate_instagram_caption", "model": "claude-haiku-4-5-20251001", "in": 966, "out": 258, "usd": 0.002256}
+{"time": "2026-11-01T16:49:43+00:00", "purpose": "classify_exclusion", "model": "claude-haiku-4-5-20251001", "in": 868, "out": 60, "usd": 0.001168}
+{"time": "2026-11-01T16:49:44+00:00", "purpose": "classify_exclusion", "model": "claude-haiku-4-5-20251001", "in": 866, "out": 68, "usd": 0.001206}
+{"time": "2026-11-01T16:49:45+00:00", "purpose": "classify_exclusion", "model": "claude-haiku-4-5-20251001", "in": 864, "out": 70, "usd": 0.001214}
+{"time": "2026-11-01T16:49:47+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2300, "out": 123, "usd": 0.002915}

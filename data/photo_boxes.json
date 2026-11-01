@@ -1141,5 +1141,14 @@
       0.95
     ],
     "reason": "T-shirt with text design"
+  },
+  "8760646800": {
+    "box": [
+      0.1,
+      0.05,
+      0.9,
+      1.0
+    ],
+    "reason": "All products, text, and content of the listing page"
   }
 }

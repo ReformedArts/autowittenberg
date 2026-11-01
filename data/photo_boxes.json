@@ -1150,5 +1150,23 @@
       1.0
     ],
     "reason": "All products, text, and content of the listing page"
+  },
+  "8760646802": {
+    "box": [
+      0.03,
+      0.03,
+      0.97,
+      0.97
+    ],
+    "reason": "All text, decorative elements, and graphics including title, solas list, cross, and Reformed Arts logo"
+  },
+  "7599599595": {
+    "box": [
+      0.3,
+      0.25,
+      0.75,
+      0.95
+    ],
+    "reason": "Printable scripture art print with decorative elements"
   }
 }

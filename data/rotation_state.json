@@ -897,6 +897,30 @@
       "image_url": "https://i.pinimg.com/1200x/d3/24/46/d32446165900e97ea8b55cc69f0a8d89.jpg",
       "launch": true,
       "posted_at": "2026-11-01T16:49:42.638921+00:00"
+    },
+    {
+      "listing_id": 4605353294,
+      "image_id": 8760646802,
+      "palette": "gold",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Art",
+      "pin_id": "1099933909045775933",
+      "image_url": "https://i.pinimg.com/1200x/ed/24/d2/ed24d2ee0e96988c39494ed6f126013f.jpg",
+      "launch": true,
+      "posted_at": "2026-11-01T21:12:33.698270+00:00"
+    },
+    {
+      "listing_id": 4432882785,
+      "image_id": 7599599595,
+      "palette": "oxblood",
+      "crop_style": "zoom_detail",
+      "headline": "Encouraging daily reminder poster",
+      "board": "Scripture Art",
+      "pin_id": "1099933909045775971",
+      "image_url": "https://i.pinimg.com/1200x/e3/3e/09/e33e096cbd815fea72ec82136e6d6c4c.jpg",
+      "launch": false,
+      "posted_at": "2026-11-01T21:12:57.803311+00:00"
     }
   ],
   "last_sync_date": "2026-11-01"

@@ -1276,5 +1276,105 @@
       1.0,
       1.0
     ]
+  },
+  "8705256441": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.05,
+      0.15,
+      0.95,
+      0.85
+    ]
+  },
+  "8705257011": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8705257287": {
+    "mode": "fit",
+    "why": "crop vetoed: The right edge of the t-shirt sleeve is cut off at the image edge",
+    "box": [
+      0.12,
+      0.04,
+      0.88,
+      0.96
+    ]
+  },
+  "8657432072": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.15,
+      0.0,
+      0.95,
+      1.0
+    ]
+  },
+  "8657432368": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.05,
+      0.95,
+      0.98
+    ]
+  },
+  "8705258469": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.1,
+      0.9,
+      0.95
+    ]
+  },
+  "8657433024": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.08,
+      0.9,
+      0.95
+    ]
+  },
+  "8705259121": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.08,
+      0.9,
+      0.95
+    ]
+  },
+  "8705259415": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.12,
+      0.9,
+      0.95
+    ]
+  },
+  "8705259679": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.12,
+      0.9,
+      0.95
+    ]
   }
 }

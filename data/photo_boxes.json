@@ -1222,5 +1222,23 @@
       0.8
     ],
     "reason": "Complete set of 10 vintage travel posters and all text including title, pricing, and product names"
+  },
+  "8808459317": {
+    "box": [
+      0.03,
+      0.03,
+      0.97,
+      0.97
+    ],
+    "reason": "All text, logo, ornament design, and decorative elements of the product card"
+  },
+  "8742132740": {
+    "box": [
+      0.1,
+      0.08,
+      0.9,
+      0.95
+    ],
+    "reason": "Coffee mug with quote, text, and decorative illustrations"
   }
 }

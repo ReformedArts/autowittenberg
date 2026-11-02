@@ -921,7 +921,31 @@
       "image_url": "https://i.pinimg.com/1200x/e3/3e/09/e33e096cbd815fea72ec82136e6d6c4c.jpg",
       "launch": false,
       "posted_at": "2026-11-01T21:12:57.803311+00:00"
+    },
+    {
+      "listing_id": 4605353294,
+      "image_id": 8808459317,
+      "palette": "amber",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Art",
+      "pin_id": "1099933909045810664",
+      "image_url": "https://i.pinimg.com/1200x/38/ea/e3/38eae3c7bfc59f9da00b0f5c508db77e.jpg",
+      "launch": true,
+      "posted_at": "2026-11-02T07:42:02.880174+00:00"
+    },
+    {
+      "listing_id": 4603195558,
+      "image_id": 8742132740,
+      "palette": "terracotta",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Gifts",
+      "pin_id": "1099933909045810680",
+      "image_url": "https://i.pinimg.com/1200x/bc/c8/ad/bcc8ad2aa2c350139c30d12ecc42f8f8.jpg",
+      "launch": true,
+      "posted_at": "2026-11-02T07:43:23.392773+00:00"
     }
   ],
-  "last_sync_date": "2026-11-01"
+  "last_sync_date": "2026-11-02"
 }

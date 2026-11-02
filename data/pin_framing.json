@@ -443,5 +443,15 @@
       1686
     ],
     "why": "content fits"
+  },
+  "8808459317": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8742132740": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
   }
 }

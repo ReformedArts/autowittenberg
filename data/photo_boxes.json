@@ -1258,5 +1258,14 @@
       1.0
     ],
     "reason": "All four Narnia travel poster artworks and their text labels"
+  },
+  "8647032539": {
+    "box": [
+      0.2,
+      0.1,
+      0.8,
+      0.9
+    ],
+    "reason": "Poster frame containing \"But If Not\" text and \"DANIEL 3:18\" reference"
   }
 }

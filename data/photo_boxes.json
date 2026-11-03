@@ -1321,5 +1321,23 @@
       0.65
     ],
     "reason": "All ten vintage travel posters and all product text, pricing information, and promotional content"
+  },
+  "8808459295": {
+    "box": [
+      0.1,
+      0.05,
+      0.9,
+      0.95
+    ],
+    "reason": "Ceramic ornament with text \"SOLUS CHRISTUS CHRIST ALONE\""
+  },
+  "8653292089": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete printable wall art design with wildflower meadow illustration, title heading, and Nicene Creed text"
   }
 }

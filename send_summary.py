@@ -21,9 +21,9 @@ def _safe_analytics():
         return None
 
 
-def _safe_instagram():
+def _safe_instagram(day=None):
     try:
-        return collect_instagram()
+        return collect_instagram(day)
     except Exception as e:  # missing Instagram stats must never stop the daily email
         print(f"Instagram stats unavailable: {e}")
         return None
@@ -42,7 +42,7 @@ def main():
         summary = run(count=5, mode="dry-run")
         now = dt.datetime.now(dt.timezone.utc).isoformat()
         summary["time"] = now
-        subject, plain, body, images = build_summary([summary], today, _safe_analytics(), _safe_instagram())
+        subject, plain, body, images = build_summary([summary], today, _safe_analytics(), _safe_instagram(today))
         out = Path(__file__).parent / "data" / "summary_preview.html"
         import base64
         from autowittenberg.notify import LOGO_PATH
@@ -59,7 +59,7 @@ def main():
         fill_image_urls(runs)
     except Exception as e:  # a missing enlarge-link must never stop the email
         print(f"Full-size image links unavailable: {e}")
-    subject, plain, body, images = build_summary(runs, today, _safe_analytics(), _safe_instagram(), final=args.record_sent)
+    subject, plain, body, images = build_summary(runs, today, _safe_analytics(), _safe_instagram(today), final=args.record_sent)
     now_et = dt.datetime.now(LOCAL_TZ)
     if args.record_sent and (now_et.date() > today and now_et.time() >= dt.time(2, 0)):
         subject = f"[Sent late: GitHub started it after the usual time] {subject}"

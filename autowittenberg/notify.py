@@ -201,6 +201,16 @@ def _analytics_html(a):
 
 
 _IG_COLS = ("Today", "7 days", "30 days")
+
+
+def _ig_cols(ig):
+    """Column headings; the first is the date itself when the email covers a day that has already ended."""
+    if ig.get("is_today", True):
+        return _IG_COLS
+    day = dt.date.fromisoformat(ig["day"])
+    return (f"{day:%b} {day.day}",) + _IG_COLS[1:]
+
+
 _IG_KEYS = ("today", "week", "month")
 
 
@@ -221,14 +231,15 @@ _IG_METRICS = (("Accounts reached", "reach"), ("Views", "views"), ("Profile visi
 
 
 def _ig_footnote(ig):
-    return (f"Followers: {ig['followers']:,}. Carousels posted in total: {ig['posts_total']}. All columns run through the time this email was built; Instagram counts days on its "
+    return (f"Followers: {ig['followers']:,}. Carousels posted in total: {ig['posts_total']}. The columns end with the day shown first (or the time this email was built, if that day is still going); Instagram counts days on its "
             "own clock, can update its numbers with a delay, and hides some statistics until an account has 100 followers.")
 
 
 def _instagram_text(ig):
     if not ig:
         return []
-    lines = ["", f"INSTAGRAM (@{ig['username']})", f"  {'':28s}{_IG_COLS[0]:>10s}{_IG_COLS[1]:>9s}{_IG_COLS[2]:>9s}"]
+    cols = _ig_cols(ig)
+    lines = ["", f"INSTAGRAM (@{ig['username']})", f"  {'':28s}{cols[0]:>10s}{cols[1]:>9s}{cols[2]:>9s}"]
     for label, _, vals in _ig_rows(ig):
         lines.append(f"  {label:28s}{vals[0]:>10s}{vals[1]:>9s}{vals[2]:>9s}")
     for p in ig["top"]:
@@ -242,6 +253,7 @@ def _instagram_html(ig):
         return ""
     e = html.escape
     cell = "padding:5px 0;text-align:right;font-variant-numeric:tabular-nums"
+    cols = _ig_cols(ig)
     rows = ""
     for i, (label, bold, vals) in enumerate(_ig_rows(ig)):
         style = ("font-weight:700;font-size:16px;" if bold else "") + ("border-top:1px solid #ddd;" if i == 2 else "")
@@ -254,7 +266,7 @@ def _instagram_html(ig):
     top = f"<div style='margin-top:10px;font-size:13px;color:#666'>Top carousels, last 30 days (by reach)</div>{top}" if top else ""
     return f"""<div style='margin:30px 0 8px;font-size:22px;font-weight:700'>Instagram</div>
 <table style="border-collapse:collapse;font-size:14px;width:100%">
-<tr style='color:#666;font-size:12px'><td></td><td style='text-align:right'>{_IG_COLS[0]}</td><td style='text-align:right;padding-left:18px'>{_IG_COLS[1]}</td><td style='text-align:right;padding-left:18px'>{_IG_COLS[2]}</td></tr>{rows}</table>
+<tr style='color:#666;font-size:12px'><td></td><td style='text-align:right'>{cols[0]}</td><td style='text-align:right;padding-left:18px'>{cols[1]}</td><td style='text-align:right;padding-left:18px'>{cols[2]}</td></tr>{rows}</table>
 {top}<div style='margin-top:10px;font-size:12px;color:#777'>{e(_ig_footnote(ig))}</div>"""
 
 

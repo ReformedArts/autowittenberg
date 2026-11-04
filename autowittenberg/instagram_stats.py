@@ -31,16 +31,20 @@ def _value(ig, token, metric, start, end):
     return data[0].get("total_value", {}).get("value") if data else None
 
 
-def collect(log=print):
-    """Returns None if Instagram isn't connected or can't be reached."""
+def collect(day=None, log=print):
+    """Numbers for the digest of Eastern date `day` (default: today). The first column is that whole day, so a
+    digest built in the small hours after midnight still reports the day it covers, not the new empty one.
+    Returns None if Instagram isn't connected or can't be reached."""
     token = load_instagram_token()
     if not token:
         return None
     now = dt.datetime.now(ET)
-    midnight = dt.datetime.combine(now.date(), dt.time(), tzinfo=ET)
-    windows = {"today": (midnight, now),
-               "week": (midnight - dt.timedelta(days=6), now),      # the last 7 calendar days, today included
-               "month": (midnight - dt.timedelta(days=29), now)}
+    day = day or now.date()
+    midnight = dt.datetime.combine(day, dt.time(), tzinfo=ET)
+    end = min(now, midnight + dt.timedelta(days=1))
+    windows = {"today": (midnight, end),
+               "week": (midnight - dt.timedelta(days=6), end),      # the 7 calendar days ending with `day`
+               "month": (midnight - dt.timedelta(days=29), end)}
     me = _get("me", token, fields="user_id,username,followers_count,media_count")
     ig = me["user_id"]
 
@@ -61,7 +65,7 @@ def collect(log=print):
     def count(days, a, b):
         return sum(a <= d < b for d in days)
 
-    today = now.date()
+    today = day
     tomorrow = today + dt.timedelta(days=1)
     spans = {"today": (today, tomorrow), "week": (today - dt.timedelta(days=6), tomorrow),
              "month": (today - dt.timedelta(days=29), tomorrow)}
@@ -85,4 +89,5 @@ def collect(log=print):
             top.append({"title": titles.get(listing_id, "Carousel"), "url": post["permalink"], **got})
     top = sorted(top, key=lambda p: (p["reach"], p["total_interactions"]), reverse=True)[:3]
     return {"numbers": numbers, "activity": activity, "followers": me.get("followers_count", 0),
-            "posts_total": len(ig_state["posted"]), "top": top, "username": me.get("username")}
+            "posts_total": len(ig_state["posted"]), "top": top, "username": me.get("username"),
+            "day": day.isoformat(), "is_today": day == now.date()}

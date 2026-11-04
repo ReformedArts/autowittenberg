@@ -74,13 +74,13 @@ class InstagramClient:
         before reporting a failure; otherwise the same listing would be posted again later."""
         try:
             return self._call("POST", f"{self.user_id}/media_publish", creation_id=container_id)["id"]
-        except InstagramError:
+        except InstagramError as e:
             if not caption:
                 raise
             time.sleep(20)
             found = self.find_recent_post(caption)
             if found:
-                print(f"Instagram reported an error, but the post is live (media {found}); treating it as posted.")
+                print(f"Instagram reported an error, but the post is live (media {found}); treating it as posted. Error was: {str(e)[:250]}")
                 return found
             raise
 

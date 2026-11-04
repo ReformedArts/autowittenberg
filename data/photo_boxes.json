@@ -1375,5 +1375,59 @@
       0.95
     ],
     "reason": "All product artwork, text, and branding including the Wicket Gate poster, Reformed Arts text, and Vintage Travel Poster label"
+  },
+  "8710097939": {
+    "box": [
+      0.1,
+      0.05,
+      0.9,
+      0.95
+    ],
+    "reason": "Vintage travel poster artwork and all associated text"
+  },
+  "8710097941": {
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All product artwork and text including poster, title, description, badges, and thumbnail set of ten prints"
+  },
+  "8710097953": {
+    "box": [
+      0.15,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire framed poster artwork with all text and branding"
+  },
+  "8662261434": {
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All product artwork and text content including poster, title, descriptions, and annotations"
+  },
+  "8710097961": {
+    "box": [
+      0.15,
+      0.08,
+      0.95,
+      0.35
+    ],
+    "reason": "Vintage travel poster and all product text/branding"
+  },
+  "8710097967": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      0.75
+    ],
+    "reason": "All product posters and text including title, subtitle, poster frames, pricing information, and \"THIS POSTER\" badge"
   }
 }

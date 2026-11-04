@@ -1496,5 +1496,65 @@
       0.9,
       0.65
     ]
+  },
+  "8710097939": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.05,
+      0.9,
+      0.95
+    ]
+  },
+  "8710097941": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ]
+  },
+  "8710097953": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.15,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8662261434": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ]
+  },
+  "8710097961": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.15,
+      0.08,
+      0.95,
+      0.35
+    ]
+  },
+  "8710097967": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      0.75
+    ]
   }
 }

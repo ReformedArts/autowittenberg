@@ -1447,5 +1447,23 @@
       0.65
     ],
     "reason": "All 10 poster artworks and all text including title, subtitle, pricing information, and individual poster labels"
+  },
+  "8700881489": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      0.65
+    ],
+    "reason": "All ten vintage travel posters, titles, and promotional text"
+  },
+  "8700888301": {
+    "box": [
+      0.1,
+      0.05,
+      0.9,
+      0.95
+    ],
+    "reason": "Vintage travel poster with Vanity Fair medieval market scene and all text elements"
   }
 }

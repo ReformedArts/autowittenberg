@@ -1041,7 +1041,19 @@
       "image_url": "https://i.pinimg.com/1200x/21/b0/36/21b0366e4017154aaf3c660630a22d5b.jpg",
       "launch": false,
       "posted_at": "2026-11-03T21:06:39.504338+00:00"
+    },
+    {
+      "listing_id": 4592322200,
+      "image_id": 8700794281,
+      "palette": "terracotta",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Retro Travel Posters",
+      "pin_id": "1099933909045961936",
+      "image_url": "https://i.pinimg.com/1200x/86/17/71/861771e383edc4360dbced68d876403e.jpg",
+      "launch": false,
+      "posted_at": "2026-11-04T01:24:48.526063+00:00"
     }
   ],
-  "last_sync_date": "2026-11-03"
+  "last_sync_date": "2026-11-04"
 }

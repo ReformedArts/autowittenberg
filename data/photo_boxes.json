@@ -1474,5 +1474,50 @@
       0.98
     ],
     "reason": "Framed vintage travel poster artwork with all text and product displayed"
+  },
+  "8653067358": {
+    "box": [
+      0.1,
+      0.08,
+      0.9,
+      0.95
+    ],
+    "reason": "All product artwork and text including Doubting Castle poster, vintage travel poster text labels, and Reformed Arts branding"
+  },
+  "8700895607": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire listing image containing all products, artwork, text, and promotional content"
+  },
+  "8653067388": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All products and text in vintage poster graphic design"
+  },
+  "8653067376": {
+    "box": [
+      0.13,
+      0.08,
+      0.87,
+      0.95
+    ],
+    "reason": "All product artwork and text including vintage travel poster and all product labels"
+  },
+  "8700895623": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      0.85
+    ],
+    "reason": "All ten vintage travel poster prints in frames and all text including title, descriptions, pricing, and product labels"
   }
 }

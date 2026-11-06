@@ -1528,5 +1528,50 @@
       0.85
     ],
     "reason": "Martin Luther sticker with quill and book"
+  },
+  "8653060212": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "entire product listing showing poster and all accompanying text, product details, and related images"
+  },
+  "8653060238": {
+    "box": [
+      0.25,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All artwork, text, and product content including poster, frame, text, and logos"
+  },
+  "8700888333": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire vintage travel poster graphic with all text and artwork elements"
+  },
+  "8700888329": {
+    "box": [
+      0.15,
+      0.05,
+      0.95,
+      0.35
+    ],
+    "reason": "Vanity Fair vintage travel poster and all text including Reformed Arts branding"
+  },
+  "8653060240": {
+    "box": [
+      0.1,
+      0.0,
+      0.9,
+      0.75
+    ],
+    "reason": "All 10 vintage travel posters, title text, and pricing information"
   }
 }

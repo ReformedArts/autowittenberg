@@ -568,5 +568,15 @@
       1600
     ],
     "why": "already the right shape"
+  },
+  "8587887785": {
+    "can_crop": true,
+    "window": [
+      0,
+      0,
+      1696,
+      2528
+    ],
+    "why": "already the right shape"
   }
 }

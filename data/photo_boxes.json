@@ -1582,5 +1582,14 @@
       0.95
     ],
     "reason": "Line art portrait of historical figure and watermark text"
+  },
+  "8587995843": {
+    "box": [
+      0.2,
+      0.02,
+      0.8,
+      0.98
+    ],
+    "reason": "All four reformation landmark posters and header text"
   }
 }

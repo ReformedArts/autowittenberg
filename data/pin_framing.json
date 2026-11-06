@@ -578,5 +578,25 @@
       2528
     ],
     "why": "already the right shape"
+  },
+  "8587995843": {
+    "can_crop": true,
+    "window": [
+      333,
+      0,
+      1667,
+      2000
+    ],
+    "why": "content fits"
+  },
+  "8588149343": {
+    "can_crop": true,
+    "window": [
+      0,
+      0,
+      1696,
+      2528
+    ],
+    "why": "already the right shape"
   }
 }

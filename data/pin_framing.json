@@ -548,5 +548,25 @@
       2048
     ],
     "why": "content fits"
+  },
+  "8525293412": {
+    "can_crop": true,
+    "window": [
+      133,
+      0,
+      1467,
+      2000
+    ],
+    "why": "content fits"
+  },
+  "8578427607": {
+    "can_crop": true,
+    "window": [
+      0,
+      0,
+      1073,
+      1600
+    ],
+    "why": "already the right shape"
   }
 }

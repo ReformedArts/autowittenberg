@@ -1573,5 +1573,14 @@
       0.75
     ],
     "reason": "All 10 vintage travel posters, title text, and pricing information"
+  },
+  "8525293412": {
+    "box": [
+      0.15,
+      0.1,
+      0.85,
+      0.95
+    ],
+    "reason": "Line art portrait of historical figure and watermark text"
   }
 }

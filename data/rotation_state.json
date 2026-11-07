@@ -1221,7 +1221,31 @@
       "image_url": "https://i.pinimg.com/1200x/50/74/b4/5074b416895ad6dcc8e756ad484bd448.jpg",
       "launch": false,
       "posted_at": "2026-11-06T21:06:22.677591+00:00"
+    },
+    {
+      "listing_id": 4578269384,
+      "image_id": 8601957697,
+      "palette": "terracotta",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Art",
+      "pin_id": "1099933909046227573",
+      "image_url": "https://i.pinimg.com/1200x/ea/0d/7d/ea0d7d690947bc9807b1573c3f786236.jpg",
+      "launch": false,
+      "posted_at": "2026-11-07T07:13:48.491731+00:00"
+    },
+    {
+      "listing_id": 4581553478,
+      "image_id": 8570191304,
+      "palette": "oxblood",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "95 Theses Art",
+      "pin_id": "1099933909046227585",
+      "image_url": "https://i.pinimg.com/1200x/88/41/0c/88410cc76a3c5b5c7dafdd0c7119e4cc.jpg",
+      "launch": false,
+      "posted_at": "2026-11-07T07:14:58.569431+00:00"
     }
   ],
-  "last_sync_date": "2026-11-06"
+  "last_sync_date": "2026-11-07"
 }

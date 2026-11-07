@@ -608,5 +608,10 @@
       2400
     ],
     "why": "already the right shape"
+  },
+  "8622738373": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
   }
 }

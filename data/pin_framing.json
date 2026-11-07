@@ -623,5 +623,15 @@
       2500
     ],
     "why": "content fits"
+  },
+  "8580205238": {
+    "can_crop": true,
+    "window": [
+      341,
+      0,
+      1707,
+      2048
+    ],
+    "why": "content fits"
   }
 }

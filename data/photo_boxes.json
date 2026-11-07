@@ -1645,5 +1645,14 @@
       0.95
     ],
     "reason": "All product artwork and text content - illuminated manuscript style wall art with 95 theses and caption"
+  },
+  "8627713033": {
+    "box": [
+      0.18,
+      0.08,
+      0.82,
+      0.98
+    ],
+    "reason": "All text and artwork in Wittenberg Door Collection listing"
   }
 }

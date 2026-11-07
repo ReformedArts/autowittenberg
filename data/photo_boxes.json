@@ -1591,5 +1591,50 @@
       0.98
     ],
     "reason": "All four reformation landmark posters and header text"
+  },
+  "8700881475": {
+    "box": [
+      0.13,
+      0.05,
+      0.87,
+      0.95
+    ],
+    "reason": "Entire product listing content including poster, text, and all visible product elements"
+  },
+  "8700881435": {
+    "box": [
+      0.09,
+      0.08,
+      0.91,
+      0.92
+    ],
+    "reason": "All product artwork and text including vintage travel poster, text panels, and Reformed Arts branding"
+  },
+  "8653053506": {
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All product artwork, text, logos, and the ten-poster collection set"
+  },
+  "8700881477": {
+    "box": [
+      0.15,
+      0.02,
+      0.95,
+      0.98
+    ],
+    "reason": "Framed print with artwork and all text including title, subtitle, and branding"
+  },
+  "8700881483": {
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All artwork and text including poster, descriptive text, and design elements"
   }
 }

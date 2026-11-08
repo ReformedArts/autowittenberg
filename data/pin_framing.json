@@ -633,5 +633,20 @@
       2048
     ],
     "why": "content fits"
+  },
+  "8599312036": {
+    "can_crop": true,
+    "window": [
+      341,
+      0,
+      1707,
+      2048
+    ],
+    "why": "content fits"
+  },
+  "8625127458": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
   }
 }

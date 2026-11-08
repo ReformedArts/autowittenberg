@@ -1663,5 +1663,23 @@
       0.85
     ],
     "reason": "Framed 95 Theses artwork"
+  },
+  "8599312036": {
+    "box": [
+      0.25,
+      0.1,
+      0.75,
+      0.75
+    ],
+    "reason": "Framed 95 Theses print with title and text content"
+  },
+  "8625127458": {
+    "box": [
+      0.15,
+      0.0,
+      0.85,
+      1.0
+    ],
+    "reason": "Person wearing navy shirt with back print text and jeans"
   }
 }

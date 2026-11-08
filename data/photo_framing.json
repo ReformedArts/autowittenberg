@@ -1736,5 +1736,65 @@
       1.0,
       0.65
     ]
+  },
+  "8653044296": {
+    "mode": "fit",
+    "why": "crop vetoed: Text on the left edge and right edge - partial text visible including \"TRAVEL PO",
+    "box": [
+      0.32,
+      0.04,
+      0.68,
+      0.96
+    ]
+  },
+  "8700872237": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ]
+  },
+  "8653044332": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8653044334": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8700872451": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.13,
+      0.03,
+      0.87,
+      0.95
+    ]
+  },
+  "8653044338": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.0,
+      0.9,
+      0.65
+    ]
   }
 }

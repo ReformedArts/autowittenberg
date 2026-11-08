@@ -1681,5 +1681,50 @@
       1.0
     ],
     "reason": "Person wearing navy shirt with back print text and jeans"
+  },
+  "8653044296": {
+    "box": [
+      0.32,
+      0.04,
+      0.68,
+      0.96
+    ],
+    "reason": "Framed vintage travel poster artwork and all associated text"
+  },
+  "8700872237": {
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All product artwork, prints, text, and product information including the main palace print, descriptive text, thumbnails of the set, and product details"
+  },
+  "8653044332": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire framed artwork and all product details visible in image"
+  },
+  "8653044334": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "This is a flat graphic design composition showing the complete product artwork and all text elements that fill the entire frame"
+  },
+  "8700872451": {
+    "box": [
+      0.13,
+      0.03,
+      0.87,
+      0.95
+    ],
+    "reason": "All product artwork, text, and branding including the framed palace poster, Reformed Arts logo, and Palace Beautiful vintage travel poster text"
   }
 }

@@ -1771,5 +1771,23 @@
       0.35
     ],
     "reason": "All product artwork and text including framed poster, digital download text, and branding"
+  },
+  "7551655798": {
+    "box": [
+      0.15,
+      0.12,
+      0.75,
+      0.95
+    ],
+    "reason": "Framed scripture art print with text"
+  },
+  "8516221390": {
+    "box": [
+      0.25,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "Names of God framed wall art print"
   }
 }

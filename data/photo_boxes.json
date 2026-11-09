@@ -1789,5 +1789,23 @@
       0.95
     ],
     "reason": "Names of God framed wall art print"
+  },
+  "8530436306": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete poster artwork with all text and imagery"
+  },
+  "8647032523": {
+    "box": [
+      0.1,
+      0.2,
+      0.9,
+      0.8
+    ],
+    "reason": "Three poster frames with \"But If Not\" text and \"Daniel 3:18\" visible on each"
   }
 }

@@ -1726,5 +1726,50 @@
       0.95
     ],
     "reason": "All product artwork, text, and branding including the framed palace poster, Reformed Arts logo, and Palace Beautiful vintage travel poster text"
+  },
+  "8652987220": {
+    "box": [
+      0.1,
+      0.08,
+      0.9,
+      0.95
+    ],
+    "reason": "Vintage travel poster artwork and all associated text including title, tagline, and branding"
+  },
+  "8652987230": {
+    "box": [
+      0.07,
+      0.04,
+      0.95,
+      0.95
+    ],
+    "reason": "All product artwork, text, titles, descriptions, badges, and thumbnail images in the listing"
+  },
+  "8652987234": {
+    "box": [
+      0.17,
+      0.0,
+      0.99,
+      1.0
+    ],
+    "reason": "Framed vintage travel poster with all text, artwork, and product display"
+  },
+  "8700814761": {
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All product artwork and text including vintage poster print and descriptive text"
+  },
+  "8652987242": {
+    "box": [
+      0.12,
+      0.06,
+      0.88,
+      0.35
+    ],
+    "reason": "All product artwork and text including framed poster, digital download text, and branding"
   }
 }

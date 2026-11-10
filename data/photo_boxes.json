@@ -1807,5 +1807,32 @@
       0.8
     ],
     "reason": "Three poster frames with \"But If Not\" text and \"Daniel 3:18\" visible on each"
+  },
+  "8653292819": {
+    "box": [
+      0.3,
+      0.1,
+      0.75,
+      0.95
+    ],
+    "reason": "Nicene Creed framed print with landscape image and text"
+  },
+  "8615615932": {
+    "box": [
+      0.35,
+      0.04,
+      0.98,
+      0.96
+    ],
+    "reason": "Framed Apostles Creed printable wall art with landscape image and text"
+  },
+  "8652727120": {
+    "box": [
+      0.08,
+      0.05,
+      0.98,
+      0.95
+    ],
+    "reason": "All products and text in Pilgrim's Progress poster set listing"
   }
 }

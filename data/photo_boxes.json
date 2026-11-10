@@ -1834,5 +1834,50 @@
       0.95
     ],
     "reason": "All products and text in Pilgrim's Progress poster set listing"
+  },
+  "8652966550": {
+    "box": [
+      0.2,
+      0.05,
+      0.95,
+      0.55
+    ],
+    "reason": "Wicket Gate vintage travel poster and all associated text"
+  },
+  "8700794265": {
+    "box": [
+      0.05,
+      0.04,
+      0.95,
+      0.96
+    ],
+    "reason": "All products, artwork, text, logos, and watermarks in the listing"
+  },
+  "8652966570": {
+    "box": [
+      0.25,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Framed vintage travel poster with artwork and all text elements"
+  },
+  "8700794277": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Full listing image containing the Pilgrim's Progress poster artwork and all descriptive text"
+  },
+  "8652966710": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete product display with all 10 posters, text, pricing, and promotional elements"
   }
 }

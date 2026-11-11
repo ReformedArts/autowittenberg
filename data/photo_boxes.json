@@ -1888,5 +1888,41 @@
       0.95
     ],
     "reason": "The framed print poster with all text, imagery, and REFORMED ARTS branding"
+  },
+  "8653027966": {
+    "box": [
+      0.3,
+      0.04,
+      0.95,
+      0.75
+    ],
+    "reason": "Vintage travel poster print with cross landscape illustration and all product text"
+  },
+  "8653027996": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete listing image with poster, text, and all product content"
+  },
+  "8653028006": {
+    "box": [
+      0.15,
+      0.05,
+      0.85,
+      0.35
+    ],
+    "reason": "Vintage travel poster artwork and all associated text"
+  },
+  "8700855641": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      0.75
+    ],
+    "reason": "All ten vintage travel poster prints in frames, complete title, and pricing information"
   }
 }

@@ -1509,7 +1509,24 @@
       "image_url": "https://i.pinimg.com/1200x/bb/4b/bc/bb4bbcc01fc993bd2af206abb71bb7f4.jpg",
       "launch": false,
       "posted_at": "2026-11-11T18:43:47.182255+00:00"
+    },
+    {
+      "listing_id": 4593473167,
+      "image_id": 8710097961,
+      "palette": "terracotta",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Narnia & Literary Art",
+      "pin_id": "1099933909046628230",
+      "image_url": "https://i.pinimg.com/1200x/2d/75/ce/2d75ce235c9bc6c7f9cc532fd859f06a.jpg",
+      "launch": false,
+      "posted_at": "2026-11-12T01:03:57.530487+00:00"
+    },
+    {
+      "listing_id": 4593487016,
+      "posted_at": "2026-11-12T01:05:04.247658+00:00",
+      "failed": true
     }
   ],
-  "last_sync_date": "2026-11-11"
+  "last_sync_date": "2026-11-12"
 }

@@ -773,5 +773,15 @@
       1484
     ],
     "why": "content fits"
+  },
+  "8564092447": {
+    "can_crop": true,
+    "window": [
+      115,
+      0,
+      1245,
+      1696
+    ],
+    "why": "content fits"
   }
 }

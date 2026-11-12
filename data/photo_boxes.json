@@ -2005,5 +2005,14 @@
       0.95
     ],
     "reason": "Framed print with sun and \"Post Tenebras Lux\" text"
+  },
+  "8564092447": {
+    "box": [
+      0.15,
+      0.2,
+      0.85,
+      0.9
+    ],
+    "reason": "Post Tenebras Lux framed print artwork"
   }
 }

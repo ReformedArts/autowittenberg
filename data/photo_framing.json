@@ -1976,5 +1976,111 @@
       1.0,
       0.75
     ]
+  },
+  "8652727100": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.05,
+      0.02,
+      0.95,
+      0.85
+    ]
+  },
+  "8652727306": {
+    "mode": "crop",
+    "window": [
+      300,
+      0,
+      2700,
+      3000
+    ],
+    "why": "content fits",
+    "box": [
+      0.25,
+      0.04,
+      0.75,
+      0.95
+    ]
+  },
+  "8700553599": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8652727120": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.08,
+      0.05,
+      0.98,
+      0.95
+    ]
+  },
+  "8700553619": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8700553723": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.05,
+      0.04,
+      0.95,
+      0.96
+    ]
+  },
+  "8700553733": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8700553737": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8700553729": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ]
+  },
+  "8652727216": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.08,
+      0.05,
+      0.98,
+      0.95
+    ]
   }
 }

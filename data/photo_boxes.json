@@ -1924,5 +1924,77 @@
       0.75
     ],
     "reason": "All ten vintage travel poster prints in frames, complete title, and pricing information"
+  },
+  "8652727100": {
+    "box": [
+      0.05,
+      0.02,
+      0.95,
+      0.85
+    ],
+    "reason": "All 10 Pilgrim's Progress poster artworks, title text, subtitle, logo, and download information"
+  },
+  "8652727306": {
+    "box": [
+      0.25,
+      0.04,
+      0.75,
+      0.95
+    ],
+    "reason": "River Jordan vintage travel poster with frame and all text"
+  },
+  "8700553619": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete product listing showing all posters, text, and promotional information"
+  },
+  "8700553723": {
+    "box": [
+      0.05,
+      0.04,
+      0.95,
+      0.96
+    ],
+    "reason": "All product posters, text, badges, and product set thumbnails"
+  },
+  "8700553733": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete product listing with all artwork and text"
+  },
+  "8700553737": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All product artwork and text including poster, title text, description, buttons, poster thumbnails, and product watermark"
+  },
+  "8700553729": {
+    "box": [
+      0.08,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All products, artwork pieces, and text in the listing"
+  },
+  "8652727216": {
+    "box": [
+      0.08,
+      0.05,
+      0.98,
+      0.95
+    ],
+    "reason": "All products, artwork, text, logos, and watermarks in the listing"
   }
 }

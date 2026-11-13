@@ -2023,5 +2023,23 @@
       0.95
     ],
     "reason": "Five Solas poster frame with vases, flowers, and Reformed Arts watermark"
+  },
+  "8506651548": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete listing graphic including all text, logos, and artwork"
+  },
+  "8559995685": {
+    "box": [
+      0.3,
+      0.3,
+      0.7,
+      0.7
+    ],
+    "reason": "Martin Luther sticker vinyl decal product"
   }
 }

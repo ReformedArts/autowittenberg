@@ -1598,6 +1598,30 @@
       "image_url": "https://i.pinimg.com/1200x/33/53/19/335319e8490439f6b446cca89b52fb51.jpg",
       "launch": false,
       "posted_at": "2026-11-13T03:27:15.505809+00:00"
+    },
+    {
+      "listing_id": 4573027306,
+      "image_id": 8506651548,
+      "palette": "amber",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Art",
+      "pin_id": "1099933909046767800",
+      "image_url": "https://i.pinimg.com/1200x/51/a8/b0/51a8b06aa869815e7c302383982d8849.jpg",
+      "launch": false,
+      "posted_at": "2026-11-13T18:48:05.763487+00:00"
+    },
+    {
+      "listing_id": 4573768644,
+      "image_id": 8559995685,
+      "palette": "oxblood",
+      "crop_style": "cover_center",
+      "headline": "Water-resistant Lutheran sticker for any surface",
+      "board": "Reformed Gifts",
+      "pin_id": "1099933909046767832",
+      "image_url": "https://i.pinimg.com/1200x/22/5e/0d/225e0d00853dcd271d9734ee4fe14a2b.jpg",
+      "launch": false,
+      "posted_at": "2026-11-13T18:48:30.116031+00:00"
     }
   ],
   "last_sync_date": "2026-11-13"

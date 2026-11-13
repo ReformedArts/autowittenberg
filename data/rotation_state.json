@@ -1574,7 +1574,31 @@
       "image_url": "https://i.pinimg.com/1200x/6d/cc/ec/6dccecc4702a73c0fe92db230a444f47.jpg",
       "launch": false,
       "posted_at": "2026-11-12T22:44:47.382606+00:00"
+    },
+    {
+      "listing_id": 4434858054,
+      "image_id": 7563887232,
+      "palette": "oxblood",
+      "crop_style": "cover_center",
+      "headline": "Teach the Five Solas in your classroom",
+      "board": "Reformed Art",
+      "pin_id": "1099933909046716445",
+      "image_url": "https://i.pinimg.com/1200x/a5/c6/ca/a5c6cabd261a677f2358ebea72863dcd.jpg",
+      "launch": false,
+      "posted_at": "2026-11-13T03:26:08.442992+00:00"
+    },
+    {
+      "listing_id": 4571710979,
+      "image_id": 8497077256,
+      "palette": "gold",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "95 Theses Art",
+      "pin_id": "1099933909046716466",
+      "image_url": "https://i.pinimg.com/1200x/33/53/19/335319e8490439f6b446cca89b52fb51.jpg",
+      "launch": false,
+      "posted_at": "2026-11-13T03:27:15.505809+00:00"
     }
   ],
-  "last_sync_date": "2026-11-12"
+  "last_sync_date": "2026-11-13"
 }

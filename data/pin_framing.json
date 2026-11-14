@@ -808,5 +808,25 @@
     "can_crop": false,
     "window": null,
     "why": "crop vetoed: Bottom of shoulders and body/clothing cut off at bottom edge"
+  },
+  "8530564074": {
+    "can_crop": true,
+    "window": [
+      0,
+      0,
+      1073,
+      1600
+    ],
+    "why": "already the right shape"
+  },
+  "8540022462": {
+    "can_crop": true,
+    "window": [
+      0,
+      0,
+      1696,
+      2528
+    ],
+    "why": "already the right shape"
   }
 }

@@ -1622,7 +1622,19 @@
       "image_url": "https://i.pinimg.com/1200x/22/5e/0d/225e0d00853dcd271d9734ee4fe14a2b.jpg",
       "launch": false,
       "posted_at": "2026-11-13T18:48:30.116031+00:00"
+    },
+    {
+      "listing_id": 4575544776,
+      "image_id": 8573156425,
+      "palette": "amber",
+      "crop_style": "cover_top",
+      "headline": "Minimalist line art for history lovers",
+      "board": "Reformed Art",
+      "pin_id": "1099933909046788637",
+      "image_url": "https://i.pinimg.com/1200x/f9/44/cc/f944ccc250e932e94344a9a1f51e440d.jpg",
+      "launch": false,
+      "posted_at": "2026-11-14T00:21:28.681354+00:00"
     }
   ],
-  "last_sync_date": "2026-11-13"
+  "last_sync_date": "2026-11-14"
 }

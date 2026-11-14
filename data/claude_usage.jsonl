@@ -162,3 +162,15 @@
 {"time": "2026-11-13T18:48:33+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1395, "out": 52, "usd": 0.001655}
 {"time": "2026-11-14T00:22:10+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2033, "out": 118, "usd": 0.002623}
 {"time": "2026-11-14T00:22:12+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1395, "out": 63, "usd": 0.00171}
+{"time": "2026-11-14T03:24:26+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2296, "out": 121, "usd": 0.002901}
+{"time": "2026-11-14T03:24:28+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2296, "out": 121, "usd": 0.002901}
+{"time": "2026-11-14T03:24:29+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1315, "out": 52, "usd": 0.001575}
+{"time": "2026-11-14T03:24:31+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2296, "out": 119, "usd": 0.002891}
+{"time": "2026-11-14T03:24:31+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1315, "out": 52, "usd": 0.001575}
+{"time": "2026-11-14T03:24:33+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2296, "out": 120, "usd": 0.002896}
+{"time": "2026-11-14T03:24:35+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2296, "out": 119, "usd": 0.002891}
+{"time": "2026-11-14T03:24:36+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1315, "out": 52, "usd": 0.001575}
+{"time": "2026-11-14T03:24:38+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2296, "out": 117, "usd": 0.002881}
+{"time": "2026-11-14T03:24:40+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1315, "out": 52, "usd": 0.001575}
+{"time": "2026-11-14T03:24:43+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2296, "out": 127, "usd": 0.002931}
+{"time": "2026-11-14T03:24:47+00:00", "purpose": "generate_instagram_caption", "model": "claude-haiku-4-5-20251001", "in": 966, "out": 251, "usd": 0.002221}

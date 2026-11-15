@@ -873,5 +873,15 @@
       2048
     ],
     "why": "content fits"
+  },
+  "8647152951": {
+    "can_crop": true,
+    "window": [
+      485,
+      0,
+      1850,
+      2048
+    ],
+    "why": "content fits"
   }
 }

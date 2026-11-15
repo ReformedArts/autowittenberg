@@ -177,3 +177,13 @@
 {"time": "2026-11-14T14:11:07+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2303, "out": 117, "usd": 0.002888}
 {"time": "2026-11-15T02:43:30+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2294, "out": 127, "usd": 0.002929}
 {"time": "2026-11-15T02:43:54+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 1963, "out": 125, "usd": 0.002588}
+{"time": "2026-11-15T02:51:06+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 1966, "out": 127, "usd": 0.002601}
+{"time": "2026-11-15T02:51:08+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1315, "out": 52, "usd": 0.001575}
+{"time": "2026-11-15T02:51:10+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 1966, "out": 134, "usd": 0.002636}
+{"time": "2026-11-15T02:51:13+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 1966, "out": 115, "usd": 0.002541}
+{"time": "2026-11-15T02:51:15+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 1966, "out": 122, "usd": 0.002576}
+{"time": "2026-11-15T02:51:19+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 1966, "out": 128, "usd": 0.002606}
+{"time": "2026-11-15T02:51:19+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1315, "out": 52, "usd": 0.001575}
+{"time": "2026-11-15T02:51:22+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 1966, "out": 129, "usd": 0.002611}
+{"time": "2026-11-15T02:51:23+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1315, "out": 52, "usd": 0.001575}
+{"time": "2026-11-15T02:51:26+00:00", "purpose": "generate_instagram_caption", "model": "claude-haiku-4-5-20251001", "in": 970, "out": 277, "usd": 0.002355}

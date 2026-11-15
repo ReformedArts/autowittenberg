@@ -2140,5 +2140,59 @@
       0.95
     ],
     "reason": "95 Theses wall art print and visible text on poster"
+  },
+  "8663446597": {
+    "box": [
+      0.2,
+      0.08,
+      0.8,
+      0.7
+    ],
+    "reason": "Apostles Creed print with landscape image, text, and frame"
+  },
+  "8663450761": {
+    "box": [
+      0.15,
+      0.1,
+      0.95,
+      0.95
+    ],
+    "reason": "Printable wall art with Apostles' Creed and landscape image in frame, plus product label"
+  },
+  "8663445795": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire image contains product mockup and product information text"
+  },
+  "8615614980": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete printable wall art design with botanical header and Apostles' Creed text"
+  },
+  "8663445793": {
+    "box": [
+      0.28,
+      0.045,
+      0.72,
+      0.96
+    ],
+    "reason": "Apostles Creed printable wall art with landscape image and full text"
+  },
+  "8663448343": {
+    "box": [
+      0.3,
+      0.08,
+      0.75,
+      0.92
+    ],
+    "reason": "Framed Apostles Creed printable art with landscape image and text"
   }
 }

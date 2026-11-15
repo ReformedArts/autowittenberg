@@ -1718,6 +1718,30 @@
       "image_url": "https://i.pinimg.com/1200x/d0/42/5c/d0425cb0482ad7f406306c5ecb9c2ce5.jpg",
       "launch": false,
       "posted_at": "2026-11-15T02:43:52.807191+00:00"
+    },
+    {
+      "listing_id": 4582827339,
+      "image_id": 8627737897,
+      "palette": "terracotta",
+      "crop_style": "zoom_detail",
+      "headline": "Deep steel blue typographic wall art",
+      "board": "95 Theses Art",
+      "pin_id": "1099933909046935127",
+      "image_url": "https://i.pinimg.com/1200x/27/12/9c/27129cd760e2a1d65c7472e2e0be824d.jpg",
+      "launch": false,
+      "posted_at": "2026-11-15T17:13:25.100410+00:00"
+    },
+    {
+      "listing_id": 4582869285,
+      "image_id": 8580205552,
+      "palette": "amber",
+      "crop_style": "cover_center",
+      "headline": "Statement wall art for Reformed homes",
+      "board": "95 Theses Art",
+      "pin_id": "1099933909046935161",
+      "image_url": "https://i.pinimg.com/1200x/a7/fc/8e/a7fc8e2d05e58bacda7867eafc9f6641.jpg",
+      "launch": false,
+      "posted_at": "2026-11-15T17:13:51.581591+00:00"
     }
   ],
   "last_sync_date": "2026-11-15"

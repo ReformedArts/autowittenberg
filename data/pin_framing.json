@@ -843,5 +843,15 @@
       2528
     ],
     "why": "already the right shape"
+  },
+  "8618036265": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
+  },
+  "8574918848": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
   }
 }

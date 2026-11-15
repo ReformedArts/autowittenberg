@@ -2122,5 +2122,23 @@
       1.0
     ],
     "reason": "All posters and text in the digital download product display"
+  },
+  "8618036265": {
+    "box": [
+      0.05,
+      0.1,
+      0.95,
+      0.95
+    ],
+    "reason": "95 Theses manuscript print with all numbered theses text and caption"
+  },
+  "8574918848": {
+    "box": [
+      0.3,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "95 Theses wall art print and visible text on poster"
   }
 }

@@ -1754,7 +1754,31 @@
       "image_url": "https://i.pinimg.com/1200x/1f/33/77/1f33774c0e0939f36094090d13ce0db3.jpg",
       "launch": false,
       "posted_at": "2026-11-15T21:53:25.176030+00:00"
+    },
+    {
+      "listing_id": 4588740908,
+      "image_id": 8672948427,
+      "palette": "gold",
+      "crop_style": "zoom_detail",
+      "headline": "It chose me—predestined Calvinist humor",
+      "board": "Reformed Gifts",
+      "pin_id": "1099933909046970475",
+      "image_url": "https://i.pinimg.com/1200x/98/f0/39/98f039293864ee4b2c3cc05e092b87f3.jpg",
+      "launch": false,
+      "posted_at": "2026-11-16T02:11:37.145790+00:00"
+    },
+    {
+      "listing_id": 4592877797,
+      "image_id": 8657432368,
+      "palette": "oxblood",
+      "crop_style": "cover_center",
+      "headline": "Quiet conversation starter for pastors",
+      "board": "Reformed Gifts",
+      "pin_id": "1099933909046970484",
+      "image_url": "https://i.pinimg.com/1200x/b4/94/c7/b494c77745258caac1cbf1849d9c622e.jpg",
+      "launch": false,
+      "posted_at": "2026-11-16T02:12:39.748153+00:00"
     }
   ],
-  "last_sync_date": "2026-11-15"
+  "last_sync_date": "2026-11-16"
 }

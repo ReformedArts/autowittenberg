@@ -2221,5 +2221,59 @@
       0.77
     ],
     "reason": "Framed canvas print showing 95 Theses with complete visible content"
+  },
+  "8605454658": {
+    "box": [
+      0.3,
+      0.08,
+      0.75,
+      0.95
+    ],
+    "reason": "Nicene Creed framed print with landscape artwork and text"
+  },
+  "8605454664": {
+    "box": [
+      0.34,
+      0.11,
+      0.67,
+      0.75
+    ],
+    "reason": "Nicene Creed printable wall art with landscape and text"
+  },
+  "8605454652": {
+    "box": [
+      0.35,
+      0.1,
+      0.65,
+      0.5
+    ],
+    "reason": "Nicene Creed printable wall art with wildflower meadow landscape and text"
+  },
+  "8615630554": {
+    "box": [
+      0.15,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All product artwork (framed print with Nicene Creed text and meadow landscape) and product information text"
+  },
+  "8605453996": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire product listing image with framed art, text, and product information"
+  },
+  "8605454002": {
+    "box": [
+      0.2,
+      0.04,
+      0.8,
+      0.96
+    ],
+    "reason": "Nicene Creed printable wall art with wildflower meadow landscape image and full text content"
   }
 }

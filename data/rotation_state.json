@@ -1802,7 +1802,43 @@
       "image_url": "https://i.pinimg.com/1200x/47/f1/79/47f179183e4a952e5bf5a56faf193015.jpg",
       "launch": false,
       "posted_at": "2026-11-16T20:31:07.231122+00:00"
+    },
+    {
+      "listing_id": 4432882785,
+      "image_id": 7599600145,
+      "palette": "terracotta",
+      "crop_style": "cover_top",
+      "headline": "Meaningful gift for faith-filled spaces",
+      "board": "Scripture Art",
+      "pin_id": "1099933909047048410",
+      "image_url": "https://i.pinimg.com/1200x/db/c4/4d/dbc44ddaf73c16573119d354d92abf06.jpg",
+      "launch": false,
+      "posted_at": "2026-11-17T03:12:35.152497+00:00"
+    },
+    {
+      "listing_id": 4571717512,
+      "image_id": 8496969994,
+      "palette": "amber",
+      "crop_style": "cover_top",
+      "headline": "Printable typography in 4 color styles",
+      "board": "Scripture Art",
+      "pin_id": "1099933909047048427",
+      "image_url": "https://i.pinimg.com/1200x/3b/89/d0/3b89d0cdba6d95e001eca1d34c78f688.jpg",
+      "launch": false,
+      "posted_at": "2026-11-17T03:13:42.582646+00:00"
+    },
+    {
+      "listing_id": 4576209407,
+      "image_id": 8578299121,
+      "palette": "oxblood",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Narnia & Literary Art",
+      "pin_id": "1099933909047048437",
+      "image_url": "https://i.pinimg.com/1200x/dc/07/a2/dc07a2b3aa7bc8cb39b56b56d4c7f1b1.jpg",
+      "launch": false,
+      "posted_at": "2026-11-17T03:14:07.882276+00:00"
     }
   ],
-  "last_sync_date": "2026-11-16"
+  "last_sync_date": "2026-11-17"
 }

@@ -2275,5 +2275,32 @@
       0.96
     ],
     "reason": "Nicene Creed printable wall art with wildflower meadow landscape image and full text content"
+  },
+  "7599600145": {
+    "box": [
+      0.15,
+      0.0,
+      0.95,
+      1.0
+    ],
+    "reason": "Framed scripture art print and all visible text"
+  },
+  "8496969994": {
+    "box": [
+      0.25,
+      0.05,
+      0.75,
+      0.95
+    ],
+    "reason": "Names of God wall art print and surrounding product display"
+  },
+  "8578299121": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Narnia travel poster graphic fills entire frame"
   }
 }

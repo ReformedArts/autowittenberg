@@ -2383,5 +2383,32 @@
       1.0
     ],
     "reason": "All product posters, text, and logos fill the entire image frame"
+  },
+  "8647032525": {
+    "box": [
+      0.3,
+      0.08,
+      0.7,
+      0.65
+    ],
+    "reason": "Poster artwork \"But If Not\" in frame"
+  },
+  "8647032517": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire listing photo including product frame, artwork, and all text"
+  },
+  "8647032541": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All posters, text, logo, and products fill the entire image frame"
   }
 }

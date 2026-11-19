@@ -2410,5 +2410,68 @@
       1.0
     ],
     "reason": "All posters, text, logo, and products fill the entire image frame"
+  },
+  "8628054109": {
+    "box": [
+      0.17,
+      0.08,
+      0.95,
+      0.98
+    ],
+    "reason": "Framed 95 Theses artwork with all text, title, and product"
+  },
+  "8580206256": {
+    "box": [
+      0.15,
+      0.09,
+      0.85,
+      0.95
+    ],
+    "reason": "Framed canvas artwork showing 95 Theses with text and borders"
+  },
+  "8580206934": {
+    "box": [
+      0.25,
+      0.08,
+      0.95,
+      0.95
+    ],
+    "reason": "Framed canvas artwork of 95 Theses with text and title"
+  },
+  "8580207414": {
+    "box": [
+      0.3,
+      0.1,
+      0.75,
+      0.65
+    ],
+    "reason": "Framed 95 Theses artwork poster with text and title"
+  },
+  "8580207712": {
+    "box": [
+      0.3,
+      0.2,
+      0.95,
+      0.75
+    ],
+    "reason": "Framed 95 Theses artwork on wall"
+  },
+  "8580208050": {
+    "box": [
+      0.15,
+      0.09,
+      0.85,
+      0.95
+    ],
+    "reason": "Framed canvas artwork showing the 95 Theses with all text and product"
+  },
+  "8580208392": {
+    "box": [
+      0.1,
+      0.05,
+      0.9,
+      0.95
+    ],
+    "reason": "Framed canvas artwork with 95 Theses content"
   }
 }

@@ -1982,7 +1982,31 @@
       "image_url": "https://i.pinimg.com/1200x/d6/10/4b/d6104b8ae8834a85207c4226126764c8.jpg",
       "launch": false,
       "posted_at": "2026-11-19T19:10:54.061085+00:00"
+    },
+    {
+      "listing_id": 4593487016,
+      "image_id": 8662248074,
+      "palette": "terracotta",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Retro Travel Posters",
+      "pin_id": "1099933909047274896",
+      "image_url": "https://i.pinimg.com/1200x/b7/75/7f/b7757f73e3ae5f6b7609a44823650984.jpg",
+      "launch": false,
+      "posted_at": "2026-11-20T01:18:46.753867+00:00"
+    },
+    {
+      "listing_id": 4593487788,
+      "image_id": 8710092475,
+      "palette": "amber",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Narnia & Literary Art",
+      "pin_id": "1099933909047274909",
+      "image_url": "https://i.pinimg.com/1200x/66/d3/89/66d389462e446078e781332cb96f12b9.jpg",
+      "launch": false,
+      "posted_at": "2026-11-20T01:19:42.256289+00:00"
     }
   ],
-  "last_sync_date": "2026-11-19"
+  "last_sync_date": "2026-11-20"
 }

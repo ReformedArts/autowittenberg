@@ -2473,5 +2473,23 @@
       0.95
     ],
     "reason": "Framed canvas artwork with 95 Theses content"
+  },
+  "7599616351": {
+    "box": [
+      0.25,
+      0.15,
+      0.75,
+      0.9
+    ],
+    "reason": "Post Tenebras Lux print with sun design and frame"
+  },
+  "7538014590": {
+    "box": [
+      0.1,
+      0.15,
+      0.9,
+      0.95
+    ],
+    "reason": "Post Tenebras Lux coffee mug with text and design"
   }
 }

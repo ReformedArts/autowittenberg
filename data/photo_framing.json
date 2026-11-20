@@ -2770,5 +2770,51 @@
       0.9,
       0.95
     ]
+  },
+  "8627737897": {
+    "mode": "crop",
+    "window": [
+      675,
+      0,
+      2475,
+      2250
+    ],
+    "why": "content fits",
+    "box": [
+      0.3,
+      0.08,
+      0.75,
+      0.95
+    ]
+  },
+  "8627713037": {
+    "mode": "crop",
+    "window": [
+      0,
+      0,
+      2000,
+      2500
+    ],
+    "why": "already the right shape"
+  },
+  "8627713043": {
+    "mode": "crop",
+    "window": [
+      0,
+      0,
+      2000,
+      2500
+    ],
+    "why": "already the right shape"
+  },
+  "8627713033": {
+    "mode": "crop",
+    "window": [
+      0,
+      0,
+      2000,
+      2500
+    ],
+    "why": "already the right shape"
   }
 }

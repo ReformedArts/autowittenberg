@@ -2536,5 +2536,23 @@
       0.95
     ],
     "reason": "Framed Five Solas poster with text, decorative vases, and \"Reformed Arts\" watermark"
+  },
+  "8512129070": {
+    "box": [
+      0.25,
+      0.3,
+      0.5,
+      0.65
+    ],
+    "reason": "Martin Luther sticker with quill and book"
+  },
+  "8573156383": {
+    "box": [
+      0.1,
+      0.1,
+      0.9,
+      0.95
+    ],
+    "reason": "Reformation hero portrait line art with text watermark"
   }
 }

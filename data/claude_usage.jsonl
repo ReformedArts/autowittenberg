@@ -265,3 +265,6 @@
 {"time": "2026-11-21T04:04:52+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 1852, "out": 128, "usd": 0.002492}
 {"time": "2026-11-21T04:04:56+00:00", "purpose": "generate_instagram_caption", "model": "claude-haiku-4-5-20251001", "in": 965, "out": 251, "usd": 0.00222}
 {"time": "2026-11-21T07:14:19+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2289, "out": 135, "usd": 0.002964}
+{"time": "2026-11-21T21:13:18+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2292, "out": 121, "usd": 0.002897}
+{"time": "2026-11-21T21:13:19+00:00", "purpose": "verify_crop", "model": "claude-haiku-4-5-20251001", "in": 1395, "out": 52, "usd": 0.001655}
+{"time": "2026-11-21T21:13:44+00:00", "purpose": "locate_content", "model": "claude-haiku-4-5-20251001", "in": 2033, "out": 122, "usd": 0.002643}

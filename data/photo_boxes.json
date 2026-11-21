@@ -2500,5 +2500,32 @@
       0.9
     ],
     "reason": "Post Tenebras Lux print artwork with text and sun design"
+  },
+  "8574900310": {
+    "box": [
+      0.17,
+      0.07,
+      0.83,
+      0.93
+    ],
+    "reason": "Framed 95 Theses wall art with illuminated manuscript style"
+  },
+  "8574900308": {
+    "box": [
+      0.27,
+      0.05,
+      0.87,
+      0.95
+    ],
+    "reason": "Navy and Gold 95 Theses wall art print with all text and content"
+  },
+  "8574900302": {
+    "box": [
+      0.1,
+      0.025,
+      0.9,
+      0.975
+    ],
+    "reason": "95 Theses wall art illuminated manuscript design with all text and content"
   }
 }

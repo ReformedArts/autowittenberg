@@ -2816,5 +2816,67 @@
       2500
     ],
     "why": "already the right shape"
+  },
+  "8574918848": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.3,
+      0.05,
+      0.95,
+      0.95
+    ]
+  },
+  "8574900310": {
+    "mode": "crop",
+    "window": [
+      200,
+      0,
+      1800,
+      2000
+    ],
+    "why": "content fits",
+    "box": [
+      0.17,
+      0.07,
+      0.83,
+      0.93
+    ]
+  },
+  "8574900308": {
+    "mode": "crop",
+    "window": [
+      340,
+      0,
+      1940,
+      2000
+    ],
+    "why": "content fits",
+    "box": [
+      0.27,
+      0.05,
+      0.87,
+      0.95
+    ]
+  },
+  "8574900302": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.1,
+      0.03,
+      0.9,
+      0.97
+    ]
+  },
+  "8622738373": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.04,
+      0.14,
+      0.96,
+      0.95
+    ]
   }
 }

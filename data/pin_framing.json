@@ -1033,5 +1033,10 @@
       1776
     ],
     "why": "content fits"
+  },
+  "7563883844": {
+    "can_crop": false,
+    "window": null,
+    "why": "content too large to crop safely"
   }
 }

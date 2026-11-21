@@ -1023,5 +1023,15 @@
     "can_crop": false,
     "window": null,
     "why": "content too large to crop safely"
+  },
+  "7596738859": {
+    "can_crop": true,
+    "window": [
+      138,
+      0,
+      1322,
+      1776
+    ],
+    "why": "content fits"
   }
 }

@@ -1073,5 +1073,15 @@
       1600
     ],
     "why": "already the right shape"
+  },
+  "8540022450": {
+    "can_crop": true,
+    "window": [
+      0,
+      0,
+      1696,
+      2528
+    ],
+    "why": "already the right shape"
   }
 }

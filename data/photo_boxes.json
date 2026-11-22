@@ -2554,5 +2554,68 @@
       0.95
     ],
     "reason": "Reformation hero portrait line art with text watermark"
+  },
+  "8570225286": {
+    "box": [
+      0.3,
+      0.05,
+      0.75,
+      0.95
+    ],
+    "reason": "95 Theses manuscript print with frame and all visible text"
+  },
+  "8622825065": {
+    "box": [
+      0.3,
+      0.08,
+      0.75,
+      0.72
+    ],
+    "reason": "95 Theses print in wooden frame mounted on wall"
+  },
+  "8570184370": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "The framed 95 Theses print and product display scene with text, furniture, and styling elements"
+  },
+  "8618029439": {
+    "box": [
+      0.15,
+      0.08,
+      0.85,
+      0.92
+    ],
+    "reason": "95 Theses Manuscript Print with Luther Timeline framed artwork"
+  },
+  "8618036263": {
+    "box": [
+      0.25,
+      0.07,
+      0.75,
+      0.93
+    ],
+    "reason": "95 Theses manuscript print with frame and all visible text"
+  },
+  "8618030099": {
+    "box": [
+      0.15,
+      0.09,
+      0.85,
+      0.91
+    ],
+    "reason": "95 Theses Manuscript Print with Luther Timeline artwork in frame"
+  },
+  "8570191304": {
+    "box": [
+      0.05,
+      0.03,
+      0.95,
+      0.97
+    ],
+    "reason": "95 Theses Manuscript Print with all text, layout, timeline, and watermarks"
   }
 }

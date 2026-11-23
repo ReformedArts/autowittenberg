@@ -2174,7 +2174,31 @@
       "image_url": "https://i.pinimg.com/1200x/ee/32/d4/ee32d4ad5687267086a37607ba1abc17.jpg",
       "launch": false,
       "posted_at": "2026-11-22T22:30:13.272307+00:00"
+    },
+    {
+      "listing_id": 4581553478,
+      "image_id": 8570225286,
+      "palette": "gold",
+      "crop_style": "zoom_detail",
+      "headline": "Church printable that educates and inspires",
+      "board": "95 Theses Art",
+      "pin_id": "1099933909047537788",
+      "image_url": "https://i.pinimg.com/1200x/9a/29/23/9a29237c4b5d9c775e95c8bf52d4e80c.jpg",
+      "launch": false,
+      "posted_at": "2026-11-23T03:10:00.310346+00:00"
+    },
+    {
+      "listing_id": 4582155798,
+      "image_id": 8574900310,
+      "palette": "amber",
+      "crop_style": "cover_center",
+      "headline": "Perfect gift for pastors and theology students",
+      "board": "95 Theses Art",
+      "pin_id": "1099933909047537819",
+      "image_url": "https://i.pinimg.com/1200x/74/75/52/7475521b01c741c40e9982968933d6af.jpg",
+      "launch": false,
+      "posted_at": "2026-11-23T03:10:57.710410+00:00"
     }
   ],
-  "last_sync_date": "2026-11-22"
+  "last_sync_date": "2026-11-23"
 }

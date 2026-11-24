@@ -2626,5 +2626,23 @@
       1.0
     ],
     "reason": "Entire listing image with all 5 poster colorways, text, and Reformed Arts logo"
+  },
+  "8627713043": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Complete product image with 95 Theses word art and attribution text"
+  },
+  "8599313308": {
+    "box": [
+      0.14,
+      0.09,
+      0.86,
+      0.91
+    ],
+    "reason": "Framed canvas print of 95 Theses with artwork and text"
   }
 }

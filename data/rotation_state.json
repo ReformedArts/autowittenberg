@@ -2198,7 +2198,43 @@
       "image_url": "https://i.pinimg.com/1200x/74/75/52/7475521b01c741c40e9982968933d6af.jpg",
       "launch": false,
       "posted_at": "2026-11-23T03:10:57.710410+00:00"
+    },
+    {
+      "listing_id": 4582827339,
+      "image_id": 8627713043,
+      "palette": "oxblood",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "95 Theses Art",
+      "pin_id": "1099933909047609550",
+      "image_url": "https://i.pinimg.com/1200x/63/ad/ea/63adead339e746c41fc8d53097e8b4c2.jpg",
+      "launch": false,
+      "posted_at": "2026-11-24T00:54:49.519595+00:00"
+    },
+    {
+      "listing_id": 4582869285,
+      "image_id": 8580206256,
+      "palette": "gold",
+      "crop_style": "cover_top",
+      "headline": "Complete 95 Theses text on canvas",
+      "board": "95 Theses Art",
+      "pin_id": "1099933909047609582",
+      "image_url": "https://i.pinimg.com/1200x/b5/65/6d/b5656dedbe433cad53187de277ee8536.jpg",
+      "launch": false,
+      "posted_at": "2026-11-24T00:55:58.953295+00:00"
+    },
+    {
+      "listing_id": 4585379930,
+      "image_id": 8599313308,
+      "palette": "gold",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "95 Theses Art",
+      "pin_id": "1099933909047609624",
+      "image_url": "https://i.pinimg.com/1200x/99/13/0d/99130d1cab6520cd01a7fa064b71305b.jpg",
+      "launch": false,
+      "posted_at": "2026-11-24T00:56:21.837320+00:00"
     }
   ],
-  "last_sync_date": "2026-11-23"
+  "last_sync_date": "2026-11-24"
 }

@@ -2998,5 +2998,105 @@
       1.0,
       1.0
     ]
+  },
+  "8540284436": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8588149343": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8588149345": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8540285460": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8540285454": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8588150357": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.04,
+      0.04,
+      0.96,
+      0.96
+    ]
+  },
+  "8540288146": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8540288148": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8588159815": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8588163401": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
   }
 }

@@ -2671,5 +2671,95 @@
       1.0
     ],
     "reason": "Vintage style fantasy travel poster artwork with castle, text and watermark"
+  },
+  "8540284436": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster graphic artwork fills entire frame"
+  },
+  "8588149343": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster artwork fills entire frame"
+  },
+  "8588149345": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster graphic fills entire frame with title, subtitle, church illustration, and watermark"
+  },
+  "8540285460": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster graphic with text and illustration filling entire frame"
+  },
+  "8540285454": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster artwork fills entire frame"
+  },
+  "8588150357": {
+    "box": [
+      0.04,
+      0.04,
+      0.96,
+      0.96
+    ],
+    "reason": "Zurich vintage travel poster with text, cityscape, and design"
+  },
+  "8540288146": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster graphic that fills entire frame"
+  },
+  "8540288148": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster artwork fills entire frame"
+  },
+  "8588159815": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All products, artwork, text, logo, and collection title visible"
+  },
+  "8588163401": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All posters and central text occupy the entire frame"
   }
 }

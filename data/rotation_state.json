@@ -2294,7 +2294,31 @@
       "image_url": "https://i.pinimg.com/1200x/f9/15/ef/f915ef29ec9497281eadb7c69fb675fb.jpg",
       "launch": false,
       "posted_at": "2026-11-24T21:15:46.513421+00:00"
+    },
+    {
+      "listing_id": 4571717512,
+      "image_id": 8496969996,
+      "palette": "gold",
+      "crop_style": "zoom_detail",
+      "headline": "Hang in church, home, or dorm room",
+      "board": "Scripture Art",
+      "pin_id": "1099933909047698470",
+      "image_url": "https://i.pinimg.com/1200x/94/9e/c7/949ec749b250a9e393f9f742355163e9.jpg",
+      "launch": false,
+      "posted_at": "2026-11-25T04:36:51.707270+00:00"
+    },
+    {
+      "listing_id": 4576209407,
+      "image_id": 8530436308,
+      "palette": "terracotta",
+      "crop_style": "cover_center",
+      "headline": "Print at home literary wall art",
+      "board": "Narnia & Literary Art",
+      "pin_id": "1099933909047698486",
+      "image_url": "https://i.pinimg.com/1200x/96/fb/a7/96fba7e3da436d8ce1343724d77a221e.jpg",
+      "launch": false,
+      "posted_at": "2026-11-25T04:37:57.555944+00:00"
     }
   ],
-  "last_sync_date": "2026-11-24"
+  "last_sync_date": "2026-11-25"
 }

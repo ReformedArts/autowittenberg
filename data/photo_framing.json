@@ -3098,5 +3098,81 @@
       1.0,
       1.0
     ]
+  },
+  "8587993711": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.04,
+      0.02,
+      0.96,
+      0.98
+    ]
+  },
+  "8540129048": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8587995843": {
+    "mode": "crop",
+    "window": [
+      200,
+      0,
+      1800,
+      2000
+    ],
+    "why": "content fits",
+    "box": [
+      0.2,
+      0.02,
+      0.8,
+      0.98
+    ]
+  },
+  "8540129036": {
+    "mode": "fit",
+    "why": "crop vetoed: The left edge of the \"WITTENBERG\" text on the leftmost poster is cut off - only ",
+    "box": [
+      0.3,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8540129032": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8540129046": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
+  },
+  "8540129054": {
+    "mode": "fit",
+    "why": "content too large to crop safely",
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ]
   }
 }

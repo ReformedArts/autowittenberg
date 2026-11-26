@@ -2761,5 +2761,50 @@
       1.0
     ],
     "reason": "All posters and central text occupy the entire frame"
+  },
+  "8587993711": {
+    "box": [
+      0.04,
+      0.02,
+      0.96,
+      0.98
+    ],
+    "reason": "Zurich Reformation poster with title, text, and architectural artwork"
+  },
+  "8540129048": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Illustration fills entire frame"
+  },
+  "8540129032": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster artwork fills entire frame"
+  },
+  "8540129046": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster graphic showing Wittenberg church architecture"
+  },
+  "8540129054": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster graphic with text and cathedral illustration filling entire frame"
   }
 }

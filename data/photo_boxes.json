@@ -2806,5 +2806,68 @@
       1.0
     ],
     "reason": "Poster graphic with text and cathedral illustration filling entire frame"
+  },
+  "8540024502": {
+    "box": [
+      0.1,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "All four reformation travel posters and Reformed Arts watermark"
+  },
+  "8540022454": {
+    "box": [
+      0.05,
+      0.05,
+      0.95,
+      0.95
+    ],
+    "reason": "Entire travel poster artwork including \"GENEVA\" title, subtitle \"Where Reform Took Root\", architectural illustration, and decorative border"
+  },
+  "8587887785": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Travel poster with text and architectural illustration"
+  },
+  "8540022462": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire travel poster artwork for Worms"
+  },
+  "8540021596": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Travel poster artwork filling entire frame"
+  },
+  "8587886637": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      0.95
+    ],
+    "reason": "All posters, text, logo, and product display"
+  },
+  "8540022450": {
+    "box": [
+      0.04,
+      0.04,
+      0.96,
+      0.96
+    ],
+    "reason": "Zurich travel poster with text and artwork"
   }
 }

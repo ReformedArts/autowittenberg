@@ -2462,7 +2462,43 @@
       "image_url": "https://i.pinimg.com/1200x/0a/e4/e1/0ae4e1e6fb15ff0f6c55cc1e9673095c.jpg",
       "launch": false,
       "posted_at": "2026-11-27T19:01:06.885925+00:00"
+    },
+    {
+      "listing_id": 4593487016,
+      "image_id": 8662248076,
+      "palette": "oxblood",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Retro Travel Posters",
+      "pin_id": "1099933909047946923",
+      "image_url": "https://i.pinimg.com/1200x/3f/80/7d/3f807d4291977d9f94165210bf4ea195.jpg",
+      "launch": false,
+      "posted_at": "2026-11-28T02:00:32.780449+00:00"
+    },
+    {
+      "listing_id": 4593487788,
+      "image_id": 8710092471,
+      "palette": "gold",
+      "crop_style": "cover_top",
+      "headline": "Encouragement art with deep blues and gold",
+      "board": "Narnia & Literary Art",
+      "pin_id": "1099933909047946938",
+      "image_url": "https://i.pinimg.com/1200x/04/36/d9/0436d912ee312ef57d38eb441ed941f2.jpg",
+      "launch": false,
+      "posted_at": "2026-11-28T02:01:34.156573+00:00"
+    },
+    {
+      "listing_id": 4582203171,
+      "image_id": 8623184643,
+      "palette": "gold",
+      "crop_style": "fit",
+      "headline": null,
+      "board": "Reformed Art",
+      "pin_id": "1099933909047946950",
+      "image_url": "https://i.pinimg.com/1200x/26/73/21/267321efb505d33a570429365bec051b.jpg",
+      "launch": false,
+      "posted_at": "2026-11-28T02:01:57.264213+00:00"
     }
   ],
-  "last_sync_date": "2026-11-27"
+  "last_sync_date": "2026-11-28"
 }

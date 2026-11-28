@@ -2869,5 +2869,68 @@
       0.96
     ],
     "reason": "Zurich travel poster with text and artwork"
+  },
+  "8530563760": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All posters, text headers, and Reformed Arts branding"
+  },
+  "8578427605": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire retro poster artwork with text and cathedral silhouette"
+  },
+  "8530564078": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire retro Zurich poster artwork fills the full frame"
+  },
+  "8530564088": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster artwork fills entire frame"
+  },
+  "8578427603": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "All posters and text in reformation cities collection"
+  },
+  "8578427607": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Poster graphic fills entire frame"
+  },
+  "8530564074": {
+    "box": [
+      0.0,
+      0.0,
+      1.0,
+      1.0
+    ],
+    "reason": "Entire retro poster with cathedral, text, and watermark"
   }
 }
